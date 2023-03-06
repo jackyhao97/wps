@@ -1,0 +1,1 @@
+Folder Images only for Lightbox!

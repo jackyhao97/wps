@@ -1,0 +1,33 @@
+.wps-slider,
+.wps-banner {
+  margin-top: 90px;
+}
+
+.wps-slider-button {
+  background: lightgray;
+  width: 50%;
+}
+
+.carousel-indicators .active {
+  background-color: #6168d1 !important;
+}
+
+.title {
+  color: #3737ff;
+  text-decoration: underline;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.link-custom {
+  text-decoration: none;
+  color: black;
+}
+
+@media (max-width: 576px) {
+  .wps-slider-button {
+    width: 80%;
+  }
+}
