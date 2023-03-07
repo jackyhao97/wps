@@ -109,7 +109,7 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Custom Contents:</h6>
 						<a class="collapse-item" href="about.php">About</a>
-						<a class="collapse-item" href="service.php">Service</a>
+						<a class="collapse-item" href="services.php">Service</a>
 						<a class="collapse-item" href="clients.php">Clients</a>
 						<a class="collapse-item" href="partners.php">Partners</a>
 						<a class="collapse-item" href="news.php">News</a>
