@@ -3,6 +3,8 @@
 
 	if (isset($_POST["submit"]))
   {
+    var_dump($_POST);
+
     $createdOn = date("Y-m-d H:i:s");
     $createdBy = $_SESSION['username'];
     $konten = mysqli_real_escape_string($conn, $_POST["content"]);
