@@ -5,13 +5,13 @@
 
 	if (isset($_POST['id'])) {
 		$id = $_POST['id'];
-    $data = $conn->query("SELECT path FROM tb_client WHERE id = '$id'");
+    $data = $conn->query("SELECT path FROM tb_partner WHERE id = '$id'");
     $row = $data->fetch_array(MYSQLI_ASSOC);
     $path = $row['path'];
-		$hapus = $conn->query("DELETE FROM tb_client WHERE id = '$id'");
+		$hapus = $conn->query("DELETE FROM tb_partner WHERE id = '$id'");
 	
 		if ($hapus) {
-      $img_path = BASE_URL.DS.'admin/img/clients/'.$path;
+      $img_path = BASE_URL.DS.'admin/img/partners/'.$path;
       if (file_exists($img_path)){
         unlink($img_path);
       }

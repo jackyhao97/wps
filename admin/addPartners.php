@@ -12,7 +12,7 @@
     $user = $_SESSION['username'];
     $block = 0;
     $file = $_FILES['image_data'];
-    $sql_name = $conn->query("SELECT name FROM tb_client WHERE name = '$name'");
+    $sql_name = $conn->query("SELECT name FROM tb_partner WHERE name = '$name'");
 
     if ($name == '') {
       $block = 1;
@@ -26,10 +26,11 @@
     }
 
     if ($block == 0) {
-      $new_filename = "CLIENT_".strtoupper($name)."_".time().".jpg";
-      $upload = move_uploaded_file($file['tmp_name'], "img/clients/".$new_filename);
-      $insert_sql = "INSERT INTO tb_client (created_on, created_by, name, path) VALUES ('$created_on', '$user', '$name', '$new_filename')";
+      $new_filename = "PARTNER_".strtoupper($name)."_".time().".jpg";
+      $upload = move_uploaded_file($file['tmp_name'], "img/partners/".$new_filename);
+      $insert_sql = "INSERT INTO tb_partner (created_on, created_by, name, path) VALUES ('$created_on', '$user', '$name', '$new_filename')";
       $exec_sql = $conn->query($insert_sql);
+      $last_inserted_id = $conn->insert_id;
       if ($exec_sql) {
         $data['result'] = 1;
         $data['message'] = "Data berhasil disimpan.";

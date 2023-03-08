@@ -110,8 +110,8 @@
 						<h6 class="collapse-header">Custom Contents:</h6>
 						<a class="collapse-item" href="about.php">About</a>
 						<a class="collapse-item" href="services.php">Service</a>
-						<a class="collapse-item active" href="clients.php">Clients</a>
-						<a class="collapse-item" href="partners.php">Partners</a>
+						<a class="collapse-item" href="clients.php">Clients</a>
+						<a class="collapse-item active" href="partners.php">Partners</a>
 						<a class="collapse-item" href="news.php">News</a>
 						<a class="collapse-item" href="contact.php">Contact</a>
 						<a class="collapse-item" href="career.php">Career</a>
@@ -179,7 +179,7 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Home - Clients</h1>
+					<h1 class="h3 mb-2 text-gray-800">Home - Partners</h1>
 					<p class="mb-4">
 						<a target="_blank" href="https://widyapresisisolusi.com">widyapresisisolusi.com</a>.
 					</p>
@@ -192,7 +192,7 @@
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<table class="table table-bordered" id="clients-all" width="100%" cellspacing="0">
+								<table class="table table-bordered" id="partners-all" width="100%" cellspacing="0">
 									<thead>
 										<tr>
 											<th>#</th>
@@ -222,10 +222,10 @@
 												<input class="form-control col-md-10 col-sm-8 col-xs-8 w-100" name="txt_nama" id="txt_nama" autofocus/>
 												<div class="col-md-12 mt-3">
 													<label class="col-md-2 col-sm-2 col-xs-4 control-label">Image</label>
-													<input type="file" name="fil_upload_clients" id="fil_upload_clients" data-filename-placement="inside" onchange="resizeAndRead(this)">
+													<input type="file" name="fil_upload_partners" id="fil_upload_partners" data-filename-placement="inside" onchange="resizeAndRead(this)">
 													<div class="col-md-8 col-sm-8 col-xs-8">
 														<div class="my-gallery">
-															<figure id="fil_upload_clients_card">No Image</figure>
+															<figure id="fil_upload_partners_card">No Image</figure>
 														</div>
 													</div>
 												</div>
@@ -323,7 +323,7 @@
 		$(document).ready(function() {
 			$.fn.dataTable.ext.errMode = 'none';
 	
-			const table = $('#clients-all').on('error.dt', function(e, settings, techNote, message) {
+			const table = $('#partners-all').on('error.dt', function(e, settings, techNote, message) {
 	
 				if (techNote == 1)
 	
@@ -355,7 +355,7 @@
 	
 				"ajax": {
 	
-					"url": "json/data-clients.php",
+					"url": "json/data-partners.php",
 	
 				}
 			});
@@ -390,9 +390,9 @@
 
 		function clearForm() {
 			$("#txt_nama").val('');
-			$("#fil_upload_clients").val("");
-			$("#fil_upload_clients_preview").attr("src", "");
-			$("#fil_upload_clients_card").html('No Image');
+			$("#fil_upload_partners").val("");
+			$("#fil_upload_partners_preview").attr("src", "");
+			$("#fil_upload_partners_card").html('No Image');
 		}
 
 		function checkAndClear() {
@@ -495,20 +495,20 @@
 				$.ajax({
 					type: "post",
 					data: formData,
-					url: "addClients.php",
+					url: "addPartners.php",
 					processData: false,
 					contentType: false,
 					success: (data) => {
 						let res = $.parseJSON(data);
 						if (res.result == 1) {
 							alert(res.message);
-							$("#clients-all").DataTable().ajax.reload();
+							$("#partners-all").DataTable().ajax.reload();
 							$("#modal_tambah").modal("hide");
 							$("#modal_tambah").attr("data-dismiss", "modal");
 						}
 						else {
 							alert(res.message);
-							$("#clients-all").DataTable().ajax.reload();
+							$("#partners-all").DataTable().ajax.reload();
 						}
 						$("#btn_simpan").attr("disabled", false).html('Simpan');
 					},
@@ -546,18 +546,18 @@
 			if (conf) {
 				$.ajax({
 					type: "post",
-					url: "delClients.php",
+					url: "delPartners.php",
 					data: { id },
 					success: (data) => {
 						const res = $.parseJSON(data);
 
 						if (res.success) {
 							alert('Gambar berhasil dihapus.');
-							$("#clients-all").DataTable().ajax.reload();
+							$("#partners-all").DataTable().ajax.reload();
 						}
 						else {
 							alert('Gambar gagal dihapus.');
-							$("#clients-all").DataTable().ajax.reload();
+							$("#partners-all").DataTable().ajax.reload();
 						}
 					}
 				});
