@@ -26,6 +26,11 @@
   color: black;
 }
 
+section#services .accordion-custom {
+  height: 400px;
+  overflow: auto;
+}
+
 @media (max-width: 576px) {
   .wps-slider-button {
     width: 80%;
