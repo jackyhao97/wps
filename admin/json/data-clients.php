@@ -38,7 +38,7 @@ function BuildDelete($data) {
 
 $table = <<<EOT
   (
-    SELECT `id`, `judul`, `keterangan`, `path` FROM `tb_clients`
+    SELECT `id`, `path`, `url` FROM `tb_clients`
   ) temp 
   EOT;
 
@@ -66,25 +66,17 @@ $columns = array(
     }
 
   ),
-
-  array('db' => 'judul', 'dt' => 1),
-  array(
-    'db' => 'keterangan',
-    'dt' => 2,
-    'formatter' => function($d) {
-      return substr($d, 0, 50) . "...";
-    }
-  ),
   array(
     'db' => 'path', 
-    'dt' => 3,
+    'dt' => 1,
     'formatter' => function($d, $row) use ($func_apply_2) {
       return $func_apply_2($d, $row[1]);
     }
   ),
+  array('db' => 'url', 'dt' => 2),
   array(
     'db' => 'id', 
-    'dt' => 4,
+    'dt' => 3,
     'formatter' => function($d, $row) use ($func_apply_3) {
       return $func_apply_3($d);
     }
