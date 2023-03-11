@@ -21,11 +21,11 @@
           </li>
           <li class="nav-item d-flex flex-column align-items-center p-3">
             <i class="fa-solid fa-building d-none d-lg-block"></i>
-            <a class="nav-link fw-bold" aria-current="page" href="<?=BASE_URL.DS.'about/'?>">ABOUT</a>
+            <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'about/'?>">ABOUT</a>
           </li>
           <li class="nav-item d-flex flex-column align-items-center p-3 mx-3 bg-body-secondary border-bottom border-primary border-5">
             <i class="fa-solid fa-folder-open d-none d-lg-block"></i>
-            <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'services/'?>">SERVICES</a>
+            <a class="nav-link fw-bold" aria-current="page" href="<?=BASE_URL.DS.'services/'?>">SERVICES</a>
           </li>
           <li class="nav-item d-flex flex-column align-items-center p-3">
             <i class="fa-solid fa-users d-none d-lg-block"></i>

@@ -24,7 +24,7 @@
     <div class="container">
       <div class="accordion" id="accordionExample">
       <?php 
-        $select = $conn->query("SELECT * FROM tb_services");
+        $select = $conn->query("SELECT * FROM tb_services ORDER BY urutan");
         $i = 1;
         while ($row = $select->fetch_array(MYSQLI_ASSOC)) :
       ?>
@@ -39,7 +39,7 @@
         </h2>
         <div id="collapse<?=$i?>" class="accordion-collapse collapse show" aria-labelledby="heading<?=$i?>" data-bs-parent="#accordionExample">
           <div class="accordion-body accordion-custom">
-            <img src="<?=BASE_URL.DS.'admin/img/services/'.$row['path']?>" alt="<?=$row['judul']?>" class="w-100">
+            <img src="<?=BASE_URL.DS.'admin/img/services/'.$row['path']?>" alt="<?=$row['judul']?>" class="w-100 mb-5">
             <?=$row["keterangan"]?>
           </div>
         </div>
@@ -54,7 +54,7 @@
         </h2>
         <div id="collapse<?=$i?>" class="accordion-collapse collapse" aria-labelledby="heading<?=$i?>" data-bs-parent="#accordionExample">
           <div class="accordion-body accordion-custom">
-            <img src="<?=BASE_URL.DS.'admin/img/services/'.$row['path']?>" alt="<?=$row['judul']?>" class="w-100">
+            <img src="<?=BASE_URL.DS.'admin/img/services/'.$row['path']?>" alt="<?=$row['judul']?>" class="w-100 mb-5">
             <?=$row["keterangan"]?>
           </div>
         </div>
