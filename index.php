@@ -79,10 +79,10 @@
     <div class="container mt-5">
       <div class="row">
       <?php 
-        $sqlcontent = $conn->query("SELECT judul, keterangan, path FROM tb_content");
+        $sqlcontent = $conn->query("SELECT judul, keterangan, path FROM tb_content ORDER BY urutan");
         while ($rowContent = $sqlcontent->fetch_array()) :
       ?>
-        <div class="col-md-4 col-sm-6 col-12 mb-3">
+        <div class="col-md-4 col-sm-6 col-12 mb-5">
           <div class="card w-100">
             <img src="<?=BASE_URL.DS.'admin/img/content/'.$rowContent['path']?>" class="card-img-top" alt="<?=$rowContent['judul']?>">
             <div class="card-body">

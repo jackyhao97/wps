@@ -204,6 +204,7 @@
 											<th>#</th>
 											<th>Judul</th>
 											<th>Keterangan</th>
+											<th>Urutan</th>
 											<th>Preview</th>
 											<th>Aksi</th>
 										</tr>
@@ -232,6 +233,10 @@
 												<div class="col-md-12 mt-3">
 													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_keterangan">Keterangan</label>
 													<textarea name="txt_keterangan" id="txt_keterangan" rows="4" cols="50" class="form-control"></textarea>
+												</div>
+												<div class="col-md-12 mt-3">
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_urutan">Urutan</label>
+													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_urutan" id="txt_urutan" type="number"/>
 												</div>
 												<div class="col-md-12 mt-3">
 													<label class="col-md-2 col-sm-2 col-xs-4 control-label">Image</label>
@@ -275,6 +280,10 @@
 												<div class="col-md-12 mt-3">
 													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_keterangan_edit">Keterangan</label>
 													<textarea name="txt_keterangan_edit" id="txt_keterangan_edit" rows="4" cols="50" class="form-control"></textarea>
+												</div>
+												<div class="col-md-12 mt-3">
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_urutan_edit">Urutan</label>
+													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_urutan_edit" id="txt_urutan_edit" type="number" />
 												</div>
 												<div class="col-md-12 mt-3 d-flex align-items-center">
 													<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
@@ -458,6 +467,7 @@
 		function clearForm() {
 			$("#txt_judul").val('');
 			$("#txt_keterangan").val('');
+			$("#txt_urutan").val('');
 			$("#fil_upload_content").val("");
 			$("#fil_upload_content_preview").attr("src", "");
 			$("#fil_upload_content_card").html('No Image');
@@ -466,6 +476,7 @@
 		function clearFormEdit() {
 			$("#txt_judul_edit").val('');
 			$("#txt_keterangan_edit").val('');
+			$("#txt_urutan_edit").val('');
 			$("#fil_upload_content_edit").val("");
 			$("#fil_upload_content_exist_preview").attr("src", "");
 			$("#fil_upload_content_edit_preview").attr("src", "");
@@ -620,6 +631,10 @@
 				alert('Harap mengisi keterangan!');
 				$("#btn_simpan").attr("disabled", false).html('Simpan');
 			}
+			else if ($("#txt_urutan").val() == ''){
+				alert('Harap mengisi urutan!');
+				$("#btn_simpan").attr("disabled", false).html('Simpan');
+			}
 			else if (imageResize.blob == null || imageResize.url == null) {
 				alert('Anda belum pilih gambar!');
 				$("#btn_simpan").attr("disabled", false).html('Simpan');
@@ -668,6 +683,10 @@
 			}
 			else if ($("#txt_keterangan_edit").val() == ''){
 				alert('Harap mengisi keterangan!');
+				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
+			}
+			else if ($("#txt_urutan_edit").val() == ''){
+				alert('Harap mengisi urutan!');
 				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
 			}
 			else if (imageResizeEdit.url == 'not-an-image' || imageResizeEdit.blob == 'not-an-image') {
@@ -759,6 +778,7 @@
 					if (res.success == 1) {
 						$("#txt_judul_edit").val(res.data[0].judul);
 						$("#txt_keterangan_edit").val(res.data[0].keterangan);
+						$("#txt_urutan_edit").val(res.data[0].urutan);
 						$("#hid_id").val(res.data[0].hid_id);
 						$('#fil_upload_content_exist_card').html(
 						`<img class="file-card__image w-100" id="fil_upload_content_exist_preview" src="${mainURL}content/${res.data[0].path}" />`
