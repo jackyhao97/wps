@@ -380,7 +380,7 @@
 	<!-- Page level custom scripts -->
 	<script src="js/demo/datatables-demo.js"></script>
 
-	<script src="js/script.js"></script>
+	<script src="js/script.js?ver=<?=rand(1,1000)?>"></script>
 
 	<script>
 		$("#modal_tambah").on("shown.bs.modal", function () {

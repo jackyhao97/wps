@@ -197,6 +197,7 @@
 										<tr>
 											<th>#</th>
 											<th>Nama</th>
+											<th>Urutan</th>
 											<th>Preview</th>
 											<th></th>
 										</tr>
@@ -218,8 +219,14 @@
 									<div class="modal-body">
 										<div class="form-group">
 											<div class="row">
-												<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_nama">Nama</label>
-												<input class="form-control col-md-10 col-sm-8 col-xs-8 w-100" name="txt_nama" id="txt_nama" autofocus/>
+												<div class="col-md-12">
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_nama">Nama</label>
+													<input class="form-control col-md-10 col-sm-8 col-xs-8 w-100" name="txt_nama" id="txt_nama" autofocus/>
+												</div>
+												<div class="col-md-12 mt-3">
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_urutan">Urutan</label>
+													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_urutan" id="txt_urutan" type="number" />
+												</div>
 												<div class="col-md-12 mt-3">
 													<label class="col-md-2 col-sm-2 col-xs-4 control-label">Image</label>
 													<input type="file" name="fil_upload_slider" id="fil_upload_slider" data-filename-placement="inside" onchange="resizeAndRead(this)">
@@ -242,7 +249,57 @@
 					</div>
         	<!-- Akhir Modal Tambah -->
 
-					
+					<!-- Modal Edit -->
+					<div id="modal_edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h4 class="modal-title font-weight-bold">Edit</h4>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								</div>
+								<form method="post" action="" class="form-horizontal" role="form" enctype="multipart/form-data" name="form_edit" id="form_edit">
+									<div class="modal-body">
+										<div class="form-group">
+											<div class="row">
+												<div class="col-md-12">
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_nama_edit">Nama</label>
+													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_nama_edit" id="txt_nama_edit" autofocus/>
+													<input type="hidden" name="hid_id" id="hid_id">
+												</div>
+												<div class="col-md-12 mt-3">
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_urutan_edit">Urutan</label>
+													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_urutan_edit" id="txt_urutan_edit" type="number" />
+												</div>
+												<div class="col-md-12 mt-3 d-flex align-items-center">
+													<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+														<label class="control-label">Image</label>
+													</div>
+													<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+														<div class="my-gallery">
+															<figure id="fil_upload_slider_exist_card">No Image</figure>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-12 mt-3">
+													<input type="file" name="fil_upload_slider_edit" id="fil_upload_slider_edit" data-filename-placement="inside" onchange="resizeAndReadEdit(this)">
+													<div class="col-md-8 col-sm-8 col-xs-8">
+														<div class="my-gallery">
+															<figure id="fil_upload_slider_edit_card" class="figures">No Preview Available</figure>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<button id="btn_simpan_edit" type="button" class="btn btn-primary" name="btn_simpan_edit" onclick="edit()">Simpan</button>
+										<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+        	<!-- Akhir Modal Edit -->
 
 				</div>
 				<!-- /.container-fluid -->
@@ -314,6 +371,8 @@
 
 	<!-- Page level custom scripts -->
 	<script src="js/demo/datatables-demo.js"></script>
+
+	<script src="js/script.js?ver=<?=rand(1,1000)?>"></script>
 
 	<script>
 		$("#modal_tambah").on("shown.bs.modal", function () {
@@ -395,6 +454,14 @@
 			$("#fil_upload_slider_card").html('No Image');
 		}
 
+		function clearFormEdit() {
+			$("#txt_nama_edit").val('');
+			$("#fil_upload_slider_edit").val("");
+			$("#fil_upload_slider_exist_preview").attr("src", "");
+			$("#fil_upload_slider_edit_preview").attr("src", "");
+			$("#fil_upload_slider_edit_card").html('No Image');
+		}
+
 		function checkAndClear() {
 			$.ajax({
 				type: "post",
@@ -417,6 +484,7 @@
 		}
 
 		window.imageResize = { blob: null, url: null }
+		window.imageResizeEdit = { blob: null, url: null }
 
 		function resizeAndRead(input){
 			// Read
@@ -474,12 +542,72 @@
 			}
 		};
 
+		function resizeAndReadEdit(input){
+			// Read
+			if (input.files && input.files[0]) {
+				const element = input.id;
+				const reader = new FileReader();
+
+				reader.onload = (e) => {
+					$(`#${element}_card`).html(
+						`<img class="file-card__image w-100" id="${element}_preview" src="${e.target.result}" />`
+					);
+				};
+				reader.readAsDataURL(input.files[0]);
+			}
+
+			// Resize
+			var file = event.target.files[0];
+
+			if(file.type.match(/image.*/)) {
+				var reader = new FileReader();
+				reader.onload = function (readerEvent) {
+					var image = new Image();
+					image.onload = function (imageEvent) {
+						var canvas = document.createElement('canvas'),
+							max_size = 1280,// TODO : pull max size from a site config
+							width = image.width,
+							height = image.height;
+						if (width > height) {
+							if (width > max_size) {
+								height *= max_size / width;
+								width = max_size;
+							}
+						} else {
+							if (height > max_size) {
+								width *= max_size / height;
+								height = max_size;
+							}
+						}
+						canvas.width = width;
+						canvas.height = height;
+						canvas.getContext('2d').drawImage(image, 0, 0, width, height);
+						var dataUrl = canvas.toDataURL('image/jpeg');
+						imageResizeEdit.url = dataUrl;
+						imageResizeEdit.blob = dataURLToBlob(dataUrl);
+						console.log(imageResizeEdit);
+					}
+					image.src = readerEvent.target.result;
+				}
+				reader.readAsDataURL(file);
+			}
+			else {
+				imageResizeEdit.url = 'not-an-image';
+				imageResizeEdit.blob = 'not-an-image';
+				alert('File bukan gambar! Mohon diganti');
+			}
+		};
+
 		function add() {
 			const formData = new FormData(document.getElementById("form_add"));
 			$("#btn_simpan").attr("disabled", true).html('<i class="fa fa-spin fa-spinner"></i> Processing ...');
 			
 			if ($("#txt_nama").val() == ''){
 				alert('Harap mengisi nama!');
+				$("#btn_simpan").attr("disabled", false).html('Simpan');
+			}
+			if ($("#txt_urutan").val() == ''){
+				alert('Harap mengisi urutan!');
 				$("#btn_simpan").attr("disabled", false).html('Simpan');
 			}
 			else if (imageResize.blob == null || imageResize.url == null) {
@@ -511,6 +639,52 @@
 							$("#slider-all").DataTable().ajax.reload();
 						}
 						$("#btn_simpan").attr("disabled", false).html('Simpan');
+					},
+					error: (err) => {
+						alert("Terjadi kesalahan saat menyimpan data. Silahkan coba lagi.");
+						console.log(err);
+					},
+				});
+			}
+		}
+
+		function edit() {
+			const formDataEdit = new FormData(document.getElementById("form_edit"));
+			$("#btn_simpan_edit").attr("disabled", true).html('<i class="fa fa-spin fa-spinner"></i> Processing ...');
+			
+			if ($("#txt_nama_edit").val() == ''){
+				alert('Harap mengisi nama!');
+				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
+			}
+			else if ($("#txt_urutan_edit").val() == ''){
+				alert('Harap mengisi urutan!');
+				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
+			}
+			else if (imageResizeEdit.url == 'not-an-image' || imageResizeEdit.blob == 'not-an-image') {
+				alert('Yang anda upload bukan gambar!');
+				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
+			}
+			else {
+				formDataEdit.append('image_data_edit', imageResizeEdit.blob);
+				$.ajax({
+					type: "post",
+					data: formDataEdit,
+					url: "editSlider.php",
+					processData: false,
+					contentType: false,
+					success: (data) => {
+						let res = $.parseJSON(data);
+						if (res.result == 1) {
+							alert(res.message);
+							$("#slider-all").DataTable().ajax.reload();
+							$("#modal_edit").modal("hide");
+							$("#modal_edit").attr("data-dismiss", "modal");
+						}
+						else {
+							alert(res.message);
+							$("#slider-all").DataTable().ajax.reload();
+						}
+						$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
 					},
 					error: (err) => {
 						alert("Terjadi kesalahan saat menyimpan data. Silahkan coba lagi.");
@@ -562,6 +736,33 @@
 					}
 				});
 			}
+		}
+
+		function show(id) {
+			clearFormEdit();
+			$.ajax({
+				type: "post",
+				data: {id},
+				url: "showSlider.php",
+				success: (data) => {
+					let res = JSON.parse(data);
+					if (res.success == 1) {
+						$("#txt_nama_edit").val(res.data[0].nama);
+						$("#txt_urutan_edit").val(res.data[0].urutan);
+						$("#hid_id").val(res.data[0].hid_id);
+						$('#fil_upload_slider_exist_card').html(
+						`<img class="file-card__image w-100" id="fil_upload_content_exist_preview" src="${mainURL}slider/${res.data[0].path}" />`
+						);
+					}
+					else {
+						alert("Tampil data error! Please Contact Administrator!");
+					}
+				},
+				error: (err) => {
+					alert("Terjadi kesalahan saat menampilkan data.");
+					console.log(err);
+				},
+			});
 		}
 	</script>
 </body>

@@ -39,7 +39,7 @@
       </div>
       <div class="carousel-inner">
       <?php
-        $sqlselect = $conn->query("SELECT name,path FROM tb_slider");
+        $sqlselect = $conn->query("SELECT name,path FROM tb_slider ORDER BY urutan");
         $j = 0;
         while($row = $sqlselect->fetch_array()) :
           if($j == 0) {

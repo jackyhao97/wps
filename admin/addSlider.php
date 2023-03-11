@@ -12,6 +12,7 @@
     $user = $_SESSION['username'];
     $block = 0;
     $file = $_FILES['image_data'];
+    $urutan = isset($_POST['txt_urutan']) ? $_POST['txt_urutan'] : 0;
     $sql_name = $conn->query("SELECT name FROM tb_slider WHERE name = '$name'");
 
     if ($name == '') {
@@ -26,13 +27,13 @@
     }
 
     if ($block == 0) {
-      $new_filename = "SLIDER_".strtoupper($name)."_".time().".jpg";
+      $new_filename = "SLIDER_".rand(1,1000)."_".time().".jpg";
       $upload = move_uploaded_file($file['tmp_name'], "img/slider/".$new_filename);
-      $insert_sql = "INSERT INTO tb_slider (created_on, created_by, name, path) VALUES ('$created_on', '$user', '$name', '$new_filename')";
+      $insert_sql = "INSERT INTO tb_slider (created_on, created_by, name, path, urutan) VALUES ('$created_on', '$user', '$name', '$new_filename', '$urutan')";
       $exec_sql = $conn->query($insert_sql);
       $last_inserted_id = $conn->insert_id;
       if ($exec_sql && $upload) {
-        $insert_name = "INSERT INTO tb_dokumen_slider (created_on, created_by, slider_id, img_path) VALUES ('$created_on', '$user', '$last_inserted_id', '$new_filename')";
+        $insert_name = "INSERT INTO tb_dokumen_slider (created_on, created_by, slider_id, img_path, urutan) VALUES ('$created_on', '$user', '$last_inserted_id', '$new_filename', '$urutan')";
         $exec_name = $conn->query($insert_name);
         if ($exec_name) {
           $data['result'] = 1;

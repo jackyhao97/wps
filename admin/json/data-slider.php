@@ -28,8 +28,10 @@ function ShowImages($data, $nama) {
   return $component;
 }
 
-function BuildDelete($data) {
-  $component = '<a class="btn btn-sm btn-danger" onclick="initHapus('.$data.')" title="hapus"><i class="fa fa-trash"></i></a>';
+function BuildAction($data) {
+  $component = '<a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_edit" onclick="show('.$data.')" title="Edit"><i class="fa fa-edit"></i></a>';
+  $component .= "<br />";
+  $component .= '<a class="btn btn-sm btn-danger mt-1" onclick="initHapus('.$data.')" title="hapus"><i class="fa fa-trash"></i></a>';
 
   return $component;
 }
@@ -37,7 +39,7 @@ function BuildDelete($data) {
 
 $table = <<<EOT
   (
-    SELECT `id`, `name`, `path` FROM `tb_slider`
+    SELECT `id`, `name`, `path`, `urutan` FROM `tb_slider`
   ) temp 
   EOT;
 
@@ -49,7 +51,7 @@ $func_apply = 'BuildCounter';
 
 $func_apply_2 = 'ShowImages';
 
-$func_apply_3 = 'BuildDelete';
+$func_apply_3 = 'BuildAction';
 
 $columns = array(
 
@@ -67,16 +69,17 @@ $columns = array(
   ),
 
   array('db' => 'name', 'dt' => 1),
+  array('db' => 'urutan', 'dt' => 2),
   array(
     'db' => 'path', 
-    'dt' => 2,
+    'dt' => 3,
     'formatter' => function($d, $row) use ($func_apply_2) {
       return $func_apply_2($d, $row[1]);
     }
   ),
   array(
     'db' => 'id', 
-    'dt' => 3,
+    'dt' => 4,
     'formatter' => function($d, $row) use ($func_apply_3) {
       return $func_apply_3($d);
     }
