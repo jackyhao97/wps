@@ -179,7 +179,7 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Clients</h1>
+					<h1 class="h3 mb-2 text-gray-800">Partners</h1>
 					<p class="mb-4">
 						<a target="_blank" href="https://widyapresisisolusi.com">widyapresisisolusi.com</a>.
 					</p>
@@ -187,7 +187,7 @@
 					<!-- DataTables Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3 d-flex justify-content-between">
-							<h4 class="m-0 font-weight-bold text-primary">Clients</h4>
+							<h4 class="m-0 font-weight-bold text-primary">Partners</h4>
 							<button class="btn btn-success" onclick="checkAndClear()">Tambah</button>
 						</div>
 						<div class="card-body">
@@ -723,7 +723,7 @@
 						$("#hid_id").val(res.data[0].hid_id);
 						$("#txt_url_edit").val(res.data[0].url);
 						$('#fil_upload_partners_exist_card').html(
-						`<img class="file-card__image w-100" id="fil_upload_content_exist_preview" src="${mainURL}clients/${res.data[0].path}" />`
+						`<img class="file-card__image w-100" id="fil_upload_content_exist_preview" src="${mainURL}partners/${res.data[0].path}" />`
 						);
 					}
 					else {
