@@ -31,17 +31,17 @@
             <i class="fa-solid fa-users d-none d-lg-block"></i>
             <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'clients/'?>">CLIENTS</a>
           </li>
-          <li class="nav-item d-flex flex-column align-items-center p-3 mx-3 bg-body-secondary border-bottom border-primary border-5">
+          <li class="nav-item d-flex flex-column align-items-center p-3">
             <i class="fa-solid fa-handshake d-none d-lg-block"></i>
-            <a class="nav-link fw-bold" aria-current="page" href="<?=BASE_URL.DS.'partners/'?>">PARTNERS</a>
+            <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'partners/'?>">PARTNERS</a>
           </li>
           <li class="nav-item d-flex flex-column align-items-center p-3">
             <i class="fa-solid fa-newspaper d-none d-lg-block"></i>
             <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'news/'?>">NEWS</a>
           </li>
-          <li class="nav-item d-flex flex-column align-items-center p-3">
+          <li class="nav-item d-flex flex-column align-items-center p-3 mx-3 bg-body-secondary border-bottom border-primary border-5">
             <i class="fa-solid fa-envelope d-none d-lg-block"></i>
-            <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'contact/'?>">CONTACT</a>
+            <a class="nav-link fw-bold" aria-current="page" href="<?=BASE_URL.DS.'contact/'?>">CONTACT</a>
           </li>
           <li class="nav-item d-flex flex-column align-items-center p-3">
             <i class="fa-solid fa-suitcase d-none d-lg-block"></i>
