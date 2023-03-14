@@ -1,0 +1,26 @@
+account hosting
+link : https://www.smarterasp.net
+username : sutjipto@cbn.net.id
+pass : W!dy@W3bserv
+
+admin backend
+link : http://admin.widyapresisisolusi.com/AdminLogin.aspx
+user : ike@widyapresisisolusi.com
+password : !Nv3lli20345
+
+FTP
+host : win5015.site4now.net
+username : sbudiman-001
+pass : widy4pres1s1S0lus1
+
+Link
+https://www.figma.com/file/lQbLoMmmi3FWJUjeuvlPFU/WPS?node-id=101%3A2&t=K3ADOC4xXUmFkK59-1
+
+Embed
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FlQbLoMmmi3FWJUjeuvlPFU%2FWPS%3Fnode-id%3D101%253A2%26t%3DK3ADOC4xXUmFkK59-1" allowfullscreen></iframe>
+
+Google Sheets
+https://docs.google.com/spreadsheets/d/1vo8h3sjHkPT08ibEuN2lLiHAR7sWs6bw/edit?usp=drive_web&ouid=114573777095506220642&rtpof=true
+
+Google Drive
+https://drive.google.com/drive/u/0/search?q=wps

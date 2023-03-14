@@ -40,9 +40,12 @@
             <label for="txt_topic" class="form-label">Topic</label>
             <select class="form-select" aria-label="Default select example" id="txt_topic">
               <option selected>Open this select menu</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option value="1">Payroll Administration</option>
+              <option value="2">Payroll Outsourcing</option>
+              <option value="3">HR Information System</option>
+              <option value="4">IT Security</option>
+              <option value="5">Learning Management System</option>
+              <option value="6">Other Business Process Outsourcing</option>
             </select>
           </div>
           <div class="mb-3">
@@ -51,6 +54,11 @@
           </div>
           <button type="submit" class="btn btn-primary">Send</button>
         </form>
+      </div>
+      <div class="col-12 col-sm-6">
+        <h3 class="fw-bold">Address</h3>
+        <a href="https://www.google.com/maps/place/PT+Widya+Presisi+Solusi/@-6.183404,106.8144006,17z/data=!3m1!4b1!4m6!3m5!1s0x2e69f68268d40057:0xc6f45229584d9390!8m2!3d-6.1834093!4d106.8165893!16s%2Fg%2F11b5wkhprr" target="_blank">The Boulevard - Mezzanine floor - A Jl.Fachrudin No.5. Jakarta Pusat, 10250. Indonesia </a>
+        <a href="" target="_blank">Phone: +6221 3192 2727, +6221 3192 2797 </a>
       </div>
     </div>
   </section>
