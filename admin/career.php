@@ -1010,7 +1010,7 @@
 				$.ajax({
 					type: "post",
 					data: formDataEdit,
-					url: "editRequirement.php",
+					url: "editCareers.php",
 					processData: false,
 					contentType: false,
 					success: (data) => {
@@ -1067,7 +1067,7 @@
 				success: (data) => {
 					let res = JSON.parse(data);
 					if (res.success == 1) {
-						$("#txt_title_edit").val(res.data[0].judul);
+						$("#txt_title_edit").val(res.data[0].title);
 						$("#txt_urutan_edit").val(res.data[0].urutan);
 						$("#editorEdit").html(res.data[0].requirement);
 						myEditorEdit.setData(res.data[0].requirement);
