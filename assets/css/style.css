@@ -31,6 +31,10 @@ section#services .accordion-custom {
   overflow: auto;
 }
 
+section.news img {
+  width: 100% !important;
+}
+
 @media (max-width: 576px) {
   .wps-slider-button {
     width: 80%;

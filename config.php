@@ -5,10 +5,17 @@ if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
   $uri = 'http://';
 }
 $uri .= $_SERVER['HTTP_HOST'];
+
 //live
 // define('BASE_URL', $uri);
 //local
 define('BASE_URL', $uri . "/wps");
+
+//live
+// define('SITE_PATH', $uri . "/admin/img/news/");
+//local
+define('SITE_PATH', $uri . "/wps/admin/img/news/details/");
+
 define('DS', '/');
 
 // Koneksi Live
