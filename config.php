@@ -15,6 +15,7 @@ define('BASE_URL', $uri . "/wps");
 // define('SITE_PATH', $uri . "/admin/img/news/");
 //local
 define('SITE_PATH', $uri . "/wps/admin/img/news/details/");
+define('SITE_NEWS', $uri . "/wps/admin/img/news/");
 
 define('DS', '/');
 
