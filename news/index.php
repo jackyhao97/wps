@@ -31,7 +31,7 @@
               <p class="tanggal fw-bold"><?=$date?></p>
               <h3 class="judul"><?=$row["judul"]?></h3>                            
               <!-- <a class="btn btn-outline-light selengkapnya" name="btnSelengkapnya" href="detail.php?url=<?=$row['seo_link']?>"><i class="fas fa-plus mr-2"></i>SELENGKAPNYA</a> -->
-              <a class="btn btn-outline-light selengkapnya" name="btnSelengkapnya" href="./<?=$row['judul']?>"><i class="fas fa-plus mr-2"></i>SELENGKAPNYA</a>
+              <a class="btn btn-outline-light selengkapnya" name="btnSelengkapnya" href="./<?=$row['judul']?>"><i class="fas fa-plus me-2"></i>SELENGKAPNYA</a>
             </div>
           <?php            
             endwhile;

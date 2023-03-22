@@ -63,7 +63,7 @@
             <div class="swiper-slide">
               <img src="https://sardanagroup.co.id/HP/production/images/news/<?=$row["Paths"]?>" alt="Blog Mitsubishi Sardana Berlian" class="gambar">
               <p class="tanggal mmc-bold"><?=$date?></p>
-              <h3 class="judul"><?=$row["judul"]?></h3>                            
+              <h3 class="judul"><?=$row["judul"]?></h3>
               <!-- <a class="btn btn-outline-light selengkapnya" name="btnSelengkapnya" href="detail.php?url=<?=$row['seo_link']?>"><i class="fas fa-plus mr-2"></i>SELENGKAPNYA</a> -->
               <a class="btn btn-outline-light selengkapnya" name="btnSelengkapnya" href="./<?=$row['seo_link']?>"><i class="fas fa-plus mr-2"></i>SELENGKAPNYA</a>
             </div>
