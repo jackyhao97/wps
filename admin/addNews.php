@@ -9,6 +9,7 @@
     // $tglberita = isset($_POST['date_berita']) ? mysql_date_format($_POST['date_berita']) : '';
     $tglberita = isset($_POST['date_tgl_berita']) ? $_POST['date_tgl_berita'] : '';
     $urutan = isset($_POST['txt_urutan']) ? $_POST['txt_urutan'] : '';
+    $seolink = to_prety_url($judul);
     $created_on = date('Y-m-d H:i:s');
     $user = $_SESSION['username'];
     $block = 0;
@@ -23,7 +24,7 @@
     if ($block == 0) {
       $new_filename = "NEWS_".rand(1,1000)."_".time().".jpg";
       $upload = move_uploaded_file($file['tmp_name'], "img/news/".$new_filename);
-      $insert_sql = "INSERT INTO tb_news (created_on, created_by, judul, category_id, tgl_berita, keterangan, path, urutan) VALUES ('$created_on', '$user', '$judul', '$category', '$tglberita', '$keterangan', '$new_filename', '$urutan')";
+      $insert_sql = "INSERT INTO tb_news (created_on, created_by, judul, category_id, tgl_berita, keterangan, path, urutan, seo_link) VALUES ('$created_on', '$user', '$judul', '$category', '$tglberita', '$keterangan', '$new_filename', '$urutan', '$seolink')";
       $exec_sql = $conn->query($insert_sql);
       if ($exec_sql && $upload) {
         $data['result'] = 1;
