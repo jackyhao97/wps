@@ -101,6 +101,12 @@ div.blog .swiper-pagination-bullet-active {
   color: red;
 }
 
+.selengkapnya-lain {
+  font-size: 12px;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+
 @media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
   div.blog {
     height: 300px;

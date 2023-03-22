@@ -1,10 +1,6 @@
 <?php
   require_once '../config.php';
-  require_once '../koneksi.php';  
-  // live
-  $connect = new PDO("mysql:host=localhost; dbname=sardanab_hpsardana", "sardanab_hpadmin", "ikankoi123456");
-  // local
-  // $connect = new PDO("mysql:host=localhost; dbname=sardanab_hpsardana", "root", "");
+  // $connect = new PDO("mysql:host=localhost; dbname=wps", "root", "");
   $limit = 12;
   $page = 1;
   // $jlhBeritaLainnya = 4; lIMIT JUMLAH BERITA SEHINGGA MEMUNGKINKAN BERITA MULAI DARI NO BERAPA
@@ -18,38 +14,37 @@
     $start = 0;
   }
 
-  // $max = $conn->query("SELECT MAX(`id`) FROM `news` WHERE kategori = 'HM'");
-  // $max = $conn->query("SELECT MAX(`id`) FROM `news`");
-  $max = $koneksi->query("SELECT MAX(`id`) FROM `news` WHERE kategori = 'SG'");
+  $max = $conn->query("SELECT MAX(id) FROM tb_news");
   $maxResult = $max->fetch_array();
-  $maxResult = $maxResult[0] - $jlhBeritaLainnya;  
-  // $query = 'SELECT * FROM news WHERE kategori = "HM" AND id < ' .$maxResult;    
-  $query = 'SELECT * FROM news WHERE id <= ' .$maxResult. ' AND kategori = "SG"';    
+  $maxResult = $maxResult[0] - $jlhBeritaLainnya;
+  $query = "SELECT * FROM tb_news WHERE id <= $maxResult";
+  $query2 = "SELECT COUNT(*) AS total FROM tb_news WHERE id <= $maxResult";
 
   if($_POST["query"] != '') {
     $query .= ' AND judul LIKE "%' .str_replace(' ', '%', $_POST['query']). '%"';
+    $query2 .= ' AND judul LIKE "%' .str_replace(' ', '%', $_POST['query']). '%"';
   }
 
   $query .= ' ORDER BY id DESC';
+  $query2 .= ' ORDER BY id DESC';
   $filter_query = $query . ' LIMIT ' .$start. ', ' .$limit. '';
-  $statement = $connect->prepare($query);
-  $statement->execute();
+  $statement = $conn->query($query);
+  $statement2 = $conn->query($query2);
 
-  $total_data = $statement->rowCount();
-  $statement = $connect->prepare($filter_query);
-  $statement->execute();
+  $total = $statement2->fetch_array();
+  $total_data = $total["total"];
+  $statement3 = $conn->query($filter_query);
 
-  $result = $statement->fetchAll();
   $output = '<div class="row">';
     
-  foreach($result as $row) {      
-    $date = strtotime($row["tanggalpublish"]);
+  while ($row = $statement3->fetch_array()) {
+    $date = strtotime($row["tgl_berita"]);
     $date = date("d-m-Y", $date);
     $output .=  '
               <div class="col-12 col-sm-6 col-lg-4 mt-4">
                 <div class="card" style="overflow: hidden; cursor: pointer; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);" onclick="window.location=`' .$row["seo_link"]. '`">
                   <div class="card-header" style="border: 0; padding: 0; border-radius: 0; height: 200px; overflow: hidden">
-                    <img src="https://sardanagroup.co.id/HP/production/images/news/' .$row["Paths"]. '" class="card-img-top" alt="'.$row["judul"].'">
+                    <img src="' .SITE_NEWS.$row["path"]. '" class="card-img-top" alt="'.$row["judul"].'">
                   </div>
                   <div class="card-body">
                     <small class="card-text text-muted">' .$date. '</small>
