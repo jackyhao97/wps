@@ -105,6 +105,8 @@ div.blog .swiper-pagination-bullet-active {
   font-size: 12px;
   border-radius: 20px;
   padding: 5px 10px;
+  border: 0;
+  background-color: blue;
 }
 
 @media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
