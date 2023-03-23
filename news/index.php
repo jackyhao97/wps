@@ -45,7 +45,7 @@
     <div class="container-grid-berita berita mt-5">
       <span class="news nc-1"><i class="fas fa-caret-right caret-custom"></i> <h5 class="text-uppercase d-inline-block fw-bold"> Berita Terpopuler</h5></span>
       <?php
-        $tampil = $conn->query("SELECT * FROM tb_news ORDER BY id DESC LIMIT 0,1");
+        $tampil = $conn->query("SELECT * FROM tb_news WHERE category_id = 2 ORDER BY tgl_berita DESC, id DESC LIMIT 0,1");
         $rowTampil = $tampil->fetch_array();
       ?>
       <div class="news n-1">
@@ -61,7 +61,7 @@
         $jumlah = $conn->query("SELECT COUNT('id') FROM tb_news");
         $result = $jumlah->fetch_array();
         $result = $result[0] - 4;
-        $show = $conn->query("SELECT * FROM tb_news LIMIT 1,4");
+        $show = $conn->query("SELECT * FROM tb_news WHERE category_id = 2 ORDER BY tgl_berita DESC, id DESC LIMIT 1,4");
         $id = 2;
         while ($rowShow = $show->fetch_assoc()) :
       ?>
@@ -83,8 +83,10 @@
     <div class="kategori text-black mt-5" id="kategori">
       <div class="container">
         <div class="row fw-bold text-right overflow-auto">
-          <div class="col-2">
-            <a href="javascript:void(0)" id="semua" class="blog-active category"><i class="fas fa-caret-right caret-custom"></i> BERITA LAINNYA</a>
+          <div class="col-12">
+            <a href="javascript:void(0)" id="semua" class="category">
+              <h5 class="fw-bold">BERITA LAINNYA</h5>
+            </a>
           </div>
           <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
           <!-- <?php
@@ -124,7 +126,7 @@
       </div>
     </div>
 
-    <div class="container mt-5 kumpulan-berita" id="hasil">          
+    <div class="container kumpulan-berita" id="hasil">          
       <!-- Berita inject disini -->
     </div>
   </section>

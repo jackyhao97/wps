@@ -6,6 +6,7 @@
     $id = $_POST['hid_id'];
     $category = isset($_POST['txt_category_edit']) ? mysqli_real_escape_string($conn, $_POST['txt_category_edit']) : '';
     $urutan = isset($_POST['txt_urutan_edit']) ? $_POST['txt_urutan_edit'] : '';
+    $tipe = to_prety_url($category);
     $modified_on = date('Y-m-d H:i:s');
     $user = $_SESSION['username'];
     $block = 0;
@@ -17,7 +18,7 @@
     }
 
     if ($block == 0) {
-      $update_sql = "UPDATE tb_category SET modified_on = '$modified_on', modified_by='$user', category='$category', urutan='$urutan' WHERE id='$id'";
+      $update_sql = "UPDATE tb_category SET modified_on = '$modified_on', modified_by='$user', category='$category', urutan='$urutan', tipe='$tipe' WHERE id='$id'";
 
       $exec_sql = $conn->query($update_sql);
       if ($exec_sql) {

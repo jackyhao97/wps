@@ -72,8 +72,8 @@
       </button>
     </div>
   </section>
-  <section class="content" id="content">
-    <div class="container mt-5 text-center">
+  <section class="content mt-4rem" id="content">
+    <div class="container text-center">
       <h4>At WPS, we are passionate about solving your problems in</h4>
     </div>
     <div class="container mt-5">
@@ -86,8 +86,8 @@
           <div class="card w-100">
             <img src="<?=BASE_URL.DS.'admin/img/content/'.$rowContent['path']?>" class="card-img-top" alt="<?=$rowContent['judul']?>">
             <div class="card-body">
-              <h5 class="card-title title fw-semibold"><?=$rowContent['judul']?></h5>
-              <p class="card-text text-justify"><?=$rowContent['keterangan']?></p>
+              <h5 class="card-title title fw-semibold text-decoration-none"><?=$rowContent['judul']?></h5>
+              <p class="card-text text-justify mt-4"><?=$rowContent['keterangan']?></p>
             </div>
           </div>
         </div>

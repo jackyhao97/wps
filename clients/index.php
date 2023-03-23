@@ -21,7 +21,7 @@
   </section>
   <main>
     <div class="container mt-5 mb-5">
-      <p>We have helped a wide variety of local and multinational Industries. We understand that every Industry have unique characteristics and challenges in order to survive and achieve their business objective(s). We have helped industries in these sectors :</p>
+      <p class="text-justify">We have helped a wide variety of local and multinational Industries. We understand that every Industry have unique characteristics and challenges in order to survive and achieve their business objective(s). We have helped industries in these sectors :</p>
       <ul>
         <li>Manufacturing</li>
         <li>Distribution</li>
@@ -41,9 +41,9 @@
         $select = $conn->query("SELECT * FROM tb_clients ORDER BY id DESC");
         while($row = $select->fetch_array(MYSQLI_ASSOC)) :
       ?>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+        <div class="col-lg-2 col-md-4 col-sm-6 col-12 align-clients">
           <a href="<?=$row['url']?>" target="_blank">
-            <img src="<?=BASE_URL.DS.'admin/img/clients/'.$row['path']?>" alt="" class="w-100">
+            <img src="<?=BASE_URL.DS.'admin/img/clients/'.$row['path']?>" alt="" class="img-clients">
           </a>
         </div>
       <?php

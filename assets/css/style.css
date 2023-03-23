@@ -7,9 +7,17 @@
   margin-top: 120px;
 }
 
+.mt-4rem {
+  margin-top: 4rem;
+}
+
 .wps-slider-button {
   background: lightgray;
   width: 50%;
+}
+
+.img-clients {
+  width: 100%;
 }
 
 .carousel-indicators .active {
@@ -99,6 +107,10 @@ div.blog .swiper-pagination-bullet {
 
 div.blog .swiper-pagination-bullet-active {
   background: red;
+}
+
+div.kategori .category {
+  text-decoration: none;
 }
 
 .blog-active {
@@ -220,7 +232,7 @@ div.berita .n-5 {
 }
 
 div.berita .caret-custom {
-  color: red;
+  color: blue;
   font-size: 25px;
 }
 
@@ -294,5 +306,13 @@ div.berita .caret-custom {
   .konten-blog img {
     width: 100% !important;
     height: auto !important;
+  }
+
+  .img-clients {
+    width: 60%;
+  }
+
+  .align-clients {
+    text-align: center;
   }
 }

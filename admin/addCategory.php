@@ -5,6 +5,7 @@
   if (isset($_POST['txt_category'])) {
     $category = isset($_POST['txt_category']) ? mysqli_real_escape_string($conn, $_POST['txt_category']) : '';
     $urutan = isset($_POST['txt_urutan']) ? $_POST['txt_urutan'] : '';
+    $tipe = to_prety_url($category);
     $created_on = date('Y-m-d H:i:s');
     $user = $_SESSION['username'];
     $block = 0;
@@ -16,7 +17,7 @@
     }
 
     if ($block == 0) {
-      $insert_sql = "INSERT INTO tb_category (created_on, created_by, category, urutan) VALUES ('$created_on', '$user', '$category', '$urutan')";
+      $insert_sql = "INSERT INTO tb_category (created_on, created_by, category, urutan, tipe) VALUES ('$created_on', '$user', '$category', '$urutan', '$tipe')";
       $exec_sql = $conn->query($insert_sql);
       if ($exec_sql) {
         $data['result'] = 1;
