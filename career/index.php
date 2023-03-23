@@ -21,7 +21,7 @@
   </section>
   <main>
     <div class="container mt-5 mb-5">
-      <p>
+      <p class="text-justify">
         We welcome fresh graduates with a D3 or S1 to join our consultant team. Send your CV to
         <a href="mailto:hr@widyapresisisolusi.com" target="_blank">hr@widyapresisisolusi.com</a>
       </p>

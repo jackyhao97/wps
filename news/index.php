@@ -21,7 +21,7 @@
       <div class="swiper-container swiper-container-blog">
         <div class="swiper-wrapper">
           <?php
-            $result = $conn->query("SELECT * FROM tb_news ORDER BY id DESC LIMIT 0,10");
+            $result = $conn->query("SELECT * FROM tb_news ORDER BY id DESC LIMIT 0,6");
             while ($row = $result->fetch_array()) :
               $date = strtotime($row["tgl_berita"]);
               $date = date("d-m-Y", $date);

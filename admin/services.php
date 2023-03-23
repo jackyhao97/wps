@@ -122,10 +122,25 @@
 						<a class="collapse-item active" href="services.php">Service</a>
 						<a class="collapse-item" href="clients.php">Clients</a>
 						<a class="collapse-item" href="partners.php">Partners</a>
-						<a class="collapse-item" href="news.php">News</a>
 						<a class="collapse-item" href="contact.php">Contact</a>
 						<a class="collapse-item" href="career.php">Career</a>
 						<a class="collapse-item" href="testimonial.php">Testimonial</a>
+					</div>
+				</div>
+			</li>
+
+			<!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item">
+				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+					<i class="fas fa-fw fa-cog"></i>
+					<span>News</span>
+				</a>
+				<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">DETAIL NEWS</h6>
+						<a class="collapse-item" href="category.php">Category</a>
+						<a class="collapse-item" href="news.php">News</a>
+						<a class="collapse-item" href="imagemanager.php">Image Manager</a>
 					</div>
 				</div>
 			</li>

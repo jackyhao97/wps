@@ -72,7 +72,7 @@
             <button type="submit" class="btn btn-primary" name="btn_submit">Send</button>
           </form>
         </div>
-        <div class="col-12 col-sm-5">
+        <div class="col-12 col-sm-5 mt-5 mt-sm-0">
           <h3 class="fw-bold mb-5">ADDRESS</h3>
           <a href="https://www.google.com/maps/place/PT+Widya+Presisi+Solusi/@-6.183404,106.8144006,17z/data=!3m1!4b1!4m6!3m5!1s0x2e69f68268d40057:0xc6f45229584d9390!8m2!3d-6.1834093!4d106.8165893!16s%2Fg%2F11b5wkhprr" target="_blank" class="text-decoration-none"><i class="fa-solid fa-location-dot me-2 "></i> The Boulevard - Mezzanine floor - A Jl.Fachrudin No.5. Jakarta Pusat, 10250. Indonesia </a><br /><br />
           <a href="tel:+622131922727" target="_blank" class="text-decoration-none"><i class="fa-solid fa-phone me-2"></i> Phone: +6221 3192 2727/ 22794727 </a><br /><br />

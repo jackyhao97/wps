@@ -16,7 +16,8 @@
   width: 50%;
 }
 
-.img-clients {
+.img-clients,
+.img-partners {
   width: 100%;
 }
 
@@ -264,6 +265,16 @@ div.berita .caret-custom {
     top: 35%;
     left: 40%;
   }
+
+  .container-grid-berita {
+    grid-template-areas:
+      "nc1 nc1"
+      "n1 n1"
+      "n1 n1"
+      "nc2 nc3"
+      "n2 n3"
+      "n4 n5";
+  }
 }
 
 @media (max-width: 576px) {
@@ -308,11 +319,30 @@ div.berita .caret-custom {
     height: auto !important;
   }
 
-  .img-clients {
+  .container-grid-berita {
+    grid-template-rows: auto 1.5fr auto 1fr 1fr auto 1fr 1fr;
+    grid-template-areas:
+      "nc1"
+      "n1"
+      "nc2"
+      "n2"
+      "n3"
+      "nc3"
+      "n4"
+      "n5";
+  }
+
+  .img-clients,
+  .img-partners {
     width: 60%;
   }
 
-  .align-clients {
+  .align-clients,
+  .align-partners {
     text-align: center;
+  }
+
+  .kumpulan-berita {
+    width: 90%;
   }
 }
