@@ -3,6 +3,10 @@
     <a class="navbar-brand px-lg-4" href="<?= BASE_URL ?>">
       <img src="<?= BASE_URL . DS . 'assets/img/logo.png' ?>" alt="" class="w-50">
     </a>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" role="switch" id="switchLang">
+      <label class="form-check-label" for="switchLang">EN</label>
+    </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
