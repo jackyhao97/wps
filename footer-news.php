@@ -1,4 +1,4 @@
-<section class="footer bg-body-tertiary" id="footer">
+<!-- <section class="footer bg-body-tertiary" id="footer">
   <div class="container">
     <div class="row pt-5 pb-5">
       <div class="col-md-3 col-sm-6 col-12">
@@ -28,6 +28,47 @@
     </div>
     <div class="row text-center">
       <small>Copyright <?=date('Y')?> Widya Presisi Solusi. All rights reserved</small>
+    </div>
+  </div>
+</section> -->
+<section class="footer bg-body-tertiary" id="footer">
+  <div class="container">
+    <div class="row pt-5 pb-5">
+      <div class="col-md-3 col-sm-6 col-12">
+        <h4 class="fw-bolder">About Us</h4>
+        <p class="text-justify">Our company name is PT Widya Presisi Solusi. We chose the name Widya meaning knowledge because we want to give solutions based on our skills and expertise to your management and your employees to become a great company...</p>
+      </div>
+      <div class="col-md-3 col-sm-6 col-12">
+        <h4 class="fw-bolder">Services</h4>
+        <a href="<?=BASE_URL.DS.'services/'?>" class="link-custom">Payroll Outsourcing</a><br />
+        <a href="<?=BASE_URL.DS.'services/'?>" class="link-custom">Payroll Admin</a><br />
+        <a href="<?=BASE_URL.DS.'services/'?>" class="link-custom">HRIS Myquantumhr</a><br />
+        <a href="<?=BASE_URL.DS.'services/'?>" class="link-custom">IT Security</a><br />
+        <a href="<?=BASE_URL.DS.'services/'?>" class="link-custom">Learning Management System</a><br />
+        <a href="<?=BASE_URL.DS.'services/'?>" class="link-custom">Other Business Processing</a><br />
+      </div>
+      <div class="col-md-3 col-sm-6 col-12 mt-3 mt-sm-0">
+        <h4 class="fw-bolder">Testimonial</h4>
+        <?php 
+          $result = $conn->query("SELECT * FROM tb_testimonial ORDER BY id DESC LIMIT 0,2");
+          while ($row = $result->fetch_array()) :
+        ?>
+          <h6 class="fw-bold"><?=$row['nama']?></h6>
+          <p class="text-justify"><?=$row['testimoni']?></p>
+        <?php
+          endwhile;
+        ?>
+      </div>
+      <div class="col-md-3 col-sm-6 col-12">
+        <h4 class="fw-bolder">Contact Us</h4>
+        <p><i class="fa-solid fa-location-dot me-2"></i> The Boulevard - Mezzanine floor - A Jl.Fachrudin No.5. Jakarta Pusat, 10250. Indonesia</p>
+        <p><i class="fa-solid fa-phone me-2"></i> Phone: +6221 3192 2727, +6221 3192 2797</p>
+        <p><i class="fa-solid fa-fax me-2"></i> Fax: +6221315 2227</p>
+        <p><i class="fa-solid fa-envelope me-2"></i> Email: <a href=" mailto:info@widyapresisisolusi.com" target="_blank">info@widyapresisisolusi.com</a></p>
+      </div>
+    </div>
+    <div class="row text-center">
+      <small>Copyright &copy; <?=date('Y')?> Widya Presisi Solusi. All rights reserved</small>
     </div>
   </div>
 </section>

@@ -3,20 +3,28 @@
     <div class="row pt-5 pb-5">
       <div class="col-md-3 col-sm-6 col-12">
         <h4 class="fw-bolder">About Us</h4>
-        <p class="text-justify">Our company name is PT Widya Presisi Solusi. We chose the name Widya meaning knowledge because we want to give solutions based on our skills ...</p>
+        <p class="text-justify">Our company name is PT Widya Presisi Solusi. We chose the name Widya meaning knowledge because we want to give solutions based on our skills and expertise to your management and your employees to become a great company...</p>
       </div>
       <div class="col-md-3 col-sm-6 col-12">
         <h4 class="fw-bolder">Services</h4>
-        <a href="" class="link-custom">Payroll Outsourcing</a><br />
-        <a href="" class="link-custom">Payroll Admin</a><br />
-        <a href="" class="link-custom">HRIS Myquantumhr</a><br />
-        <a href="" class="link-custom">IT Security</a><br />
-        <a href="" class="link-custom">Learning Management System</a><br />
-        <a href="" class="link-custom">Other Business Processing</a><br />
+        <a href="<?=BASE_URL.DS.'services/'?>" class="link-custom">Payroll Outsourcing</a><br />
+        <a href="<?=BASE_URL.DS.'services/'?>" class="link-custom">Payroll Admin</a><br />
+        <a href="<?=BASE_URL.DS.'services/'?>" class="link-custom">HRIS Myquantumhr</a><br />
+        <a href="<?=BASE_URL.DS.'services/'?>" class="link-custom">IT Security</a><br />
+        <a href="<?=BASE_URL.DS.'services/'?>" class="link-custom">Learning Management System</a><br />
+        <a href="<?=BASE_URL.DS.'services/'?>" class="link-custom">Other Business Processing</a><br />
       </div>
       <div class="col-md-3 col-sm-6 col-12 mt-3 mt-sm-0">
         <h4 class="fw-bolder">Testimonial</h4>
-        <p class="text-justify">“Dengan memakai jasa Widya Presisi Solusi saya sangat puas sekali karena ketepatan waktu dalam penghitungan payroll”</p>
+        <?php 
+          $result = $conn->query("SELECT * FROM tb_testimonial ORDER BY id DESC LIMIT 0,2");
+          while ($row = $result->fetch_array()) :
+        ?>
+          <h6 class="fw-bold"><?=$row['nama']?></h6>
+          <p class="text-justify"><?=$row['testimoni']?></p>
+        <?php
+          endwhile;
+        ?>
       </div>
       <div class="col-md-3 col-sm-6 col-12">
         <h4 class="fw-bolder">Contact Us</h4>
@@ -27,7 +35,7 @@
       </div>
     </div>
     <div class="row text-center">
-      <small>Copyright <?=date('Y')?> Widya Presisi Solusi. All rights reserved</small>
+      <small>Copyright &copy; <?=date('Y')?> Widya Presisi Solusi. All rights reserved</small>
     </div>
   </div>
 </section>
