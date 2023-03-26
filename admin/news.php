@@ -969,7 +969,9 @@
 	
 					"url": "json/data-news.php",
 	
-				}
+				},
+
+				"order": [ 0, "desc" ]
 			});
 			setInterval(function(){
 				table.ajax.reload();

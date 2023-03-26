@@ -403,7 +403,9 @@
 	
 					"url": "json/data-category.php",
 	
-				}
+				},
+				
+				"order": [ 0, "desc" ]
 			});
 			setInterval(function(){
 				table.ajax.reload();
