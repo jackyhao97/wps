@@ -26,9 +26,10 @@
         $select = $conn->query("SELECT * FROM tb_partners ORDER BY id DESC");
         while($row = $select->fetch_array(MYSQLI_ASSOC)) :
       ?>
-        <div class="col-lg-2 col-md-4 col-sm-6 col-12 align-partners">
-          <a href="<?=$row['url']?>" target="_blank">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12 align-partners">
+          <a href="<?=$row['url']?>" target="_blank" class="text-decoration-none">
             <img src="<?=BASE_URL.DS.'admin/img/partners/'.$row['path']?>" alt="" class="img-partners">
+            <p class="text-justify text-dark"><?=$row["deskripsi"]?></p>
           </a>
         </div>
       <?php

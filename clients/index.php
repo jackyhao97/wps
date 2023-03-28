@@ -38,7 +38,7 @@
     <div class="container">
       <div class="row">
       <?php 
-        $select = $conn->query("SELECT * FROM tb_clients ORDER BY id DESC");
+        $select = $conn->query("SELECT * FROM tb_clients ORDER BY urutan");
         while($row = $select->fetch_array(MYSQLI_ASSOC)) :
       ?>
         <div class="col-lg-2 col-md-4 col-sm-6 col-12 align-clients">

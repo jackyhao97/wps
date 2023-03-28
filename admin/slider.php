@@ -122,7 +122,7 @@
 				</div>
 			</li>
 
-			<!-- Nav Item - Promo -->
+			<!-- Nav Item - Users -->
       <li class="nav-item">
         <a class="nav-link" href="users.php">
           <i class="fas fa-fw fa-user"></i>
