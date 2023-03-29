@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
   <div class="form-check form-switch switch-lang">
     <input class="form-check-input" type="checkbox" role="switch" id="switchLang">
-    <label class="form-check-label" for="switchLang">EN | ID</label>
+    <label class="form-check-label" for="switchLang">ID | EN</label>
   </div>
   <div class="container-fluid">
     <a class="navbar-brand px-lg-4" href="<?= BASE_URL ?>">

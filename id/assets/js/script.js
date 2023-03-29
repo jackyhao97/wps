@@ -1,47 +1,41 @@
 $("#switchLang").click(function () {
   window.location =
-    window.location.protocol + "//" + window.location.host + `/wps/id/`;
+    window.location.protocol + "//" + window.location.host + `/wps/`;
 });
 
 $("#switchLangAbout").click(function () {
   window.location =
-    window.location.protocol + "//" + window.location.host + `/wps/id/about/`;
+    window.location.protocol + "//" + window.location.host + `/wps/about/`;
 });
 
 $("#switchLangServices").click(function () {
   window.location =
-    window.location.protocol +
-    "//" +
-    window.location.host +
-    `/wps/id/services/`;
+    window.location.protocol + "//" + window.location.host + `/wps/services/`;
 });
 
 $("#switchLangClients").click(function () {
   window.location =
-    window.location.protocol + "//" + window.location.host + `/wps/id/clients/`;
+    window.location.protocol + "//" + window.location.host + `/wps/clients/`;
 });
 
 $("#switchLangPartners").click(function () {
   window.location =
-    window.location.protocol +
-    "//" +
-    window.location.host +
-    `/wps/id/partners/`;
+    window.location.protocol + "//" + window.location.host + `/wps/partners/`;
 });
 
 $("#switchLangNews").click(function () {
   window.location =
-    window.location.protocol + "//" + window.location.host + `/wps/id/news/`;
+    window.location.protocol + "//" + window.location.host + `/wps/news/`;
 });
 
 $("#switchLangContact").click(function () {
   window.location =
-    window.location.protocol + "//" + window.location.host + `/wps/id/contact/`;
+    window.location.protocol + "//" + window.location.host + `/wps/contact/`;
 });
 
 $("#switchLangCareer").click(function () {
   window.location =
-    window.location.protocol + "//" + window.location.host + `/wps/id/career/`;
+    window.location.protocol + "//" + window.location.host + `/wps/career/`;
 });
 
 const swiperTestimonial = new Swiper(".swiper-container-testimonial", {
