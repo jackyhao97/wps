@@ -20,8 +20,8 @@ function BuildCounter()
 }
 
 function ShowImages($data, $judul) {
-  $component = '<a href="'.BASE_URL.DS.'admin/img/clients/'.$data.'" data-lightbox="'.$judul.'" data-title="'.$judul.'">';
-  $component .= '<img src="'.BASE_URL.DS.'admin/img/clients/'.$data.'" class="w-50" />';
+  $component = '<a href="'.BASE_URL.DS.'admin/img/testimonial/'.$data.'" data-lightbox="'.$judul.'" data-title="'.$judul.'">';
+  $component .= '<img src="'.BASE_URL.DS.'admin/img/testimonial/'.$data.'" class="w-50" />';
   $component .= "</a>";
 
   return $component;
@@ -38,7 +38,7 @@ function BuildDelete($data) {
 
 $table = <<<EOT
   (
-    SELECT `id`, `urutan`, `path`, `url` FROM `tb_clients`
+    SELECT `id`, `nama`, `testimoni`, `path`, `urutan` FROM `tb_testimonial`
   ) temp 
   EOT;
 
@@ -66,18 +66,26 @@ $columns = array(
     }
 
   ),
-  array('db' => 'urutan', 'dt' => 1),
+
+  array('db' => 'nama', 'dt' => 1),
+  array(
+    'db' => 'testimoni',
+    'dt' => 2,
+    'formatter' => function($d) {
+      return substr($d, 0, 50) . "...";
+    }
+  ),
+  array('db' => 'urutan', 'dt' => 3),
   array(
     'db' => 'path', 
-    'dt' => 2,
+    'dt' => 4,
     'formatter' => function($d, $row) use ($func_apply_2) {
       return $func_apply_2($d, $row[1]);
     }
   ),
-  array('db' => 'url', 'dt' => 3),
   array(
     'db' => 'id', 
-    'dt' => 4,
+    'dt' => 5,
     'formatter' => function($d, $row) use ($func_apply_3) {
       return $func_apply_3($d);
     }

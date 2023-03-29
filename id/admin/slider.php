@@ -66,19 +66,6 @@
 				<div class="sidebar-brand-text mx-3">WPS Admin</div>
 			</a>
 
-			<!-- Divider -->
-			<hr class="sidebar-divider my-0">
-
-			<!-- Nav Item - Dashboard -->
-			<li class="nav-item">
-				<a class="nav-link" href="./dashboard.php">
-					<i class="fas fa-fw fa-tachometer-alt"></i>
-					<span>Dashboard</span></a>
-			</li>
-
-			<!-- Divider -->
-			<hr class="sidebar-divider">
-
 			<!-- Heading -->
 			<div class="sidebar-heading">
 				Interface
@@ -87,7 +74,7 @@
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item">
 				<a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-					<i class="fas fa-fw fa-cog"></i>
+					<i class="fas fa-fw fa-home"></i>
 					<span>Home</span>
 				</a>
 				<div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -122,7 +109,7 @@
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item">
 				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-					<i class="fas fa-fw fa-cog"></i>
+					<i class="fas fa-fw fa-newspaper"></i>
 					<span>News</span>
 				</a>
 				<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
@@ -134,6 +121,13 @@
 					</div>
 				</div>
 			</li>
+
+			<!-- Nav Item - Users -->
+      <li class="nav-item">
+        <a class="nav-link" href="users.php">
+          <i class="fas fa-fw fa-user"></i>
+          <span>Users</span></a>
+      </li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">

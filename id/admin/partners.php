@@ -66,19 +66,6 @@
 				<div class="sidebar-brand-text mx-3">WPS Admin</div>
 			</a>
 
-			<!-- Divider -->
-			<hr class="sidebar-divider my-0">
-
-			<!-- Nav Item - Dashboard -->
-			<li class="nav-item">
-				<a class="nav-link" href="./dashboard.php">
-					<i class="fas fa-fw fa-tachometer-alt"></i>
-					<span>Dashboard</span></a>
-			</li>
-
-			<!-- Divider -->
-			<hr class="sidebar-divider">
-
 			<!-- Heading -->
 			<div class="sidebar-heading">
 				Interface
@@ -134,6 +121,13 @@
 					</div>
 				</div>
 			</li>
+
+			<!-- Nav Item - Users -->
+      <li class="nav-item">
+        <a class="nav-link" href="users.php">
+          <i class="fas fa-fw fa-user"></i>
+          <span>Users</span></a>
+      </li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
@@ -211,6 +205,8 @@
 									<thead>
 										<tr>
 											<th>#</th>
+											<th>Deskripsi</th>
+											<th>Urutan</th>
 											<th>Preview</th>
 											<th>Link</th>
 											<th></th>
@@ -236,6 +232,14 @@
 												<div class="col-md-12">
 													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_url">URL</label>
 													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_url" id="txt_url" autofocus/>
+												</div>
+												<div class="col-md-12 mt-3">
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_deskripsi">Deskripsi</label>
+													<textarea name="txt_deskripsi" id="txt_deskripsi" rows="4" cols="50" class="form-control"></textarea>
+												</div>
+												<div class="col-md-12 mt-3">
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_urutan">Urutan</label>
+													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_urutan" id="txt_urutan" />
 												</div>
 												<div class="col-md-12 mt-3">
 													<label class="col-md-2 col-sm-2 col-xs-4 control-label">Image</label>
@@ -275,6 +279,14 @@
 													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_url_edit">URL</label>
 													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_url_edit" id="txt_url_edit"/>
 													<input type="hidden" name="hid_id" id="hid_id">
+												</div>
+												<div class="col-md-12 mt-3">
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_deskripsi_edit">Deskripsi</label>
+													<textarea name="txt_deskripsi_edit" id="txt_deskripsi_edit" rows="4" cols="50" class="form-control"></textarea>
+												</div>
+												<div class="col-md-12 mt-3">
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_urutan_edit">Urutan</label>
+													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_urutan_edit" id="txt_urutan_edit"/>
 												</div>
 												<div class="col-md-12 mt-3 d-flex align-items-center">
 													<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
@@ -422,7 +434,9 @@
 	
 					"url": "json/data-partners.php",
 	
-				}
+				},
+
+				"order": [ 0, "desc" ]
 			});
 			setInterval(function(){
 				table.ajax.reload();
@@ -454,12 +468,18 @@
 		}
 
 		function clearForm() {
+			$("#txt_url").val("");
+			$("#txt_deskripsi").val("");
+			$("#txt_urutan").val("");
 			$("#fil_upload_partners").val("");
 			$("#fil_upload_partners_preview").attr("src", "");
 			$("#fil_upload_partners_card").html('No Image');
 		}
 
 		function clearFormEdit() {
+			$("#txt_url_edit").val("");
+			$("#txt_deskripsi_edit").val("");
+			$("#txt_urutan_edit").val("");
 			$("#fil_upload_partners_edit").val("");
 			$("#fil_upload_partners_exist_preview").attr("src", "");
 			$("#fil_upload_partners_edit_preview").attr("src", "");
@@ -606,7 +626,19 @@
 			const formData = new FormData(document.getElementById("form_add"));
 			$("#btn_simpan").attr("disabled", true).html('<i class="fa fa-spin fa-spinner"></i> Processing ...');
 			
-			if (imageResize.blob == null || imageResize.url == null) {
+			if ($("#txt_url").val() == ''){
+				alert('Harap mengisi url!');
+				$("#btn_simpan").attr("disabled", false).html('Simpan');
+			}
+			else if ($("#txt_deskripsi").val() == ''){
+				alert('Harap mengisi deskripsi!');
+				$("#btn_simpan").attr("disabled", false).html('Simpan');
+			}
+			else if ($("#txt_urutan").val() == ''){
+				alert('Harap mengisi urutan!');
+				$("#btn_simpan").attr("disabled", false).html('Simpan');
+			}
+			else if (imageResize.blob == null || imageResize.url == null) {
 				alert('Anda belum pilih gambar!');
 				$("#btn_simpan").attr("disabled", false).html('Simpan');
 			}
@@ -648,7 +680,19 @@
 			const formDataEdit = new FormData(document.getElementById("form_edit"));
 			$("#btn_simpan_edit").attr("disabled", true).html('<i class="fa fa-spin fa-spinner"></i> Processing ...');
 			
-			if (imageResizeEdit.url == 'not-an-image' || imageResizeEdit.blob == 'not-an-image') {
+			if ($("#txt_url_edit").val() == ''){
+				alert('Harap mengisi url!');
+				$("#btn_simpan").attr("disabled", false).html('Simpan');
+			}
+			else if ($("#txt_deskripsi_edit").val() == ''){
+				alert('Harap mengisi deskripsi!');
+				$("#btn_simpan").attr("disabled", false).html('Simpan');
+			}
+			else if ($("#txt_urutan_edit").val() == ''){
+				alert('Harap mengisi urutan!');
+				$("#btn_simpan").attr("disabled", false).html('Simpan');
+			}
+			else if (imageResizeEdit.url == 'not-an-image' || imageResizeEdit.blob == 'not-an-image') {
 				alert('Yang anda upload bukan gambar!');
 				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
 			}
@@ -737,6 +781,8 @@
 					if (res.success == 1) {
 						$("#hid_id").val(res.data[0].hid_id);
 						$("#txt_url_edit").val(res.data[0].url);
+						$("#txt_deskripsi_edit").val(res.data[0].deskripsi);
+						$("#txt_urutan_edit").val(res.data[0].urutan);
 						$('#fil_upload_partners_exist_card').html(
 						`<img class="file-card__image w-100" id="fil_upload_content_exist_preview" src="${mainURL}partners/${res.data[0].path}" />`
 						);

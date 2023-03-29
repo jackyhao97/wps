@@ -53,10 +53,6 @@
 			border: 1px solid #a29d9d;
 			color: black !important;
 		}
-
-		.ck-editor__editable_inline {
-			min-height: 300px;
-		}
 	</style>
 </head>
 
@@ -102,7 +98,7 @@
 					<i class="fas fa-fw fa-cog"></i>
 					<span>Contents</span>
 				</a>
-				<div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+				<div id="collapseThree" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Custom Contents:</h6>
 						<a class="collapse-item" href="about.php">About</a>
@@ -111,7 +107,7 @@
 						<a class="collapse-item" href="partners.php">Partners</a>
 						<a class="collapse-item" href="contact.php">Contact</a>
 						<a class="collapse-item" href="career.php">Career</a>
-						<a class="collapse-item" href="testimonial.php">Testimonial</a>
+						<a class="collapse-item active" href="testimonial.php">Testimonial</a>
 					</div>
 				</div>
 			</li>
@@ -122,10 +118,10 @@
 					<i class="fas fa-fw fa-cog"></i>
 					<span>News</span>
 				</a>
-				<div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+				<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">DETAIL NEWS</h6>
-						<a class="collapse-item active" href="category.php">Category</a>
+						<a class="collapse-item" href="category.php">Category</a>
 						<a class="collapse-item" href="news.php">News</a>
 						<a class="collapse-item" href="imagemanager.php">Image Manager</a>
 					</div>
@@ -198,7 +194,7 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Category News</h1>
+					<h1 class="h3 mb-2 text-gray-800">Testimonial</h1>
 					<p class="mb-4">
 						<a target="_blank" href="https://widyapresisisolusi.com">widyapresisisolusi.com</a>.
 					</p>
@@ -206,17 +202,19 @@
 					<!-- DataTables Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3 d-flex justify-content-between">
-							<h4 class="m-0 font-weight-bold text-primary">Category News</h4>
+							<h4 class="m-0 font-weight-bold text-primary">Testimonial</h4>
 							<button class="btn btn-success" onclick="checkAndClear()">Tambah</button>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<table class="table table-bordered" id="category-all" width="100%" cellspacing="0">
+								<table class="table table-bordered" id="testimoni-all" width="100%" cellspacing="0">
 									<thead>
 										<tr>
 											<th>#</th>
-											<th>Category</th>
+											<th>Nama</th>
+											<th>Testimoni</th>
 											<th>Urutan</th>
+											<th>Preview</th>
 											<th>Aksi</th>
 										</tr>
 									</thead>
@@ -227,7 +225,7 @@
 
 					<!-- Modal Tambah -->
 					<div id="modal_tambah" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-						<div class="modal-dialog modal-xl" role="document">
+						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
 									<h4 class="modal-title font-weight-bold">Tambah</h4>
@@ -238,12 +236,25 @@
 										<div class="form-group">
 											<div class="row">
 												<div class="col-md-12">
-													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_category">Category</label>
-													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_category" id="txt_category" autofocus/>
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_nama">Nama</label>
+													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_nama" id="txt_nama" autofocus/>
+												</div>
+												<div class="col-md-12 mt-3">
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_testimoni">Testimoni</label>
+													<textarea name="txt_testimoni" id="txt_testimoni" rows="4" cols="50" class="form-control"></textarea>
 												</div>
 												<div class="col-md-12 mt-3">
 													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_urutan">Urutan</label>
-													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_urutan" id="txt_urutan" type="number" />
+													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_urutan" id="txt_urutan" type="number"/>
+												</div>
+												<div class="col-md-12 mt-3">
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label">Image</label>
+													<input type="file" name="fil_upload_testimoni" id="fil_upload_testimoni" data-filename-placement="inside" onchange="resizeAndRead(this)">
+													<div class="col-md-8 col-sm-8 col-xs-8">
+														<div class="my-gallery">
+															<figure id="fil_upload_testimoni_card">No Image</figure>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -260,7 +271,7 @@
 
 					<!-- Modal Edit -->
 					<div id="modal_edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-						<div class="modal-dialog modal-xl" role="document">
+						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
 									<h4 class="modal-title font-weight-bold">Edit</h4>
@@ -271,13 +282,35 @@
 										<div class="form-group">
 											<div class="row">
 												<div class="col-md-12">
-													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_category_edit">Category</label>
-													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_category_edit" id="txt_category_edit" autofocus/>
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_nama_edit">Nama</label>
+													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_nama_edit" id="txt_nama_edit" autofocus/>
 													<input type="hidden" name="hid_id" id="hid_id">
 												</div>
-												<div class="col-md-12">
+												<div class="col-md-12 mt-3">
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_testimoni_edit">Testimoni</label>
+													<textarea name="txt_testimoni_edit" id="txt_testimoni_edit" rows="4" cols="50" class="form-control"></textarea>
+												</div>
+												<div class="col-md-12 mt-3">
 													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_urutan_edit">Urutan</label>
 													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_urutan_edit" id="txt_urutan_edit" type="number" />
+												</div>
+												<div class="col-md-12 mt-3 d-flex align-items-center">
+													<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+														<label class="control-label">Image</label>
+													</div>
+													<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+														<div class="my-gallery">
+															<figure id="fil_upload_testimoni_exist_card">No Image</figure>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-12 mt-3">
+													<input type="file" name="fil_upload_testimoni_edit" id="fil_upload_testimoni_edit" data-filename-placement="inside" onchange="resizeAndReadEdit(this)">
+													<div class="col-md-8 col-sm-8 col-xs-8">
+														<div class="my-gallery">
+															<figure id="fil_upload_testimoni_edit_card" class="figures">No Preview Available</figure>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -365,18 +398,17 @@
 	<!-- Page level custom scripts -->
 	<script src="js/demo/datatables-demo.js"></script>
 
-	<script src="js/script.js"></script>
+	<script src="js/script.js?ver=<?=rand(1,1000)?>"></script>
 
 	<script>
-
 		$("#modal_tambah").on("shown.bs.modal", function () {
-			$("#txt_category").focus();
+			$("#txt_nama").focus();
 		});
 
 		$(document).ready(function() {
 			$.fn.dataTable.ext.errMode = 'none';
 	
-			const table = $('#category-all').on('error.dt', function(e, settings, techNote, message) {
+			const table = $('#testimoni-all').on('error.dt', function(e, settings, techNote, message) {
 	
 				if (techNote == 1)
 	
@@ -408,25 +440,56 @@
 	
 				"ajax": {
 	
-					"url": "json/data-category.php",
+					"url": "json/data-testimonial.php",
 	
-				},
-				
-				"order": [ 0, "desc" ]
+				}
 			});
 			setInterval(function(){
 				table.ajax.reload();
 			}, 120000);  
 		})
 
+		const dataURLToBlob = function(dataURL) {
+			let BASE64_MARKER = ';base64,';
+			if (dataURL.indexOf(BASE64_MARKER) == -1) {
+				let parts = dataURL.split(',');
+				let contentType = parts[0].split(':')[1];
+				let raw = parts[1];
+
+				return new Blob([raw], {type: contentType});
+			}
+
+			let parts = dataURL.split(BASE64_MARKER);
+			let contentType = parts[0].split(':')[1];
+			let raw = window.atob(parts[1]);
+			let rawLength = raw.length;
+
+			let uInt8Array = new Uint8Array(rawLength);
+
+			for (let i = 0; i < rawLength; ++i) {
+				uInt8Array[i] = raw.charCodeAt(i);
+			}
+
+			return new Blob([uInt8Array], {type: contentType});
+		}
+
 		function clearForm() {
-			$("#txt_category").val('');
+			$("#txt_nama").val('');
+			$("#txt_testimoni").val('');
 			$("#txt_urutan").val('');
+			$("#fil_upload_testimoni").val("");
+			$("#fil_upload_testimoni_preview").attr("src", "");
+			$("#fil_upload_testimoni_card").html('No Image');
 		}
 
 		function clearFormEdit() {
-			$("#txt_category_edit").val('');
+			$("#txt_nama_edit").val('');
+			$("#txt_testimoni_edit").val('');
 			$("#txt_urutan_edit").val('');
+			$("#fil_upload_testimoni_edit").val("");
+			$("#fil_upload_testimoni_exist_preview").attr("src", "");
+			$("#fil_upload_testimoni_edit_preview").attr("src", "");
+			$("#fil_upload_testimoni_edit_card").html('No Image');
 		}
 
 		function checkAndClear() {
@@ -450,36 +513,164 @@
 			});
 		}
 
+		window.imageResize = { blob: null, url: null }
+		window.imageResizeEdit = { blob: null, url: null }
+
+		function resizeAndRead(input){
+			// Read
+			if (input.files && input.files[0]) {
+				const element = input.id;
+				const reader = new FileReader();
+
+				reader.onload = (e) => {
+					$(`#${element}_card`).html(
+						`<img class="file-card__image w-100" id="${element}_preview" src="${e.target.result}" />`
+					);
+				};
+				reader.readAsDataURL(input.files[0]);
+			}
+
+			// Resize
+			var file = event.target.files[0];
+
+			if(file.type.match(/image.*/)) {
+				var reader = new FileReader();
+				reader.onload = function (readerEvent) {
+					var image = new Image();
+					image.onload = function (imageEvent) {
+						var canvas = document.createElement('canvas'),
+							max_size = 1280,// TODO : pull max size from a site config
+							width = image.width,
+							height = image.height;
+						if (width > height) {
+							if (width > max_size) {
+								height *= max_size / width;
+								width = max_size;
+							}
+						} else {
+							if (height > max_size) {
+								width *= max_size / height;
+								height = max_size;
+							}
+						}
+						canvas.width = width;
+						canvas.height = height;
+						canvas.getContext('2d').drawImage(image, 0, 0, width, height);
+						var dataUrl = canvas.toDataURL('image/jpeg');
+						imageResize.url = dataUrl;
+						imageResize.blob = dataURLToBlob(dataUrl);
+						console.log(imageResize);
+					}
+					image.src = readerEvent.target.result;
+				}
+				reader.readAsDataURL(file);
+			}
+			else {
+				imageResize.url = 'not-an-image';
+				imageResize.blob = 'not-an-image';
+				alert('File bukan gambar! Mohon diganti');
+			}
+		};
+
+		function resizeAndReadEdit(input){
+			// Read
+			if (input.files && input.files[0]) {
+				const element = input.id;
+				const reader = new FileReader();
+
+				reader.onload = (e) => {
+					$(`#${element}_card`).html(
+						`<img class="file-card__image w-100" id="${element}_preview" src="${e.target.result}" />`
+					);
+				};
+				reader.readAsDataURL(input.files[0]);
+			}
+
+			// Resize
+			var file = event.target.files[0];
+
+			if(file.type.match(/image.*/)) {
+				var reader = new FileReader();
+				reader.onload = function (readerEvent) {
+					var image = new Image();
+					image.onload = function (imageEvent) {
+						var canvas = document.createElement('canvas'),
+							max_size = 1280,// TODO : pull max size from a site config
+							width = image.width,
+							height = image.height;
+						if (width > height) {
+							if (width > max_size) {
+								height *= max_size / width;
+								width = max_size;
+							}
+						} else {
+							if (height > max_size) {
+								width *= max_size / height;
+								height = max_size;
+							}
+						}
+						canvas.width = width;
+						canvas.height = height;
+						canvas.getContext('2d').drawImage(image, 0, 0, width, height);
+						var dataUrl = canvas.toDataURL('image/jpeg');
+						imageResizeEdit.url = dataUrl;
+						imageResizeEdit.blob = dataURLToBlob(dataUrl);
+						console.log(imageResizeEdit);
+					}
+					image.src = readerEvent.target.result;
+				}
+				reader.readAsDataURL(file);
+			}
+			else {
+				imageResizeEdit.url = 'not-an-image';
+				imageResizeEdit.blob = 'not-an-image';
+				alert('File bukan gambar! Mohon diganti');
+			}
+		};
+
 		function add() {
 			const formData = new FormData(document.getElementById("form_add"));
 			$("#btn_simpan").attr("disabled", true).html('<i class="fa fa-spin fa-spinner"></i> Processing ...');
-
-			if ($("#txt_category").val() == ''){
-				alert('Harap mengisi Category!');
+			
+			if ($("#txt_nama").val() == ''){
+				alert('Harap mengisi nama!');
+				$("#btn_simpan").attr("disabled", false).html('Simpan');
+			}
+			else if ($("#txt_testimoni").val() == ''){
+				alert('Harap mengisi testimoni!');
 				$("#btn_simpan").attr("disabled", false).html('Simpan');
 			}
 			else if ($("#txt_urutan").val() == ''){
 				alert('Harap mengisi urutan!');
 				$("#btn_simpan").attr("disabled", false).html('Simpan');
 			}
+			else if (imageResize.blob == null || imageResize.url == null) {
+				alert('Anda belum pilih gambar!');
+				$("#btn_simpan").attr("disabled", false).html('Simpan');
+			}
+			else if (imageResize.url == 'not-an-image' || imageResize.blob == 'not-an-image') {
+				alert('Yang anda upload bukan gambar!');
+				$("#btn_simpan").attr("disabled", false).html('Simpan');
+			}
 			else {
+				formData.append('image_data', imageResize.blob);
 				$.ajax({
 					type: "post",
 					data: formData,
-					url: "addCategory.php",
+					url: "addTestimonial.php",
 					processData: false,
 					contentType: false,
 					success: (data) => {
 						let res = $.parseJSON(data);
 						if (res.result == 1) {
 							alert(res.message);
-							$("#category-all").DataTable().ajax.reload();
+							$("#testimoni-all").DataTable().ajax.reload();
 							$("#modal_tambah").modal("hide");
 							$("#modal_tambah").attr("data-dismiss", "modal");
 						}
 						else {
 							alert(res.message);
-							$("#category-all").DataTable().ajax.reload();
+							$("#testimoni-all").DataTable().ajax.reload();
 						}
 						$("#btn_simpan").attr("disabled", false).html('Simpan');
 					},
@@ -495,32 +686,41 @@
 			const formDataEdit = new FormData(document.getElementById("form_edit"));
 			$("#btn_simpan_edit").attr("disabled", true).html('<i class="fa fa-spin fa-spinner"></i> Processing ...');
 			
-			if ($("#txt_category_edit").val() == ''){
-				alert('Harap mengisi Category!');
+			if ($("#txt_nama_edit").val() == ''){
+				alert('Harap mengisi nama!');
+				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
+			}
+			else if ($("#txt_testimoni_edit").val() == ''){
+				alert('Harap mengisi testimoni!');
 				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
 			}
 			else if ($("#txt_urutan_edit").val() == ''){
 				alert('Harap mengisi urutan!');
 				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
 			}
+			else if (imageResizeEdit.url == 'not-an-image' || imageResizeEdit.blob == 'not-an-image') {
+				alert('Yang anda upload bukan gambar!');
+				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
+			}
 			else {
+				formDataEdit.append('image_data_edit', imageResizeEdit.blob);
 				$.ajax({
 					type: "post",
 					data: formDataEdit,
-					url: "editCategory.php",
+					url: "editTestimonial.php",
 					processData: false,
 					contentType: false,
 					success: (data) => {
 						let res = $.parseJSON(data);
 						if (res.result == 1) {
 							alert(res.message);
-							$("#category-all").DataTable().ajax.reload();
+							$("#testimoni-all").DataTable().ajax.reload();
 							$("#modal_edit").modal("hide");
 							$("#modal_edit").attr("data-dismiss", "modal");
 						}
 						else {
 							alert(res.message);
-							$("#category-all").DataTable().ajax.reload();
+							$("#testimoni-all").DataTable().ajax.reload();
 						}
 						$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
 					},
@@ -532,23 +732,44 @@
 			}
 		}
 
+		$(".my-gallery").on("click", function () {
+			const image = new Image();
+			const source = $(this).find("img").attr("src");
+
+			if (source) {
+				image.src = source;
+				const viewer = new Viewer(image, {
+					hidden: function () {
+						viewer.destroy();
+					},
+				});
+
+				viewer.show();
+			}
+		});
+
+		lightbox.option({
+			showImageNumberLabel: false,
+			wrapAround: false,
+		});
+
 		function initHapus(id) {
-			const conf = confirm(`Yakin untuk menghapus karir ini?`);
+			const conf = confirm(`Yakin untuk menghapus gambar ini?`);
 			if (conf) {
 				$.ajax({
 					type: "post",
-					url: "delCategory.php",
+					url: "delTestimonial.php",
 					data: { id },
 					success: (data) => {
 						const res = $.parseJSON(data);
 
 						if (res.success) {
-							alert('Category berhasil dihapus.');
-							$("#category-all").DataTable().ajax.reload();
+							alert('Testimoni berhasil dihapus.');
+							$("#testimoni-all").DataTable().ajax.reload();
 						}
 						else {
-							alert('Category gagal dihapus.');
-							$("#category-all").DataTable().ajax.reload();
+							alert('Testimoni gagal dihapus.');
+							$("#testimoni-all").DataTable().ajax.reload();
 						}
 					}
 				});
@@ -560,13 +781,17 @@
 			$.ajax({
 				type: "post",
 				data: {id},
-				url: "showCategory.php",
+				url: "showTestimonial.php",
 				success: (data) => {
 					let res = JSON.parse(data);
 					if (res.success == 1) {
-						$("#txt_category_edit").val(res.data[0].category);
+						$("#txt_nama_edit").val(res.data[0].nama);
+						$("#txt_testimoni_edit").val(res.data[0].testimoni);
 						$("#txt_urutan_edit").val(res.data[0].urutan);
 						$("#hid_id").val(res.data[0].hid_id);
+						$('#fil_upload_testimoni_exist_card').html(
+						`<img class="file-card__image w-100" id="fil_upload_testimoni_exist_preview" src="${mainURL}testimonial/${res.data[0].path}" />`
+						);
 					}
 					else {
 						alert("Tampil data error! Please Contact Administrator!");

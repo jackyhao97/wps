@@ -74,7 +74,7 @@
   </section>
   <section class="content mt-4rem" id="content">
     <div class="container text-center">
-      <h4>Di WPS, kami bersemangat untuk memecahkan masalah Anda</h4>
+      <h4>At WPS, we are passionate about solving your problems in</h4>
     </div>
     <div class="container mt-5">
       <div class="row">

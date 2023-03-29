@@ -47,16 +47,6 @@
 			font-weight: 500;
 			color: white;
 		}
-
-		.my-gallery figure.figures {
-			background-color: white !important;
-			border: 1px solid #a29d9d;
-			color: black !important;
-		}
-
-		.ck-editor__editable_inline {
-			min-height: 300px;
-		}
 	</style>
 </head>
 
@@ -84,7 +74,7 @@
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item">
 				<a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-					<i class="fas fa-fw fa-cog"></i>
+					<i class="fas fa-fw fa-home"></i>
 					<span>Home</span>
 				</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -119,22 +109,22 @@
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item">
 				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-					<i class="fas fa-fw fa-cog"></i>
+					<i class="fas fa-fw fa-newspaper"></i>
 					<span>News</span>
 				</a>
-				<div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+				<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">DETAIL NEWS</h6>
-						<a class="collapse-item active" href="category.php">Category</a>
+						<a class="collapse-item" href="category.php">Category</a>
 						<a class="collapse-item" href="news.php">News</a>
 						<a class="collapse-item" href="imagemanager.php">Image Manager</a>
 					</div>
 				</div>
 			</li>
 
-			<!-- Nav Item - Users -->
+			<!-- Nav Item - Promo -->
       <li class="nav-item">
-        <a class="nav-link" href="users.php">
+        <a class="nav-link active" href="users.php">
           <i class="fas fa-fw fa-user"></i>
           <span>Users</span></a>
       </li>
@@ -198,7 +188,7 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Category News</h1>
+					<h1 class="h3 mb-2 text-gray-800">Users</h1>
 					<p class="mb-4">
 						<a target="_blank" href="https://widyapresisisolusi.com">widyapresisisolusi.com</a>.
 					</p>
@@ -206,18 +196,17 @@
 					<!-- DataTables Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3 d-flex justify-content-between">
-							<h4 class="m-0 font-weight-bold text-primary">Category News</h4>
+							<h4 class="m-0 font-weight-bold text-primary">Home</h4>
 							<button class="btn btn-success" onclick="checkAndClear()">Tambah</button>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<table class="table table-bordered" id="category-all" width="100%" cellspacing="0">
+								<table class="table table-bordered" id="users-all" width="100%" cellspacing="0">
 									<thead>
 										<tr>
 											<th>#</th>
-											<th>Category</th>
-											<th>Urutan</th>
-											<th>Aksi</th>
+											<th>Username</th>
+											<th></th>
 										</tr>
 									</thead>
 								</table>
@@ -227,7 +216,7 @@
 
 					<!-- Modal Tambah -->
 					<div id="modal_tambah" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-						<div class="modal-dialog modal-xl" role="document">
+						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
 									<h4 class="modal-title font-weight-bold">Tambah</h4>
@@ -238,12 +227,12 @@
 										<div class="form-group">
 											<div class="row">
 												<div class="col-md-12">
-													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_category">Category</label>
-													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_category" id="txt_category" autofocus/>
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_username">Username</label>
+													<input class="form-control col-md-10 col-sm-8 col-xs-8 w-100" name="txt_username" id="txt_username" autofocus/>
 												</div>
-												<div class="col-md-12 mt-3">
-													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_urutan">Urutan</label>
-													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_urutan" id="txt_urutan" type="number" />
+												<div class="col-md-12">
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_password">Password</label>
+													<input class="form-control col-md-10 col-sm-8 col-xs-8 w-100" name="txt_password" id="txt_password" type="password" />
 												</div>
 											</div>
 										</div>
@@ -260,7 +249,7 @@
 
 					<!-- Modal Edit -->
 					<div id="modal_edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-						<div class="modal-dialog modal-xl" role="document">
+						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
 									<h4 class="modal-title font-weight-bold">Edit</h4>
@@ -271,13 +260,14 @@
 										<div class="form-group">
 											<div class="row">
 												<div class="col-md-12">
-													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_category_edit">Category</label>
-													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_category_edit" id="txt_category_edit" autofocus/>
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_username_edit">Username</label>
+													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_username_edit" id="txt_username_edit" autofocus/>
 													<input type="hidden" name="hid_id" id="hid_id">
 												</div>
 												<div class="col-md-12">
-													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_urutan_edit">Urutan</label>
-													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_urutan_edit" id="txt_urutan_edit" type="number" />
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_username_edit">Password</label>
+													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_username_edit" id="txt_username_edit" type="password" />
+													<input type="hidden" name="hid_id" id="hid_id">
 												</div>
 											</div>
 										</div>
@@ -291,8 +281,6 @@
 						</div>
 					</div>
         	<!-- Akhir Modal Edit -->
-
-					
 
 				</div>
 				<!-- /.container-fluid -->
@@ -365,18 +353,17 @@
 	<!-- Page level custom scripts -->
 	<script src="js/demo/datatables-demo.js"></script>
 
-	<script src="js/script.js"></script>
+	<script src="js/script.js?ver=<?=rand(1,1000)?>"></script>
 
 	<script>
-
 		$("#modal_tambah").on("shown.bs.modal", function () {
-			$("#txt_category").focus();
+			$("#txt_username").focus();
 		});
 
 		$(document).ready(function() {
 			$.fn.dataTable.ext.errMode = 'none';
 	
-			const table = $('#category-all').on('error.dt', function(e, settings, techNote, message) {
+			const table = $('#users-all').on('error.dt', function(e, settings, techNote, message) {
 	
 				if (techNote == 1)
 	
@@ -408,25 +395,47 @@
 	
 				"ajax": {
 	
-					"url": "json/data-category.php",
+					"url": "json/data-users.php",
 	
-				},
-				
-				"order": [ 0, "desc" ]
+				}
 			});
 			setInterval(function(){
 				table.ajax.reload();
 			}, 120000);  
 		})
 
+		const dataURLToBlob = function(dataURL) {
+			let BASE64_MARKER = ';base64,';
+			if (dataURL.indexOf(BASE64_MARKER) == -1) {
+				let parts = dataURL.split(',');
+				let contentType = parts[0].split(':')[1];
+				let raw = parts[1];
+
+				return new Blob([raw], {type: contentType});
+			}
+
+			let parts = dataURL.split(BASE64_MARKER);
+			let contentType = parts[0].split(':')[1];
+			let raw = window.atob(parts[1]);
+			let rawLength = raw.length;
+
+			let uInt8Array = new Uint8Array(rawLength);
+
+			for (let i = 0; i < rawLength; ++i) {
+				uInt8Array[i] = raw.charCodeAt(i);
+			}
+
+			return new Blob([uInt8Array], {type: contentType});
+		}
+
 		function clearForm() {
-			$("#txt_category").val('');
-			$("#txt_urutan").val('');
+			$("#txt_username").val('');
+			$("#txt_password").val('');
 		}
 
 		function clearFormEdit() {
-			$("#txt_category_edit").val('');
-			$("#txt_urutan_edit").val('');
+			$("#txt_username_edit").val('');
+			$("#txt_password_edit").val('');
 		}
 
 		function checkAndClear() {
@@ -453,33 +462,33 @@
 		function add() {
 			const formData = new FormData(document.getElementById("form_add"));
 			$("#btn_simpan").attr("disabled", true).html('<i class="fa fa-spin fa-spinner"></i> Processing ...');
-
-			if ($("#txt_category").val() == ''){
-				alert('Harap mengisi Category!');
+			
+			if ($("#txt_username").val() == ''){
+				alert('Harap mengisi username!');
 				$("#btn_simpan").attr("disabled", false).html('Simpan');
 			}
-			else if ($("#txt_urutan").val() == ''){
-				alert('Harap mengisi urutan!');
+			else if ($("#txt_password").val() == ''){
+				alert('Harap mengisi password!');
 				$("#btn_simpan").attr("disabled", false).html('Simpan');
 			}
 			else {
 				$.ajax({
 					type: "post",
 					data: formData,
-					url: "addCategory.php",
+					url: "addUsers.php",
 					processData: false,
 					contentType: false,
 					success: (data) => {
 						let res = $.parseJSON(data);
 						if (res.result == 1) {
 							alert(res.message);
-							$("#category-all").DataTable().ajax.reload();
+							$("#users-all").DataTable().ajax.reload();
 							$("#modal_tambah").modal("hide");
 							$("#modal_tambah").attr("data-dismiss", "modal");
 						}
 						else {
 							alert(res.message);
-							$("#category-all").DataTable().ajax.reload();
+							$("#users-all").DataTable().ajax.reload();
 						}
 						$("#btn_simpan").attr("disabled", false).html('Simpan');
 					},
@@ -495,32 +504,32 @@
 			const formDataEdit = new FormData(document.getElementById("form_edit"));
 			$("#btn_simpan_edit").attr("disabled", true).html('<i class="fa fa-spin fa-spinner"></i> Processing ...');
 			
-			if ($("#txt_category_edit").val() == ''){
-				alert('Harap mengisi Category!');
+			if ($("#txt_username_edit").val() == ''){
+				alert('Harap mengisi username!');
 				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
 			}
-			else if ($("#txt_urutan_edit").val() == ''){
-				alert('Harap mengisi urutan!');
+			else if ($("#txt_password_edit").val() == ''){
+				alert('Harap mengisi password!');
 				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
 			}
 			else {
 				$.ajax({
 					type: "post",
 					data: formDataEdit,
-					url: "editCategory.php",
+					url: "editUsers.php",
 					processData: false,
 					contentType: false,
 					success: (data) => {
 						let res = $.parseJSON(data);
 						if (res.result == 1) {
 							alert(res.message);
-							$("#category-all").DataTable().ajax.reload();
+							$("#users-all").DataTable().ajax.reload();
 							$("#modal_edit").modal("hide");
 							$("#modal_edit").attr("data-dismiss", "modal");
 						}
 						else {
 							alert(res.message);
-							$("#category-all").DataTable().ajax.reload();
+							$("#users-all").DataTable().ajax.reload();
 						}
 						$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
 					},
@@ -532,23 +541,39 @@
 			}
 		}
 
+		$(".my-gallery").on("click", function () {
+			const image = new Image();
+			const source = $(this).find("img").attr("src");
+
+			if (source) {
+				image.src = source;
+				const viewer = new Viewer(image, {
+					hidden: function () {
+						viewer.destroy();
+					},
+				});
+
+				viewer.show();
+			}
+		});
+
 		function initHapus(id) {
-			const conf = confirm(`Yakin untuk menghapus karir ini?`);
+			const conf = confirm(`Yakin untuk menghapus user ini?`);
 			if (conf) {
 				$.ajax({
 					type: "post",
-					url: "delCategory.php",
+					url: "delUsers.php",
 					data: { id },
 					success: (data) => {
 						const res = $.parseJSON(data);
 
 						if (res.success) {
-							alert('Category berhasil dihapus.');
-							$("#category-all").DataTable().ajax.reload();
+							alert('User berhasil dihapus.');
+							$("#users-all").DataTable().ajax.reload();
 						}
 						else {
-							alert('Category gagal dihapus.');
-							$("#category-all").DataTable().ajax.reload();
+							alert('User gagal dihapus.');
+							$("#users-all").DataTable().ajax.reload();
 						}
 					}
 				});
@@ -560,12 +585,12 @@
 			$.ajax({
 				type: "post",
 				data: {id},
-				url: "showCategory.php",
+				url: "showUsers.php",
 				success: (data) => {
 					let res = JSON.parse(data);
 					if (res.success == 1) {
-						$("#txt_category_edit").val(res.data[0].category);
-						$("#txt_urutan_edit").val(res.data[0].urutan);
+						$("#txt_username_edit").val(res.data[0].username);
+						$("#txt_password_edit").val(res.data[0].password);
 						$("#hid_id").val(res.data[0].hid_id);
 					}
 					else {

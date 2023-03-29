@@ -19,18 +19,10 @@ function BuildCounter()
   return $counter;
 }
 
-function ShowImages($data, $judul) {
-  $component = '<a href="'.BASE_URL.DS.'admin/img/clients/'.$data.'" data-lightbox="'.$judul.'" data-title="'.$judul.'">';
-  $component .= '<img src="'.BASE_URL.DS.'admin/img/clients/'.$data.'" class="w-50" />';
-  $component .= "</a>";
-
-  return $component;
-}
-
-function BuildDelete($data) {
+function BuildAction($data) {
   $component = '<a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_edit" onclick="show('.$data.')" title="Edit"><i class="fa fa-edit"></i></a>';
   $component .= "<br />";
-  $component .= '<a class="btn btn-sm btn-danger mt-1" onclick="initHapus('.$data.')" title="Hapus"><i class="fa fa-trash"></i></a>';
+  $component .= '<a class="btn btn-sm btn-danger mt-1" onclick="initHapus('.$data.')" title="hapus"><i class="fa fa-trash"></i></a>';
 
   return $component;
 }
@@ -38,7 +30,7 @@ function BuildDelete($data) {
 
 $table = <<<EOT
   (
-    SELECT `id`, `urutan`, `path`, `url` FROM `tb_clients`
+    SELECT `id`, `username`, `password` FROM `tb_user`
   ) temp 
   EOT;
 
@@ -48,9 +40,7 @@ $primaryKey = 'id';
 
 $func_apply = 'BuildCounter';
 
-$func_apply_2 = 'ShowImages';
-
-$func_apply_3 = 'BuildDelete';
+$func_apply_2 = 'BuildAction';
 
 $columns = array(
 
@@ -66,20 +56,13 @@ $columns = array(
     }
 
   ),
-  array('db' => 'urutan', 'dt' => 1),
-  array(
-    'db' => 'path', 
-    'dt' => 2,
-    'formatter' => function($d, $row) use ($func_apply_2) {
-      return $func_apply_2($d, $row[1]);
-    }
-  ),
-  array('db' => 'url', 'dt' => 3),
+
+  array('db' => 'username', 'dt' => 1),
   array(
     'db' => 'id', 
-    'dt' => 4,
-    'formatter' => function($d, $row) use ($func_apply_3) {
-      return $func_apply_3($d);
+    'dt' => 2,
+    'formatter' => function($d, $row) use ($func_apply_2) {
+      return $func_apply_2($d);
     }
   )
 );

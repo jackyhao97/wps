@@ -2,7 +2,7 @@
 session_start();
 require_once "../config.php";
 $username = (isset($_POST['username']) ? $_POST['username'] : '');
-$password = (isset($_POST['password']) ? $_POST['password'] : '');
+$password = (isset($_POST['password']) ? md5($_POST['password']) : '');
 if (isset($_POST['btnLogin'])) {
   $result = $conn->query("SELECT * FROM tb_user WHERE username = '$username' AND isactive = 1");
   if ($result->num_rows > 0) {
@@ -11,17 +11,20 @@ if (isset($_POST['btnLogin'])) {
       $_SESSION["login"] = true;
       $_SESSION['status'] = "login";
       $_SESSION['username'] = $row["username"];
-      header("Location: dashboard.php");
+      $_SESSION['id'] = $row["id"];
+      header("Location: slider.php");
     } else {
       $_SESSION["login"] = false;
       $_SESSION['status'] = "";
       $_SESSION['username'] = "";
+      $_SESSION['id'] = "";
       echo "<script>alert('Password Salah!')</script>";
     }
   } else {
     $_SESSION["login"] = false;
     $_SESSION['status'] = "";
     $_SESSION['username'] = "";
+    $_SESSION['id'] = "";
     echo "<script>alert('Username tidak tersedia!')</script>";
   }
 }

@@ -7,15 +7,16 @@ if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
 $uri .= $_SERVER['HTTP_HOST'];
 
 //live
-// define('BASE_URL', $uri . "/id");
+// define('BASE_URL', $uri);
 //local
-define('BASE_URL', $uri . "/wps/id");
+define('BASE_URL', $uri . "/wps");
 
 //live
-// define('SITE_PATH', $uri . "/id/admin/img/news/");
+// define('SITE_PATH', $uri . "/admin/img/news/");
 //local
-define('SITE_PATH', $uri . "/wps/id/admin/img/news/details/");
-define('SITE_NEWS', $uri . "/wps/id/admin/img/news/");
+define('SITE_PATH', $uri . "/wps/admin/img/news/details/");
+define('SITE_NEWS', $uri . "/wps/admin/img/news/");
+define('SITE_TESTIMONIAL', $uri . "/wps/admin/img/testimonial/");
 
 define('DS', '/');
 
@@ -34,7 +35,7 @@ define('DS', '/');
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "wps-id";
+$dbname = "wps";
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
   echo "Failed to connect!";

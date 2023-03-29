@@ -237,9 +237,33 @@ div.berita .caret-custom {
   font-size: 25px;
 }
 
+.img-testimonial {
+  width: 100px;
+  border-radius: 50%;
+}
+
+.judul-testimonial {
+  text-align: center !important;
+}
+
+.swiper-pagination-testimonial {
+  bottom: 0px !important;
+}
+
+.switch-lang {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  z-index: 100000;
+}
+
 @media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
   div.blog {
     height: 300px;
+  }
+
+  .judul-testimonial {
+    text-align: left !important;
   }
 
   div.blog .tanggal {
@@ -278,6 +302,10 @@ div.berita .caret-custom {
 }
 
 @media (max-width: 576px) {
+  .judul-testimonial {
+    text-align: left !important;
+  }
+
   .wps-slider-button {
     width: 80%;
   }

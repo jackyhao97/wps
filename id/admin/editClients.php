@@ -4,6 +4,7 @@
 
   if (isset($_POST['hid_id'])) {
     $url = isset($_POST['txt_url_edit']) ? mysqli_real_escape_string($conn, $_POST['txt_url_edit']) : '';
+    $urutan = isset($_POST['txt_urutan_edit']) ? $_POST['txt_urutan_edit'] : '';
     $id = $_POST['hid_id'];
     $modified_on = date('Y-m-d H:i:s');
     $user = $_SESSION['username'];
@@ -12,10 +13,10 @@
     if ($file != '') {
       $new_filename = "CLIENT_".rand(1,1000)."_".time().".jpg";
       $upload = move_uploaded_file($file['tmp_name'], "img/clients/".$new_filename);
-      $update_sql = "UPDATE tb_clients SET modified_on = '$modified_on', modified_by='$user', path='$new_filename', url='$url' WHERE id='$id'";
+      $update_sql = "UPDATE tb_clients SET modified_on = '$modified_on', modified_by='$user', path='$new_filename', url='$url', urutan='$urutan' WHERE id='$id'";
     }
     else {
-      $update_sql = "UPDATE tb_clients SET modified_on = '$modified_on', modified_by='$user', url='$url' WHERE id='$id'";
+      $update_sql = "UPDATE tb_clients SET modified_on = '$modified_on', modified_by='$user', url='$url', urutan='$urutan' WHERE id='$id'";
     }
 
     $exec_sql = $conn->query($update_sql);

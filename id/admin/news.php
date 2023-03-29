@@ -76,19 +76,6 @@
 				<div class="sidebar-brand-text mx-3">WPS Admin</div>
 			</a>
 
-			<!-- Divider -->
-			<hr class="sidebar-divider my-0">
-
-			<!-- Nav Item - Dashboard -->
-			<li class="nav-item">
-				<a class="nav-link" href="./dashboard.php">
-					<i class="fas fa-fw fa-tachometer-alt"></i>
-					<span>Dashboard</span></a>
-			</li>
-
-			<!-- Divider -->
-			<hr class="sidebar-divider">
-
 			<!-- Heading -->
 			<div class="sidebar-heading">
 				Interface
@@ -144,6 +131,13 @@
 					</div>
 				</div>
 			</li>
+
+			<!-- Nav Item - Users -->
+      <li class="nav-item">
+        <a class="nav-link" href="users.php">
+          <i class="fas fa-fw fa-user"></i>
+          <span>Users</span></a>
+      </li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
@@ -982,7 +976,9 @@
 	
 					"url": "json/data-news.php",
 	
-				}
+				},
+
+				"order": [ 0, "desc" ]
 			});
 			setInterval(function(){
 				table.ajax.reload();

@@ -1,4 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+  <div class="form-check form-switch switch-lang">
+    <input class="form-check-input" type="checkbox" role="switch" id="switchLangAbout">
+    <label class="form-check-label" for="switchLang">EN | ID</label>
+  </div>
   <div class="container-fluid">
     <a class="navbar-brand px-lg-4" href="<?= BASE_URL ?>">
       <img src="<?= BASE_URL . DS . 'assets/img/logo.png' ?>" alt="" class="w-50">

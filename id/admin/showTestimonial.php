@@ -5,17 +5,19 @@
 
 	if (isset($_POST['id'])) {
 		$id = $_POST['id'];
-    $data = $conn->query("SELECT judul, keterangan, path FROM tb_content WHERE id = '$id'");
+    $data = $conn->query("SELECT nama, testimoni, path, urutan FROM tb_testimonial WHERE id = '$id'");
     $row = $data->fetch_array(MYSQLI_ASSOC);
-    $judul = $row['judul'];
-    $keterangan = $row['keterangan'];
+    $nama = $row['nama'];
+    $testimoni = $row['testimoni'];
     $path = $row['path'];
+    $urutan = $row['urutan'];
 	
     $hasil[] = [
       'hid_id' => $id,
-      'judul' => $judul,
-      'keterangan' => $keterangan,
-      'path' => $path
+      'nama' => $nama,
+      'testimoni' => $testimoni,
+      'path' => $path,
+      'urutan' => $urutan
     ];
 
     array_push($hasil);

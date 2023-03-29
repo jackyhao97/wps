@@ -34,11 +34,11 @@
       </ul>
     </div>
   </main>
-  <section class="clients mt-5 mb-5" id="clients">
+  <section class="clients mt-5" id="clients">
     <div class="container">
       <div class="row">
       <?php 
-        $select = $conn->query("SELECT * FROM tb_clients ORDER BY id DESC");
+        $select = $conn->query("SELECT * FROM tb_clients ORDER BY urutan");
         while($row = $select->fetch_array(MYSQLI_ASSOC)) :
       ?>
         <div class="col-lg-2 col-md-4 col-sm-6 col-12 align-clients">
@@ -52,9 +52,49 @@
       </div>
     </div>
   </section>
+  <section class="testimonial mt-5 mb-5 text-center" id="testimonial">
+    <h2 class="fw-bold mb-5">Testimoni</h2>
+    <div class="swiper-container swiper-container-testimonial">
+      <div class="swiper-wrapper">
+        <?php
+          $testimonial = $conn->query("SELECT * FROM tb_testimonial ORDER BY id DESC LIMIT 0,5");
+          while ($rowTestimonial = $testimonial->fetch_array()) :
+        ?>
+          <div class="swiper-slide">
+            <img src="<?=SITE_TESTIMONIAL.$rowTestimonial['path']?>" alt="Testimoni" class="img-testimonial">
+            <h3><?=$rowTestimonial["nama"]?></h3>
+            <p><?=$rowTestimonial["testimoni"]?></p>
+          </div>
+        <?php            
+          endwhile;
+        ?>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination swiper-pagination-testimonial"></div>
+    </div>
+  </section>
 
   <?php
     require_once '../footer.php';
   ?>
+
+  <script>
+    const swiperTestimonial = new Swiper('.swiper-container-testimonial', {
+      pagination: {
+        el: '.swiper-pagination-testimonial',
+        clickable: true,
+      },
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      }
+    });
+  </script>
 </body>
 </html>

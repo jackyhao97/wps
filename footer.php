@@ -5,18 +5,9 @@
         <h4 class="fw-bolder">About Us</h4>
         <p class="text-justify">Our company name is PT Widya Presisi Solusi. We chose the name Widya meaning knowledge because we want to give solutions based on our skills and expertise to your management and your employees to become a great company...</p>
       </div>
-      <!-- <div class="col-md-3 col-sm-6 col-12">
-        <h4 class="fw-bolder">Services</h4>
-        <a href="<?=BASE_URL.DS.'services/'?>" class="link-custom">Payroll Outsourcing</a><br />
-        <a href="<?=BASE_URL.DS.'services/'?>" class="link-custom">Payroll Admin</a><br />
-        <a href="<?=BASE_URL.DS.'services/'?>" class="link-custom">HRIS Myquantumhr</a><br />
-        <a href="<?=BASE_URL.DS.'services/'?>" class="link-custom">IT Security</a><br />
-        <a href="<?=BASE_URL.DS.'services/'?>" class="link-custom">Learning Management System</a><br />
-        <a href="<?=BASE_URL.DS.'services/'?>" class="link-custom">Other Business Processing</a><br />
-      </div> -->
-      <div class="col-md-6 col-sm-4 col-12 mt-3 mt-sm-0">
-        <h4 class="fw-bolder">Testimonial</h4>
-        <div class="swiper-container swiper-container-testimonial">
+      <div class="col-md-6 col-sm-4 col-12 mt-5 mt-sm-0 mb-5 mb-sm-0 text-center">
+        <h4 class="fw-bolder judul-testimonial">Testimonial</h4>
+        <div class="swiper-container swiper-container-testimonial mt-4">
           <div class="swiper-wrapper">
           <?php 
             $result = $conn->query("SELECT * FROM tb_testimonial ORDER BY id DESC LIMIT 0,6");
@@ -30,11 +21,11 @@
           <?php
             endwhile;
           ?>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination swiper-pagination-testimonial"></div>
           </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination swiper-pagination-testimonial"></div>
         </div>
       </div>
       <div class="col-md-3 col-sm-4 col-12">

@@ -11,12 +11,10 @@
 		$hapus = $conn->query("DELETE FROM tb_partners WHERE id = '$id'");
 	
 		if ($hapus) {
-      $img_path = BASE_URL.DS.'admin/img/partners/'.$path;
-      if (file_exists($img_path)){
-        unlink($img_path);
-      }
+      $dir = './img/partners/';
+      unlink($dir . $path);
 			$res['success'] = 1;
-      $res['url'] = $img_path;
+      $res['url'] = $dir;
 		}
 		else {
 			$res['success'] = 0;
