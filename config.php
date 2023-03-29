@@ -12,7 +12,9 @@ $uri .= $_SERVER['HTTP_HOST'];
 define('BASE_URL', $uri . "/wps");
 
 //live
-// define('SITE_PATH', $uri . "/admin/img/news/");
+// define('SITE_PATH', $uri . "/wps/admin/img/news/");
+// define('SITE_NEWS', $uri . "/wps/admin/img/news/");
+// define('SITE_TESTIMONIAL', $uri . "/wps/admin/img/testimonial/");
 //local
 define('SITE_PATH', $uri . "/wps/admin/img/news/details/");
 define('SITE_NEWS', $uri . "/wps/admin/img/news/");
@@ -22,9 +24,9 @@ define('DS', '/');
 
 // Koneksi Live
 // $servername = "localhost";
-// $username = "mitm9652_mitsubishi";
-// $password = "Orig1nmitsubishi2022";
-// $dbname = "mitm9652_mitsubishi";
+// $username = "harb2847_eben";
+// $password = "Orig1neben2022";
+// $dbname = "harb2847_wps";
 // $conn = mysqli_connect($servername, $username, $password, $dbname);
 // if (!$conn) {
 //   echo "Failed to connect!";
@@ -40,4 +42,4 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
   echo "Failed to connect!";
 }
-  // Akhir Koneksi Local
+// Akhir Koneksi Local

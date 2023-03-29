@@ -22,9 +22,9 @@ define('DS', '/');
 
 // Koneksi Live
 // $servername = "localhost";
-// $username = "mitm9652_mitsubishi";
-// $password = "Orig1nmitsubishi2022";
-// $dbname = "mitm9652_mitsubishi";
+// $username = "harb2847_eben";
+// $password = "Orig1neben2022";
+// $dbname = "harb2847_wps-id";
 // $conn = mysqli_connect($servername, $username, $password, $dbname);
 // if (!$conn) {
 //   echo "Failed to connect!";
