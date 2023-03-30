@@ -6,7 +6,6 @@
     $judul = isset($_POST['txt_judul']) ? mysqli_real_escape_string($conn, $_POST['txt_judul']) : '';
     $keterangan = isset($_POST['keterangan']) ? mysqli_real_escape_string($conn, $_POST['keterangan']) : '';
     $category = isset($_POST['txt_category']) ? $_POST['txt_category'] : '';
-    // $tglberita = isset($_POST['date_berita']) ? mysql_date_format($_POST['date_berita']) : '';
     $tglberita = isset($_POST['date_tgl_berita']) ? $_POST['date_tgl_berita'] : '';
     $urutan = isset($_POST['txt_urutan']) ? $_POST['txt_urutan'] : '';
     $seolink = to_prety_url($judul);

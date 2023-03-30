@@ -31,12 +31,7 @@
             ?>
             <li class="breadcrumb-item active" aria-current="page"><?=ucfirst($row["category"])?></li>          
           </ol>
-        </nav>
-        <div class="row text-center mb-4">
-          <div class="col-12">
-            <img src="<?=SITE_NEWS.$row['path']?>" alt="<?=$row['judul']?>" class="w-100">
-          </div>
-        </div>        
+        </nav>   
           <?php
             endif;
           ?>    
@@ -49,7 +44,12 @@
             <a href="<?=BASE_URL.DS.'news'.DS.$row['path']?>"></a>
           </div>
         </div>
-        <div class="row mt-4">
+        <div class="row text-center mt-5">
+          <div class="col-12">
+            <img src="<?=SITE_NEWS.$row['path']?>" alt="<?=$row['judul']?>" class="w-100">
+          </div>
+        </div>     
+        <div class="row mt-5">
           <div class="col-12">
             <?=$row["keterangan"]?>
           </div>

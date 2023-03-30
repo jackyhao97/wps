@@ -11,13 +11,10 @@
 		$hapus = $conn->query("DELETE FROM tb_news WHERE id = '$id'");
 	
 		if ($hapus) {
-      $img_path = BASE_URL.DS.'admin/img/news/'.$path;
-      chown($img_path, 666);
-      if (file_exists($img_path)){
-        unlink($img_path);
-      }
-			$res['success'] = 1;
-      $res['url'] = $img_path;
+      $dir = './img/news/';
+      unlink($dir . $path);
+      $res['success'] = 1;
+      $res['url'] = $dir;
 		}
 		else {
 			$res['success'] = 0;
