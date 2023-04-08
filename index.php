@@ -81,13 +81,18 @@
       <?php 
         $sqlcontent = $conn->query("SELECT judul, keterangan, path FROM tb_content ORDER BY urutan");
         while ($rowContent = $sqlcontent->fetch_array()) :
+          $path = BASE_URL.DS.'admin/img/content/'.$rowContent['path'];
       ?>
         <div class="col-md-4 col-sm-6 col-12 mb-5">
           <div class="card w-100">
-            <img src="<?=BASE_URL.DS.'admin/img/content/'.$rowContent['path']?>" class="card-img-top" alt="<?=$rowContent['judul']?>">
-            <div class="card-body">
-              <h5 class="card-title title fw-semibold text-decoration-none"><?=$rowContent['judul']?></h5>
-              <p class="card-text text-justify mt-4"><?=$rowContent['keterangan']?></p>
+            <div class="card-body" style="background: url('<?php echo $path; ?>'); background-size: cover; cursor: pointer" onclick="window.location.href='./services/'">
+              <div class="card-content">
+                <h5 class="card-title"><?=$rowContent['judul']?></h5>
+                <hr class="card-title-divider">
+                <p class="card-text">
+                  <?=$rowContent['keterangan']?>
+                </p>
+              </div>
             </div>
           </div>
         </div>

@@ -209,6 +209,37 @@ div.berita .caret-custom {
   opacity: 100%;
 }
 
+section.content .card {
+  margin-top: 20px;
+  min-height: 284px;
+}
+
+section.content .card-title {
+  font-weight: bold;
+  font-size: 16px;
+  color: #3a85c3;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+section.content .card-content {
+  background-color: rgba(255, 255, 255, 0.7);
+  min-height: 230px;
+  text-align: center;
+  padding: 20px 10px 20px 10px;
+  margin: 7px 20px 7px 20px;
+}
+
+section.content .card-title-divider {
+  background-color: #3a85c3;
+  height: 3px;
+}
+
+section.content .card-text {
+  font-size: 10pt;
+  padding: 0px 20px 0px 20px;
+}
+
 @media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
   .judul-testimonial {
     text-align: left !important;
