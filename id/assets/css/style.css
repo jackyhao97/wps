@@ -204,6 +204,11 @@ div.berita .caret-custom {
   color: blue;
 }
 
+.hr-custom {
+  border-top: 2px solid #3a85c3;
+  opacity: 100%;
+}
+
 @media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
   .judul-testimonial {
     text-align: left !important;

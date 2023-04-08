@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
   <div class="form-check form-switch switch-lang">
     <input class="form-check-input" type="checkbox" role="switch" id="switchLangCareer">
-    <label class="form-check-label" for="switchLang">ID | EN</label>
+    <label class="form-check-label" for="switchLang">EN | ID</label>
   </div>
   <div class="container-fluid">
     <a class="navbar-brand px-lg-4" href="<?= BASE_URL ?>">
@@ -51,7 +51,7 @@
           </a>
           <a href="<?=BASE_URL.DS.'news/'?>" class="text-dark">
             <li class="nav-item d-flex flex-column align-items-center p-3">
-              <i class="fa-solid fa-newspaper d-none d-lg-block"></i>
+              <i class="fa-regular fa-newspaper d-none d-lg-block"></i>
               <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'news/'?>">NEWS</a>
           </li>
           </a>

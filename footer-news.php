@@ -1,12 +1,23 @@
 <section class="footer bg-body-tertiary" id="footer">
   <div class="container">
     <div class="row pt-5 pb-5">
-      <div class="col-md-3 col-sm-6 col-12">
-        <h4 class="fw-bolder">About Us</h4>
-        <p class="text-justify">Our company name is PT Widya Presisi Solusi. We chose the name Widya meaning knowledge because we want to give solutions based on our skills and expertise to your management and your employees to become a great company...</p>
+     <div class="col-md-3 col-sm-4 col-12">
+        <h5 class="fw-bolder">NEWS</h5>
+        <hr class="hr-custom">
+        <?php 
+          $resultNews = $conn->query("SELECT * FROM tb_news ORDER BY id DESC LIMIT 0,1");
+          while ($rowNews = $resultNews->fetch_array()) :
+        ?>
+          <img src="<?=BASE_URL.DS.'admin/img/news/'.$rowNews['path']?>" alt="<?=$rowNews['judul']?>" class="w-100">
+          <h5 class="fw-bold mt-4"><?=$rowNews['judul']?></h5>
+          <a href="./news/<?=$rowNews["seo_link"]?>">Read More...</a>
+        <?php
+          endwhile;
+        ?>
       </div>
       <div class="col-md-6 col-sm-4 col-12 mt-5 mt-sm-0 mb-5 mb-sm-0 text-center">
-        <h4 class="fw-bolder judul-testimonial">Testimonial</h4>
+        <h5 class="fw-bolder judul-testimonial" style="text-align: left !important">TESTIMONIAL</h5>
+        <hr class="hr-custom">
         <div class="swiper-container swiper-container-testimonial mt-4">
           <div class="swiper-wrapper">
           <?php 
@@ -29,7 +40,8 @@
         </div>
       </div>
       <div class="col-md-3 col-sm-6 col-12">
-        <h4 class="fw-bolder">Contact Us</h4>
+        <h5 class="fw-bolder">CONTACT US</h5>
+        <hr class="hr-custom">
         <p><i class="fa-solid fa-location-dot me-2"></i> The Boulevard - Mezzanine floor - A Jl.Fachrudin No.5. Jakarta Pusat, 10250. Indonesia</p>
         <p><i class="fa-solid fa-phone me-2"></i> Phone: +6221 3192 2727, +6221 3192 2797</p>
         <!-- <p><i class="fa-solid fa-fax me-2"></i> Fax: +6221315 2227</p> -->

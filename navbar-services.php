@@ -51,7 +51,7 @@
           </a>
           <a href="<?=BASE_URL.DS.'news/'?>" class="text-dark">
             <li class="nav-item d-flex flex-column align-items-center p-3">
-              <i class="fa-solid fa-newspaper d-none d-lg-block"></i>
+              <i class="fa-regular fa-newspaper d-none d-lg-block"></i>
               <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'news/'?>">NEWS</a>
           </li>
           </a>
