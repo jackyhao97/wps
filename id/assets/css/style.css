@@ -48,68 +48,6 @@ section.news img {
   width: 100% !important;
 }
 
-div.blog {
-  margin-top: 100px;
-  height: 500px;
-  min-height: 0;
-}
-
-div.blog .swiper-container {
-  height: 100%;
-}
-
-div.blog .judul {
-  position: absolute;
-  top: 50%;
-  color: white;
-  left: 10%;
-}
-
-div.blog .tanggal {
-  position: absolute;
-  top: 45%;
-  color: white;
-  left: 10%;
-}
-
-div.blog .swiper-slide {
-  height: 500px;
-}
-
-div.blog .gambar {
-  width: 100%;
-  filter: brightness(0.4);
-  height: 100%;
-}
-
-.selengkapnya {
-  position: absolute;
-  left: 10%;
-  top: 65%;
-  color: white;
-  cursor: pointer;
-  border-radius: 20px;
-  padding: 10px 20px;
-}
-
-.selengkapnya:hover {
-  color: black;
-}
-
-div.blog .swiper-pagination {
-  bottom: 10%;
-  left: 45%;
-}
-
-div.blog .swiper-pagination-bullet {
-  margin-right: 10px;
-  background: white;
-}
-
-div.blog .swiper-pagination-bullet-active {
-  background: red;
-}
-
 div.kategori .category {
   text-decoration: none;
 }
@@ -127,7 +65,7 @@ div.kategori .category {
 }
 
 .konten-blog img {
-  width: 60% !important;
+  width: 100% !important;
   height: auto !important;
   display: flex;
   margin: auto;
@@ -257,37 +195,18 @@ div.berita .caret-custom {
   z-index: 100000;
 }
 
-@media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-  div.blog {
-    height: 300px;
-  }
+.breadcrumb-custom {
+  border-top: 1px solid #cac3c3;
+  border-bottom: 1px solid #cac3c3;
+}
 
+.color-blue {
+  color: blue;
+}
+
+@media (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
   .judul-testimonial {
     text-align: left !important;
-  }
-
-  div.blog .tanggal {
-    top: 20%;
-    font-size: 10px;
-    left: 5%;
-  }
-
-  div.blog .judul {
-    top: 25%;
-    font-size: 12px;
-    left: 5%;
-  }
-
-  div.blog .selengkapnya {
-    top: 30%;
-    padding: 5px 20px;
-    font-size: 12px;
-    left: 5%;
-  }
-
-  div.blog .swiper-pagination {
-    top: 35%;
-    left: 40%;
   }
 
   .container-grid-berita {
@@ -308,38 +227,6 @@ div.berita .caret-custom {
 
   .wps-slider-button {
     width: 80%;
-  }
-
-  div.blog {
-    height: 200px;
-  }
-
-  div.blog .swiper-slide {
-    height: 200px;
-  }
-
-  div.blog .tanggal {
-    top: 30%;
-    font-size: 10px;
-    left: 5%;
-  }
-
-  div.blog .judul {
-    top: 40%;
-    font-size: 12px;
-    left: 5%;
-  }
-
-  div.blog .selengkapnya {
-    top: 60%;
-    padding: 5px 20px;
-    font-size: 12px;
-    left: 5%;
-  }
-
-  div.blog .swiper-pagination {
-    top: 30%;
-    left: 40%;
   }
 
   .konten-blog img {

@@ -17,67 +17,34 @@
     require_once '../navbar-news.php';
   ?>
   <section class="wps-banner" id="banner">
-    <div class="blog" id="blog">
-      <div class="swiper-container swiper-container-blog">
-        <div class="swiper-wrapper">
-          <?php
-            $result = $conn->query("SELECT * FROM tb_news ORDER BY id DESC LIMIT 0,6");
-            while ($row = $result->fetch_array()) :
-              $date = strtotime($row["tgl_berita"]);
-              $date = date("d-m-Y", $date);
-          ?>
-            <div class="swiper-slide">
-              <img src="<?=SITE_NEWS.$row['path']?>" alt="<?=$row['judul']?>" class="gambar">
-              <p class="tanggal fw-bold"><?=$date?></p>
-              <h3 class="judul"><?=$row["judul"]?></h3>                            
-              <!-- <a class="btn btn-outline-light selengkapnya" name="btnSelengkapnya" href="detail.php?url=<?=$row['seo_link']?>"><i class="fas fa-plus mr-2"></i>SELENGKAPNYA</a> -->
-              <a class="btn btn-outline-light selengkapnya" name="btnSelengkapnya" href="./<?=$row['seo_link']?>"><i class="fas fa-plus me-2"></i>SELENGKAPNYA</a>
-            </div>
-          <?php            
-            endwhile;
-          ?>
-        </div>
-      </div>    
-      <!-- Add Pagination -->
-      <div class="swiper-pagination swiper-pagination-blog"></div>
+    <div class="container">
+      <?php
+        $banner = $conn->query("SELECT path FROM tb_banner ORDER BY id DESC");
+        $rowBanner = $banner->fetch_array();
+      ?>
+      <img src="<?=BASE_URL.DS.'admin/img/banner/'.$rowBanner['path']?>" alt="Banner" class="w-100">
     </div>
-
-    <div class="container-grid-berita berita mt-5">
+    <div class="container berita mt-5">
       <span class="news nc-1"><i class="fas fa-caret-right caret-custom"></i> <h5 class="text-uppercase d-inline-block fw-bold"> Berita Terpopuler</h5></span>
+      <div class="row mt-3">
       <?php
-        $tampil = $conn->query("SELECT * FROM tb_news WHERE category_id = 2 ORDER BY tgl_berita DESC, id DESC LIMIT 0,1");
-        $rowTampil = $tampil->fetch_array();
+        $tampil = $conn->query("SELECT * FROM tb_news ORDER BY viewed DESC LIMIT 0, 4");
+        while ($rowTampil = $tampil->fetch_array()) :
       ?>
-      <div class="news n-1">
-        <a href="<?= BASE_URL.DS.'news'.DS.$rowTampil['seo_link']; ?>">
-          <img class="fit-image" src="<?=SITE_NEWS.$rowTampil['path']?>" alt="news-4">
-        </a>
-        <a class="p-4 article-title article-title-utama" href="<?= BASE_URL.DS.'news'.DS.$rowTampil['seo_link']; ?>">
-          <span class="small"><?= date("d-m-Y", strtotime($rowTampil["tgl_berita"])) ?></span><br>
-          <?= $rowTampil["judul"]; ?>
-        </a>       
+        <div class="col-12 col-sm-4 col-md-3">
+          <div class="card">
+            <img src="<?=BASE_URL.DS.'admin/img/news/'.$rowTampil["path"]?>" class="card-img-top" alt="<?=$rowTampil["name"]?>">
+            <div class="card-body">
+              <h5 class="card-title fw-bold"><?=$rowTampil["judul"]?></h5>
+              <p class="mb-3 mt-3"><?=$rowTampil["deskripsi"]?></p>
+              <a href="./<?=$rowTampil["seo_link"]?>">[Read More]</a>
+            </div>
+          </div>
+        </div>
+      <?php
+        endwhile;
+      ?>
       </div>
-      <?php
-        $jumlah = $conn->query("SELECT COUNT('id') FROM tb_news");
-        $result = $jumlah->fetch_array();
-        $result = $result[0] - 4;
-        $show = $conn->query("SELECT * FROM tb_news WHERE category_id = 2 ORDER BY tgl_berita DESC, id DESC LIMIT 1,4");
-        $id = 2;
-        while ($rowShow = $show->fetch_assoc()) :
-      ?>
-      <div class="news n-<?=$id?>">
-        <a href="<?=BASE_URL.DS.'news'.DS.$rowShow['seo_link']?>">
-          <img class="fit-image" src="<?=SITE_NEWS.$rowShow['path']?>" alt="news-4">
-        </a>
-        <a class="p-4 article-title" href="<?= BASE_URL.DS.'news'.DS.$rowShow['seo_link']; ?>">
-          <span class="small"><?= date("d-m-Y", strtotime($rowShow["tgl_berita"])) ?></span><br>
-          <?= $rowShow["judul"]; ?>
-        </a>
-      </div>
-      <?php
-        $id++;
-        endwhile;   
-      ?>
     </div>
 
     <div class="kategori text-black mt-5" id="kategori">
@@ -136,17 +103,6 @@
   ?>
 
   <script>
-    const swiperBlog = new Swiper('.swiper-container-blog', {
-      pagination: {
-        el: '.swiper-pagination-blog',
-        clickable: true,
-      },
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: false,
-      },
-    });
-
     function loadData(page, query = '') {
       $.ajax({
         url: "pagination.php",

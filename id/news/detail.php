@@ -19,44 +19,49 @@
     <div class="detail-blog" id="detailBlog">
       <div class="container konten-blog">
         <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
+        <ol class="breadcrumb breadcrumb-custom">
             <li class="breadcrumb-item"><a href="<?=BASE_URL.DS.'news/'?>">News</a></li>
             <?php
              $url = $_GET["url"];            
-             $result = $conn->query("SELECT * FROM tb_news a LEFT JOIN tb_category b ON a.category_id = b.id WHERE a.seo_link = '$url'");           
+             $result = $conn->query("SELECT * FROM tb_news WHERE seo_link = '$url'");
               if ($result->num_rows > 0) :
                 $row = $result->fetch_array();
                 $date = strtotime($row["tgl_berita"]);
                 $date = date("d-m-Y", $date);
+                $viewed = $row["viewed"] + 1;
+                $id = $row["id"];
+                // $update = $conn->query("UPDATE tb_news SET viewed = '$viewed' WHERE seo_link = '$url'");
+                $update = $conn->query("UPDATE tb_news SET viewed = '$viewed' WHERE id = '$id'");
             ?>
-            <li class="breadcrumb-item active" aria-current="page"><?=ucfirst($row["category"])?></li>          
+            <li class="breadcrumb-item active" aria-current="page"><?=$row["judul"]?></li>          
           </ol>
-        </nav>   
+        </nav>       
           <?php
             endif;
           ?>    
-        <div class="row mt-5">
+        <div class="row mt-2">
           <div class="col-12">
-            <h3 class="fw-bold"><?=$row["judul"]?></h3>
-            <div class="d-flex justify-content-between align-items-center mt-2">
-              <small class="text-muted"><?=ucfirst($row["category"])." / ".$date?></small>
+            <h3 class="fw-bold text-center color-blue"><?=$row["judul"]?></h3>
+            <div class="text-end">
+              <small class="text-muted">Post Date : <?=$date?></small>
             </div>
             <a href="<?=BASE_URL.DS.'news'.DS.$row['path']?>"></a>
           </div>
-        </div>
-        <div class="row text-center mt-5">
           <div class="col-12">
+            <div class="text-end">
+              <small class="text-muted">Viewed : <?=$viewed?> times</small>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-12 col-sm-5">
             <img src="<?=SITE_NEWS.$row['path']?>" alt="<?=$row['judul']?>" class="w-100">
           </div>
-        </div>     
-        <div class="row mt-5">
-          <div class="col-12">
+          <div class="col-12 col-sm-7 mt-3 mt-sm-0">
             <?=$row["keterangan"]?>
           </div>
         </div> 
-      </div>
-      
-      
+      </div>   
     </div>
   </section>
 

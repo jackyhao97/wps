@@ -121,7 +121,8 @@
 				<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">DETAIL NEWS</h6>
-						<a class="collapse-item" href="category.php">Category</a>
+						<a class="collapse-item" href="banner.php">Banner</a>
+						<!-- <a class="collapse-item" href="category.php">Category</a> -->
 						<a class="collapse-item" href="news.php">News</a>
 						<a class="collapse-item" href="imagemanager.php">Image Manager</a>
 					</div>

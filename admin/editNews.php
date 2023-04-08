@@ -5,7 +5,8 @@
   if (isset($_POST['hid_id'])) {
     $id = $_POST['hid_id'];
     $judul = isset($_POST['txt_judul_edit']) ? mysqli_real_escape_string($conn, $_POST['txt_judul_edit']) : '';
-    $category = isset($_POST['txt_category_edit']) ? $_POST['txt_category_edit'] : '';
+    // $category = isset($_POST['txt_category_edit']) ? $_POST['txt_category_edit'] : '';
+    $deskripsi = isset($_POST['txt_deskripsi_edit']) ? $_POST['txt_deskripsi_edit'] : '';
     $tglberita = isset($_POST['date_tgl_berita_edit']) ? $_POST['date_tgl_berita_edit'] : '';
     $keterangan = isset($_POST['keterangan_edit']) ? mysqli_real_escape_string($conn, $_POST['keterangan_edit']) : '';
     $urutan = isset($_POST['txt_urutan_edit']) ? $_POST['txt_urutan_edit'] : '';
@@ -25,10 +26,10 @@
       if ($file != '') {
         $new_filename = "NEWS_".rand(1,1000)."_".time().".jpg";
         $upload = move_uploaded_file($file['tmp_name'], "img/news/".$new_filename);
-        $update_sql = "UPDATE tb_news SET modified_on = '$modified_on', modified_by='$user', judul='$judul', category_id='$category', tgl_berita='$tglberita', keterangan='$keterangan', path='$new_filename', urutan='$urutan', seo_link='$seolink' WHERE id='$id'";
+        $update_sql = "UPDATE tb_news SET modified_on = '$modified_on', modified_by='$user', judul='$judul', deskripsi='$deskripsi', tgl_berita='$tglberita', keterangan='$keterangan', path='$new_filename', urutan='$urutan', seo_link='$seolink' WHERE id='$id'";
       }
       else {
-        $update_sql = "UPDATE tb_news SET modified_on = '$modified_on', modified_by='$user', judul='$judul', category_id='$category', tgl_berita='$tglberita', keterangan='$keterangan', urutan='$urutan', seo_link='$seolink' WHERE id='$id'";
+        $update_sql = "UPDATE tb_news SET modified_on = '$modified_on', modified_by='$user', judul='$judul', deskripsi='$deskripsi', tgl_berita='$tglberita', keterangan='$keterangan', urutan='$urutan', seo_link='$seolink' WHERE id='$id'";
       }
 
       $exec_sql = $conn->query($update_sql);

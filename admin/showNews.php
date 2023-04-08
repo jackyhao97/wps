@@ -5,10 +5,10 @@
 
 	if (isset($_POST['id'])) {
 		$id = $_POST['id'];
-    $data = $conn->query("SELECT judul, category_id, tgl_berita, keterangan, path, urutan FROM tb_news WHERE id = '$id'");
+    $data = $conn->query("SELECT judul, deskripsi, tgl_berita, keterangan, path, urutan FROM tb_news WHERE id = '$id'");
     $row = $data->fetch_array(MYSQLI_ASSOC);
     $judul = $row['judul'];
-    $category = $row['category_id'];
+    $deskripsi = $row['deskripsi'];
     $tglberita = $row['tgl_berita'];
     $keterangan = $row['keterangan'];
     $path = $row['path'];
@@ -17,7 +17,7 @@
     $hasil[] = [
       'hid_id' => $id,
       'judul' => $judul,
-      'category' => $category,
+      'deskripsi' => $deskripsi,
       'tglberita' => $tglberita,
       'keterangan' => $keterangan,
       'path' => $path,

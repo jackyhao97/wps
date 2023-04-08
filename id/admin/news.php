@@ -125,7 +125,8 @@
 				<div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">DETAIL NEWS</h6>
-						<a class="collapse-item" href="category.php">Category</a>
+						<a class="collapse-item" href="banner.php">Banner</a>
+						<!-- <a class="collapse-item" href="category.php">Category</a> -->
 						<a class="collapse-item active" href="news.php">News</a>
 						<a class="collapse-item" href="imagemanager.php">Image Manager</a>
 					</div>
@@ -207,7 +208,7 @@
 					<div class="card shadow mb-4">
 						<div class="card-header py-3 d-flex justify-content-between">
 							<h4 class="m-0 font-weight-bold text-primary">News</h4>
-							<button class="btn btn-success" onclick="checkAndClear()">Tambah</button>
+							<button class="btn btn-success" onclick="checkAndClearAndFetch()">Tambah</button>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
@@ -216,7 +217,7 @@
 										<tr>
 											<th>#</th>
 											<th>Judul</th>
-											<th>Category</th>
+											<th>Deskripsi</th>
 											<th>Tgl Berita</th>
 											<th>Urutan</th>
 											<th>Preview</th>
@@ -244,7 +245,7 @@
 													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_judul">Judul</label>
 													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_judul" id="txt_judul" autofocus/>
 												</div>
-												<div class="col-md-12 mt-3 mb-3">
+												<!-- <div class="col-md-12 mt-3 mb-3">
 													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_category">Kategori</label>
 													<select class="form-select col-md-12 col-sm-8 col-xs-8 w-100" aria-label="Default select example" name="txt_category" id="txt_category">
 													<?php 
@@ -256,6 +257,10 @@
 														endwhile;
 													?>
 													</select>
+												</div> -->
+												<div class="col-md-12 mt-3 mb-3">
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_deskripsi">Deskripsi</label>
+													<textarea name="txt_deskripsi" id="txt_deskripsi" rows="4" cols="50" class="form-control"></textarea>
 												</div>
 												<div class="col-md-12">
 													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="date_berita">Tgl Berita</label>
@@ -308,7 +313,7 @@
 													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_judul_edit" id="txt_judul_edit" autofocus/>
 													<input type="hidden" name="hid_id" id="hid_id">
 												</div>
-												<div class="col-md-12 mt-3 mb-3">
+												<!-- <div class="col-md-12 mt-3 mb-3">
 													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_category_edit">Kategori</label>
 													<select class="form-select col-md-12 col-sm-8 col-xs-8 w-100" aria-label="Default select example" name="txt_category_edit" id="txt_category_edit">
 													<?php 
@@ -320,6 +325,10 @@
 														endwhile;
 													?>
 													</select>
+												</div> -->
+												<div class="col-md-12 mt-3 mb-3">
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_deskripsi_edit">Deskripsi</label>
+													<textarea name="txt_deskripsi_edit" id="txt_deskripsi_edit" rows="4" cols="50" class="form-control"></textarea>
 												</div>
 												<div class="col-md-12 mt-3 mb-3">
 													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="date_berita_edit">Tgl Berita</label>
@@ -1030,14 +1039,15 @@
 			$("#fil_upload_news_edit_card").html('No Image');
 		}
 
-		function checkAndClear() {
+		function checkAndClearAndFetch() {
 			$.ajax({
 				type: "post",
-				url: "checkSession.php",
+				url: "checkSessionFetch.php",
 				success: (data) => {
 					let res = JSON.parse(data);
 					if (res.result == 1) {
 						clearForm();
+						$("#txt_urutan").val(res.maxurutan);
 						$("#modal_tambah").modal('show');
 					}
 					else {
@@ -1174,8 +1184,12 @@
 				alert('Harap mengisi judul!');
 				$("#btn_simpan").attr("disabled", false).html('Simpan');
 			}
-			if ($("#txt_category").val() == ''){
-				alert('Harap mengisi kategori!');
+			// if ($("#txt_category").val() == ''){
+			// 	alert('Harap mengisi kategori!');
+			// 	$("#btn_simpan").attr("disabled", false).html('Simpan');
+			// }
+			if ($("#txt_deskripsi").val() == ''){
+				alert('Harap mengisi deskripsi!');
 				$("#btn_simpan").attr("disabled", false).html('Simpan');
 			}
 			if ($("#date_tgl_berita").val() == ''){
@@ -1238,8 +1252,12 @@
 				alert('Harap mengisi judul!');
 				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
 			}
-			if ($("#txt_category_edit").val() == ''){
-				alert('Harap mengisi category!');
+			// if ($("#txt_category_edit").val() == ''){
+			// 	alert('Harap mengisi category!');
+			// 	$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
+			// }
+			if ($("#txt_deskripsi_edit").val() == ''){
+				alert('Harap mengisi deskripsi!');
 				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
 			}
 			if ($("#date_tgl_berita_edit").val() == ''){
@@ -1344,7 +1362,8 @@
 					if (res.success == 1) {
 						document.cookie = "category = " + res.data[0].category;
 						$("#txt_judul_edit").val(res.data[0].judul);
-						$("#txt_category_edit").val(res.data[0].category);
+						// $("#txt_category_edit").val(res.data[0].category);
+						$("#txt_deskripsi_edit").val(res.data[0].deskripsi);
 						$("#date_tgl_berita_edit").val(res.data[0].tglberita);
 						$("#txt_urutan_edit").val(res.data[0].urutan);
 						$("#editorEdit").html(res.data[0].keterangan);

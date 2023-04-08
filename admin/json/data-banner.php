@@ -19,18 +19,18 @@ function BuildCounter()
   return $counter;
 }
 
-function ShowImages($data, $judul) {
-  $component = '<a href="'.BASE_URL.DS.'admin/img/news/'.$data.'" data-lightbox="'.$judul.'" data-title="'.$judul.'">';
-  $component .= '<img src="'.BASE_URL.DS.'admin/img/news/'.$data.'" class="w-50" />';
+function ShowImages($data, $id) {
+  $component = '<a href="'.BASE_URL.DS.'admin/img/banner/'.$data.'" data-lightbox="'.$id.'" data-title="'.$id.'">';
+  $component .= '<img src="'.BASE_URL.DS.'admin/img/banner/'.$data.'" class="w-50" />';
   $component .= "</a>";
 
   return $component;
 }
 
-function BuildDelete($data) {
+function BuildAction($data) {
   $component = '<a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_edit" onclick="show('.$data.')" title="Edit"><i class="fa fa-edit"></i></a>';
   $component .= "<br />";
-  $component .= '<a class="btn btn-sm btn-danger mt-1" onclick="initHapus('.$data.')" title="Hapus"><i class="fa fa-trash"></i></a>';
+  $component .= '<a class="btn btn-sm btn-danger mt-1" onclick="initHapus('.$data.')" title="hapus"><i class="fa fa-trash"></i></a>';
 
   return $component;
 }
@@ -38,7 +38,7 @@ function BuildDelete($data) {
 
 $table = <<<EOT
   (
-    SELECT `id`, `judul`, `deskripsi`, `tgl_berita`, `path`, `urutan` FROM `tb_news`
+    SELECT `id`, `path` FROM `tb_banner`
   ) temp 
   EOT;
 
@@ -50,7 +50,7 @@ $func_apply = 'BuildCounter';
 
 $func_apply_2 = 'ShowImages';
 
-$func_apply_3 = 'BuildDelete';
+$func_apply_3 = 'BuildAction';
 
 $columns = array(
 
@@ -66,27 +66,16 @@ $columns = array(
     }
 
   ),
-
-  array('db' => 'judul', 'dt' => 1),
-  array('db' => 'deskripsi', 'dt' => 2),
-  array(
-    'db' => 'tgl_berita', 
-    'dt' => 3,
-    'formatter' => function ($d, $row) {
-      return date( 'd-m-Y', strtotime($d));
-    }
-  ),
-  array('db' => 'urutan', 'dt' => 4),
   array(
     'db' => 'path', 
-    'dt' => 5,
+    'dt' => 1,
     'formatter' => function($d, $row) use ($func_apply_2) {
-      return $func_apply_2($d, $row[1]);
+      return $func_apply_2($d, $row[0]);
     }
   ),
   array(
     'db' => 'id', 
-    'dt' => 6,
+    'dt' => 2,
     'formatter' => function($d, $row) use ($func_apply_3) {
       return $func_apply_3($d);
     }
