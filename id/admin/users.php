@@ -100,7 +100,6 @@
 						<a class="collapse-item" href="clients.php">Clients</a>
 						<a class="collapse-item" href="partners.php">Partners</a>
 						<a class="collapse-item" href="contact.php">Contact</a>
-						<a class="collapse-item" href="career.php">Career</a>
 						<a class="collapse-item" href="testimonial.php">Testimonial</a>
 					</div>
 				</div>
@@ -123,7 +122,22 @@
 				</div>
 			</li>
 
-			<!-- Nav Item - Promo -->
+			<!-- Nav Item - Careers -->
+			<li class="nav-item">
+				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+					<i class="fas fa-fw fa-newspaper"></i>
+					<span>Careers</span>
+				</a>
+				<div id="collapseFive" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Detail Careers</h6>
+						<a class="collapse-item" href="career.php">For WPS</a>
+						<a class="collapse-item" href="careerClients.php">For Clients</a>
+					</div>
+				</div>
+      </li>
+
+			<!-- Nav Item - Users -->
       <li class="nav-item">
         <a class="nav-link active" href="users.php">
           <i class="fas fa-fw fa-user"></i>

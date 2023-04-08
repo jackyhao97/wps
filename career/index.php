@@ -30,71 +30,55 @@
   </main>
   <section class="career mt-5 mb-5" id="career">
     <div class="container">
-      
       <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              For WPS
+            </button>
+          </h2>
         <?php 
-          $select = $conn->query("SELECT * FROM tb_services ORDER BY urutan");
-          $i = 1;
+          $select = $conn->query("SELECT * FROM tb_career ORDER BY urutan");
           while ($row = $select->fetch_array(MYSQLI_ASSOC)) :
         ?>
-        <div class="accordion-item">
-        <?php
-          if ($i == 1) {
-        ?>
-          <h2 class="accordion-header" id="heading<?=$i?>">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?=$i?>" aria-expanded="true" aria-controls="collapse<?=$i?>">
-              <?=$row["judul"]?>
-            </button>
-          </h2>
-          <div id="collapse<?=$i?>" class="accordion-collapse collapse show" aria-labelledby="heading<?=$i?>" data-bs-parent="#accordionExample">
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body accordion-custom">
-              <img src="<?=BASE_URL.DS.'admin/img/services/'.$row['path']?>" alt="<?=$row['judul']?>" class="w-100 mb-5">
-              <?=$row["keterangan"]?>
+              <h2 class="fw-bold"><?=$row["title"]?></h2>
+              <?=$row["requirement"]?>
+              <div class="text-end">
+                <a href="mailto:hr@widyapresisisolusi.com" class="btn btn-success" target="_blank">Apply Now</a>
+              </div>
             </div>
           </div>
         <?php
-          }
-          else {
-        ?>
-          <h2 class="accordion-header" id="heading<?=$i?>">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?=$i?>" aria-expanded="false" aria-controls="collapse<?=$i?>">
-              <?=$row["judul"]?>
-            </button>
-          </h2>
-          <div id="collapse<?=$i?>" class="accordion-collapse collapse" aria-labelledby="heading<?=$i?>" data-bs-parent="#accordionExample">
-            <div class="accordion-body accordion-custom">
-              <img src="<?=BASE_URL.DS.'admin/img/services/'.$row['path']?>" alt="<?=$row['judul']?>" class="w-100 mb-5">
-              <?=$row["keterangan"]?>
-            </div>
-          </div>
-        <?php
-          }
+          endwhile;
         ?>
         </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+              For Clients
+            </button>
+          </h2>
+        <?php 
+          $select = $conn->query("SELECT * FROM tb_career_clients ORDER BY urutan");
+          while ($row = $select->fetch_array(MYSQLI_ASSOC)) :
+        ?>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body accordion-custom">
+              <h2 class="fw-bold"><?=$row["title"]?></h2>
+              <?=$row["requirement"]?>
+              <div class="text-end">
+                <a href="mailto:hr@widyapresisisolusi.com" class="btn btn-success" target="_blank">Apply Now</a>
+              </div>
+            </div>
+          </div>
         <?php
-            $i++;
           endwhile;
         ?>
         </div>
       </div>
-
-      <div class="row">
-      <?php 
-        $select = $conn->query("SELECT * FROM tb_career ORDER BY urutan");
-        while($row = $select->fetch_array(MYSQLI_ASSOC)) :
-      ?>
-        <div class="col-12 mb-5">
-          <h2 class="fw-bold"><?=$row["title"]?></h2>
-          <?=$row["requirement"]?>
-          <div class="text-end">
-            <a href="mailto:hr@widyapresisisolusi.com" class="btn btn-success" target="_blank">Apply Now</a>
-          </div>
-        </div>
-      <?php
-        endwhile;
-      ?>
-      </div>
-
     </div>
   </section>
 

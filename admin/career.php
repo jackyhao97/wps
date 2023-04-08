@@ -102,7 +102,7 @@
 					<i class="fas fa-fw fa-cog"></i>
 					<span>Contents</span>
 				</a>
-				<div id="collapseThree" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+				<div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Custom Contents:</h6>
 						<a class="collapse-item" href="about.php">About</a>
@@ -110,7 +110,6 @@
 						<a class="collapse-item" href="clients.php">Clients</a>
 						<a class="collapse-item" href="partners.php">Partners</a>
 						<a class="collapse-item" href="contact.php">Contact</a>
-						<a class="collapse-item active" href="career.php">Career</a>
 						<a class="collapse-item" href="testimonial.php">Testimonial</a>
 					</div>
 				</div>
@@ -132,6 +131,21 @@
 					</div>
 				</div>
 			</li>
+
+			<!-- Nav Item - Careers -->
+			<li class="nav-item">
+				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+					<i class="fas fa-fw fa-newspaper"></i>
+					<span>Careers</span>
+				</a>
+				<div id="collapseFive" class="collapse show" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Detail Careers</h6>
+						<a class="collapse-item active" href="career.php">For WPS</a>
+						<a class="collapse-item" href="careerClients.php">For Clients</a>
+					</div>
+				</div>
+      </li>
 
 			<!-- Nav Item - Users -->
       <li class="nav-item">
@@ -199,7 +213,7 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Careers</h1>
+					<h1 class="h3 mb-2 text-gray-800">Careers For WPS</h1>
 					<p class="mb-4">
 						<a target="_blank" href="https://widyapresisisolusi.com">widyapresisisolusi.com</a>.
 					</p>
@@ -207,8 +221,8 @@
 					<!-- DataTables Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3 d-flex justify-content-between">
-							<h4 class="m-0 font-weight-bold text-primary">Careers</h4>
-							<button class="btn btn-success" onclick="checkAndClear()">Tambah</button>
+							<h4 class="m-0 font-weight-bold text-primary">Careers For WPS</h4>
+							<button class="btn btn-success" onclick="checkAndClearAndFetch()">Tambah</button>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
@@ -930,14 +944,15 @@
 			$("#txt_urutan_edit").val('');
 		}
 
-		function checkAndClear() {
+		function checkAndClearAndFetch() {
 			$.ajax({
 				type: "post",
-				url: "checkSession.php",
+				url: "checkSessionFetchCareer.php",
 				success: (data) => {
 					let res = JSON.parse(data);
 					if (res.result == 1) {
 						clearForm();
+						$("#txt_urutan").val(res.maxurutan);
 						$("#modal_tambah").modal('show');
 					}
 					else {
@@ -1056,11 +1071,11 @@
 						const res = $.parseJSON(data);
 
 						if (res.success) {
-							alert('Career berhasil dihapus.');
+							alert('Career For WPS berhasil dihapus.');
 							$("#careers-all").DataTable().ajax.reload();
 						}
 						else {
-							alert('Career gagal dihapus.');
+							alert('Career For WPS gagal dihapus.');
 							$("#careers-all").DataTable().ajax.reload();
 						}
 					}

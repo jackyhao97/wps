@@ -53,6 +53,10 @@
 			border: 1px solid #a29d9d;
 			color: black !important;
 		}
+
+		.ck-editor__editable_inline {
+			min-height: 300px;
+		}
 	</style>
 </head>
 
@@ -83,11 +87,11 @@
 					<i class="fas fa-fw fa-cog"></i>
 					<span>Home</span>
 				</a>
-				<div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Custom Contents:</h6>
 						<a class="collapse-item" href="slider.php">Slider</a>
-						<a class="collapse-item active" href="content.php">Content</a>
+						<a class="collapse-item" href="content.php">Content</a>
 					</div>
 				</div>
 			</li>
@@ -134,11 +138,11 @@
 					<i class="fas fa-fw fa-newspaper"></i>
 					<span>Careers</span>
 				</a>
-				<div id="collapseFive" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+				<div id="collapseFive" class="collapse show" aria-labelledby="headingFour" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Detail Careers</h6>
 						<a class="collapse-item" href="career.php">For WPS</a>
-						<a class="collapse-item" href="careerClients.php">For Clients</a>
+						<a class="collapse-item active" href="careerClients.php">For Clients</a>
 					</div>
 				</div>
       </li>
@@ -209,7 +213,7 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Home - Content</h1>
+					<h1 class="h3 mb-2 text-gray-800">Careers For Clients</h1>
 					<p class="mb-4">
 						<a target="_blank" href="https://widyapresisisolusi.com">widyapresisisolusi.com</a>.
 					</p>
@@ -217,19 +221,17 @@
 					<!-- DataTables Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3 d-flex justify-content-between">
-							<h4 class="m-0 font-weight-bold text-primary">Content</h4>
-							<button class="btn btn-success" onclick="checkAndClear()">Tambah</button>
+							<h4 class="m-0 font-weight-bold text-primary">Careers For Clients</h4>
+							<button class="btn btn-success" onclick="checkAndClearAndFetch()">Tambah</button>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<table class="table table-bordered" id="content-all" width="100%" cellspacing="0">
+								<table class="table table-bordered" id="careers-clients-all" width="100%" cellspacing="0">
 									<thead>
 										<tr>
 											<th>#</th>
-											<th>Judul</th>
-											<th>Keterangan</th>
+											<th>Title</th>
 											<th>Urutan</th>
-											<th>Preview</th>
 											<th>Aksi</th>
 										</tr>
 									</thead>
@@ -240,7 +242,7 @@
 
 					<!-- Modal Tambah -->
 					<div id="modal_tambah" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-						<div class="modal-dialog" role="document">
+						<div class="modal-dialog modal-xl" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
 									<h4 class="modal-title font-weight-bold">Tambah</h4>
@@ -251,25 +253,16 @@
 										<div class="form-group">
 											<div class="row">
 												<div class="col-md-12">
-													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_judul">Judul</label>
-													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_judul" id="txt_judul" autofocus/>
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_title">Title</label>
+													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_title" id="txt_title" autofocus/>
 												</div>
 												<div class="col-md-12 mt-3">
-													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_keterangan">Keterangan</label>
-													<textarea name="txt_keterangan" id="txt_keterangan" rows="4" cols="50" class="form-control"></textarea>
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="editor">Requirement</label>
+													<textarea name="editor" id="editor"></textarea>
 												</div>
 												<div class="col-md-12 mt-3">
 													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_urutan">Urutan</label>
-													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_urutan" id="txt_urutan" type="number"/>
-												</div>
-												<div class="col-md-12 mt-3">
-													<label class="col-md-2 col-sm-2 col-xs-4 control-label">Image</label>
-													<input type="file" name="fil_upload_content" id="fil_upload_content" data-filename-placement="inside" onchange="resizeAndRead(this)">
-													<div class="col-md-8 col-sm-8 col-xs-8">
-														<div class="my-gallery">
-															<figure id="fil_upload_content_card">No Image</figure>
-														</div>
-													</div>
+													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_urutan" id="txt_urutan" type="number" />
 												</div>
 											</div>
 										</div>
@@ -286,7 +279,7 @@
 
 					<!-- Modal Edit -->
 					<div id="modal_edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-						<div class="modal-dialog" role="document">
+						<div class="modal-dialog modal-xl" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
 									<h4 class="modal-title font-weight-bold">Edit</h4>
@@ -297,35 +290,17 @@
 										<div class="form-group">
 											<div class="row">
 												<div class="col-md-12">
-													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_judul_edit">Judul</label>
-													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_judul_edit" id="txt_judul_edit" autofocus/>
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_title_edit">Title</label>
+													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_title_edit" id="txt_title_edit" autofocus/>
 													<input type="hidden" name="hid_id" id="hid_id">
 												</div>
 												<div class="col-md-12 mt-3">
-													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_keterangan_edit">Keterangan</label>
-													<textarea name="txt_keterangan_edit" id="txt_keterangan_edit" rows="4" cols="50" class="form-control"></textarea>
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="editorEdit">Requirement</label>
+													<textarea name="editorEdit" id="editorEdit"></textarea>
 												</div>
-												<div class="col-md-12 mt-3">
+												<div class="col-md-12">
 													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_urutan_edit">Urutan</label>
 													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_urutan_edit" id="txt_urutan_edit" type="number" />
-												</div>
-												<div class="col-md-12 mt-3 d-flex align-items-center">
-													<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-														<label class="control-label">Image</label>
-													</div>
-													<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-														<div class="my-gallery">
-															<figure id="fil_upload_content_exist_card">No Image</figure>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-12 mt-3">
-													<input type="file" name="fil_upload_content_edit" id="fil_upload_content_edit" data-filename-placement="inside" onchange="resizeAndReadEdit(this)">
-													<div class="col-md-8 col-sm-8 col-xs-8">
-														<div class="my-gallery">
-															<figure id="fil_upload_content_edit_card" class="figures">No Preview Available</figure>
-														</div>
-													</div>
 												</div>
 											</div>
 										</div>
@@ -413,17 +388,512 @@
 	<!-- Page level custom scripts -->
 	<script src="js/demo/datatables-demo.js"></script>
 
-	<script src="js/script.js?ver=<?=rand(1,1000)?>"></script>
+	<!-- CKEditor -->
+	<script src="js/ckeditor.js?ver=<?=rand(1,1000)?>"></script>
+
+	<script src="js/script.js"></script>
 
 	<script>
+		CKEDITOR.ClassicEditor.create(document.getElementById("editor"), {
+			// https://ckeditor.com/docs/ckeditor5/latest/features/toolbar/toolbar.html#extended-toolbar-configuration-format
+			toolbar: {
+				items: [
+					"exportPDF",
+					"exportWord",
+					"|",
+					"findAndReplace",
+					"selectAll",
+					"|",
+					"heading",
+					"|",
+					"bold",
+					"italic",
+					"strikethrough",
+					"underline",
+					"code",
+					"subscript",
+					"superscript",
+					"removeFormat",
+					"|",
+					"bulletedList",
+					"numberedList",
+					"todoList",
+					"|",
+					"outdent",
+					"indent",
+					"|",
+					"undo",
+					"redo",
+					"-",
+					"fontSize",
+					"fontFamily",
+					"fontColor",
+					"fontBackgroundColor",
+					"highlight",
+					"|",
+					"alignment",
+					"|",
+					"link",
+					"insertImage",
+					"blockQuote",
+					"insertTable",
+					"mediaEmbed",
+					"codeBlock",
+					"htmlEmbed",
+					"|",
+					"specialCharacters",
+					"horizontalLine",
+					"pageBreak",
+					"|",
+					"textPartLanguage",
+					"|",
+					"sourceEditing",
+				],
+				shouldNotGroupWhenFull: true,
+			},
+			// Changing the language of the interface requires loading the language file using the <script> tag.
+			// language: 'es',
+			list: {
+				properties: {
+					styles: true,
+					startIndex: true,
+					reversed: true,
+				},
+			},
+			// https://ckeditor.com/docs/ckeditor5/latest/features/headings.html#configuration
+			heading: {
+				options: [
+					{
+						model: "paragraph",
+						title: "Paragraph",
+						class: "ck-heading_paragraph",
+					},
+					{
+						model: "heading1",
+						view: "h1",
+						title: "Heading 1",
+						class: "ck-heading_heading1",
+					},
+					{
+						model: "heading2",
+						view: "h2",
+						title: "Heading 2",
+						class: "ck-heading_heading2",
+					},
+					{
+						model: "heading3",
+						view: "h3",
+						title: "Heading 3",
+						class: "ck-heading_heading3",
+					},
+					{
+						model: "heading4",
+						view: "h4",
+						title: "Heading 4",
+						class: "ck-heading_heading4",
+					},
+					{
+						model: "heading5",
+						view: "h5",
+						title: "Heading 5",
+						class: "ck-heading_heading5",
+					},
+					{
+						model: "heading6",
+						view: "h6",
+						title: "Heading 6",
+						class: "ck-heading_heading6",
+					},
+				],
+			},
+			// https://ckeditor.com/docs/ckeditor5/latest/features/font.html#configuring-the-font-family-feature
+			fontFamily: {
+				options: [
+					"default",
+					"Arial, Helvetica, sans-serif",
+					"Courier New, Courier, monospace",
+					"Georgia, serif",
+					"Lucida Sans Unicode, Lucida Grande, sans-serif",
+					"Tahoma, Geneva, sans-serif",
+					"Times New Roman, Times, serif",
+					"Trebuchet MS, Helvetica, sans-serif",
+					"Verdana, Geneva, sans-serif",
+				],
+				supportAllValues: true,
+			},
+			// https://ckeditor.com/docs/ckeditor5/latest/features/font.html#configuring-the-font-size-feature
+			fontSize: {
+				options: [10, 12, 14, "default", 18, 20, 22],
+				supportAllValues: true,
+			},
+			// Be careful with the setting below. It instructs CKEditor to accept ALL HTML markup.
+			// https://ckeditor.com/docs/ckeditor5/latest/features/general-html-support.html#enabling-all-html-features
+			htmlSupport: {
+				allow: [
+					{
+						name: /.*/,
+						attributes: true,
+						classes: true,
+						styles: true,
+					},
+				],
+			},
+			// Be careful with enabling previews
+			// https://ckeditor.com/docs/ckeditor5/latest/features/html-embed.html#content-previews
+			htmlEmbed: {
+				showPreviews: true,
+			},
+			// https://ckeditor.com/docs/ckeditor5/latest/features/link.html#custom-link-attributes-decorators
+			link: {
+				decorators: {
+					addTargetToExternalLinks: true,
+					defaultProtocol: "https://",
+					toggleDownloadable: {
+						mode: "manual",
+						label: "Downloadable",
+						attributes: {
+							download: "file",
+						},
+					},
+				},
+			},
+			// https://ckeditor.com/docs/ckeditor5/latest/features/mentions.html#configuration
+			mention: {
+				feeds: [
+					{
+						marker: "@",
+						feed: [
+							"@apple",
+							"@bears",
+							"@brownie",
+							"@cake",
+							"@cake",
+							"@candy",
+							"@canes",
+							"@chocolate",
+							"@cookie",
+							"@cotton",
+							"@cream",
+							"@cupcake",
+							"@danish",
+							"@donut",
+							"@dragée",
+							"@fruitcake",
+							"@gingerbread",
+							"@gummi",
+							"@ice",
+							"@jelly-o",
+							"@liquorice",
+							"@macaroon",
+							"@marzipan",
+							"@oat",
+							"@pie",
+							"@plum",
+							"@pudding",
+							"@sesame",
+							"@snaps",
+							"@soufflé",
+							"@sugar",
+							"@sweet",
+							"@topping",
+							"@wafer",
+						],
+						minimumCharacters: 1,
+					},
+				],
+			},
+			// The "super-build" contains more premium features that require additional configuration, disable them below.
+			// Do not turn them on unless you read the documentation and know how to configure them and setup the editor.
+			removePlugins: [
+				// These two are commercial, but you can try them out without registering to a trial.
+				// 'ExportPdf',
+				// 'ExportWord',
+				"CKBox",
+				"CKFinder",
+				"EasyImage",
+				// This sample uses the Base64UploadAdapter to handle image uploads as it requires no configuration.
+				// https://ckeditor.com/docs/ckeditor5/latest/features/images/image-upload/base64-upload-adapter.html
+				// Storing images as Base64 is usually a very bad idea.
+				// Replace it on production website with other solutions:
+				// https://ckeditor.com/docs/ckeditor5/latest/features/images/image-upload/image-upload.html
+				// 'Base64UploadAdapter',
+				"RealTimeCollaborativeComments",
+				"RealTimeCollaborativeTrackChanges",
+				"RealTimeCollaborativeRevisionHistory",
+				"PresenceList",
+				"Comments",
+				"TrackChanges",
+				"TrackChangesData",
+				"RevisionHistory",
+				"Pagination",
+				"WProofreader",
+				// Careful, with the Mathtype plugin CKEditor will not load when loading this sample
+				// from a local file system (file://) - load this site via HTTP server if you enable MathType
+				"MathType",
+			],
+		})
+		.then( editor => {
+			console.log( 'Editor was initialized', editor );
+			myEditor = editor;
+		})
+		.catch( err => {
+			console.error( err.stack );
+		});
+
+		CKEDITOR.ClassicEditor.create(document.getElementById("editorEdit"), {
+			// https://ckeditor.com/docs/ckeditor5/latest/features/toolbar/toolbar.html#extended-toolbar-configuration-format
+			toolbar: {
+				items: [
+					"exportPDF",
+					"exportWord",
+					"|",
+					"findAndReplace",
+					"selectAll",
+					"|",
+					"heading",
+					"|",
+					"bold",
+					"italic",
+					"strikethrough",
+					"underline",
+					"code",
+					"subscript",
+					"superscript",
+					"removeFormat",
+					"|",
+					"bulletedList",
+					"numberedList",
+					"todoList",
+					"|",
+					"outdent",
+					"indent",
+					"|",
+					"undo",
+					"redo",
+					"-",
+					"fontSize",
+					"fontFamily",
+					"fontColor",
+					"fontBackgroundColor",
+					"highlight",
+					"|",
+					"alignment",
+					"|",
+					"link",
+					"insertImage",
+					"blockQuote",
+					"insertTable",
+					"mediaEmbed",
+					"codeBlock",
+					"htmlEmbed",
+					"|",
+					"specialCharacters",
+					"horizontalLine",
+					"pageBreak",
+					"|",
+					"textPartLanguage",
+					"|",
+					"sourceEditing",
+				],
+				shouldNotGroupWhenFull: true,
+			},
+			// Changing the language of the interface requires loading the language file using the <script> tag.
+			// language: 'es',
+			list: {
+				properties: {
+					styles: true,
+					startIndex: true,
+					reversed: true,
+				},
+			},
+			// https://ckeditor.com/docs/ckeditor5/latest/features/headings.html#configuration
+			heading: {
+				options: [
+					{
+						model: "paragraph",
+						title: "Paragraph",
+						class: "ck-heading_paragraph",
+					},
+					{
+						model: "heading1",
+						view: "h1",
+						title: "Heading 1",
+						class: "ck-heading_heading1",
+					},
+					{
+						model: "heading2",
+						view: "h2",
+						title: "Heading 2",
+						class: "ck-heading_heading2",
+					},
+					{
+						model: "heading3",
+						view: "h3",
+						title: "Heading 3",
+						class: "ck-heading_heading3",
+					},
+					{
+						model: "heading4",
+						view: "h4",
+						title: "Heading 4",
+						class: "ck-heading_heading4",
+					},
+					{
+						model: "heading5",
+						view: "h5",
+						title: "Heading 5",
+						class: "ck-heading_heading5",
+					},
+					{
+						model: "heading6",
+						view: "h6",
+						title: "Heading 6",
+						class: "ck-heading_heading6",
+					},
+				],
+			},
+			// https://ckeditor.com/docs/ckeditor5/latest/features/font.html#configuring-the-font-family-feature
+			fontFamily: {
+				options: [
+					"default",
+					"Arial, Helvetica, sans-serif",
+					"Courier New, Courier, monospace",
+					"Georgia, serif",
+					"Lucida Sans Unicode, Lucida Grande, sans-serif",
+					"Tahoma, Geneva, sans-serif",
+					"Times New Roman, Times, serif",
+					"Trebuchet MS, Helvetica, sans-serif",
+					"Verdana, Geneva, sans-serif",
+				],
+				supportAllValues: true,
+			},
+			// https://ckeditor.com/docs/ckeditor5/latest/features/font.html#configuring-the-font-size-feature
+			fontSize: {
+				options: [10, 12, 14, "default", 18, 20, 22],
+				supportAllValues: true,
+			},
+			// Be careful with the setting below. It instructs CKEditor to accept ALL HTML markup.
+			// https://ckeditor.com/docs/ckeditor5/latest/features/general-html-support.html#enabling-all-html-features
+			htmlSupport: {
+				allow: [
+					{
+						name: /.*/,
+						attributes: true,
+						classes: true,
+						styles: true,
+					},
+				],
+			},
+			// Be careful with enabling previews
+			// https://ckeditor.com/docs/ckeditor5/latest/features/html-embed.html#content-previews
+			htmlEmbed: {
+				showPreviews: true,
+			},
+			// https://ckeditor.com/docs/ckeditor5/latest/features/link.html#custom-link-attributes-decorators
+			link: {
+				decorators: {
+					addTargetToExternalLinks: true,
+					defaultProtocol: "https://",
+					toggleDownloadable: {
+						mode: "manual",
+						label: "Downloadable",
+						attributes: {
+							download: "file",
+						},
+					},
+				},
+			},
+			// https://ckeditor.com/docs/ckeditor5/latest/features/mentions.html#configuration
+			mention: {
+				feeds: [
+					{
+						marker: "@",
+						feed: [
+							"@apple",
+							"@bears",
+							"@brownie",
+							"@cake",
+							"@cake",
+							"@candy",
+							"@canes",
+							"@chocolate",
+							"@cookie",
+							"@cotton",
+							"@cream",
+							"@cupcake",
+							"@danish",
+							"@donut",
+							"@dragée",
+							"@fruitcake",
+							"@gingerbread",
+							"@gummi",
+							"@ice",
+							"@jelly-o",
+							"@liquorice",
+							"@macaroon",
+							"@marzipan",
+							"@oat",
+							"@pie",
+							"@plum",
+							"@pudding",
+							"@sesame",
+							"@snaps",
+							"@soufflé",
+							"@sugar",
+							"@sweet",
+							"@topping",
+							"@wafer",
+						],
+						minimumCharacters: 1,
+					},
+				],
+			},
+			// The "super-build" contains more premium features that require additional configuration, disable them below.
+			// Do not turn them on unless you read the documentation and know how to configure them and setup the editor.
+			removePlugins: [
+				// These two are commercial, but you can try them out without registering to a trial.
+				// 'ExportPdf',
+				// 'ExportWord',
+				"CKBox",
+				"CKFinder",
+				"EasyImage",
+				// This sample uses the Base64UploadAdapter to handle image uploads as it requires no configuration.
+				// https://ckeditor.com/docs/ckeditor5/latest/features/images/image-upload/base64-upload-adapter.html
+				// Storing images as Base64 is usually a very bad idea.
+				// Replace it on production website with other solutions:
+				// https://ckeditor.com/docs/ckeditor5/latest/features/images/image-upload/image-upload.html
+				// 'Base64UploadAdapter',
+				"RealTimeCollaborativeComments",
+				"RealTimeCollaborativeTrackChanges",
+				"RealTimeCollaborativeRevisionHistory",
+				"PresenceList",
+				"Comments",
+				"TrackChanges",
+				"TrackChangesData",
+				"RevisionHistory",
+				"Pagination",
+				"WProofreader",
+				// Careful, with the Mathtype plugin CKEditor will not load when loading this sample
+				// from a local file system (file://) - load this site via HTTP server if you enable MathType
+				"MathType",
+			],
+		})
+		.then( editorEdit => {
+			console.log( 'Editor was initialized', editorEdit );
+			myEditorEdit = editorEdit;
+		})
+		.catch( err => {
+			console.error( err.stack );
+		});
+
 		$("#modal_tambah").on("shown.bs.modal", function () {
-			$("#txt_judul").focus();
+			$("#txt_title").focus();
 		});
 
 		$(document).ready(function() {
 			$.fn.dataTable.ext.errMode = 'none';
 	
-			const table = $('#content-all').on('error.dt', function(e, settings, techNote, message) {
+			const table = $('#careers-clients-all').on('error.dt', function(e, settings, techNote, message) {
 	
 				if (techNote == 1)
 	
@@ -455,7 +925,7 @@
 	
 				"ajax": {
 	
-					"url": "json/data-content.php",
+					"url": "json/data-careers-clients.php",
 	
 				}
 			});
@@ -464,57 +934,25 @@
 			}, 120000);  
 		})
 
-		const dataURLToBlob = function(dataURL) {
-			let BASE64_MARKER = ';base64,';
-			if (dataURL.indexOf(BASE64_MARKER) == -1) {
-				let parts = dataURL.split(',');
-				let contentType = parts[0].split(':')[1];
-				let raw = parts[1];
-
-				return new Blob([raw], {type: contentType});
-			}
-
-			let parts = dataURL.split(BASE64_MARKER);
-			let contentType = parts[0].split(':')[1];
-			let raw = window.atob(parts[1]);
-			let rawLength = raw.length;
-
-			let uInt8Array = new Uint8Array(rawLength);
-
-			for (let i = 0; i < rawLength; ++i) {
-				uInt8Array[i] = raw.charCodeAt(i);
-			}
-
-			return new Blob([uInt8Array], {type: contentType});
-		}
-
 		function clearForm() {
-			$("#txt_judul").val('');
-			$("#txt_keterangan").val('');
+			$("#txt_title").val('');
 			$("#txt_urutan").val('');
-			$("#fil_upload_content").val("");
-			$("#fil_upload_content_preview").attr("src", "");
-			$("#fil_upload_content_card").html('No Image');
 		}
 
 		function clearFormEdit() {
-			$("#txt_judul_edit").val('');
-			$("#txt_keterangan_edit").val('');
+			$("#txt_title_edit").val('');
 			$("#txt_urutan_edit").val('');
-			$("#fil_upload_content_edit").val("");
-			$("#fil_upload_content_exist_preview").attr("src", "");
-			$("#fil_upload_content_edit_preview").attr("src", "");
-			$("#fil_upload_content_edit_card").html('No Image');
 		}
 
-		function checkAndClear() {
+		function checkAndClearAndFetch() {
 			$.ajax({
 				type: "post",
-				url: "checkSession.php",
+				url: "checkSessionFetchCareerClients.php",
 				success: (data) => {
 					let res = JSON.parse(data);
 					if (res.result == 1) {
 						clearForm();
+						$("#txt_urutan").val(res.maxurutan);
 						$("#modal_tambah").modal('show');
 					}
 					else {
@@ -528,164 +966,42 @@
 			});
 		}
 
-		window.imageResize = { blob: null, url: null }
-		window.imageResizeEdit = { blob: null, url: null }
-
-		function resizeAndRead(input){
-			// Read
-			if (input.files && input.files[0]) {
-				const element = input.id;
-				const reader = new FileReader();
-
-				reader.onload = (e) => {
-					$(`#${element}_card`).html(
-						`<img class="file-card__image w-100" id="${element}_preview" src="${e.target.result}" />`
-					);
-				};
-				reader.readAsDataURL(input.files[0]);
-			}
-
-			// Resize
-			var file = event.target.files[0];
-
-			if(file.type.match(/image.*/)) {
-				var reader = new FileReader();
-				reader.onload = function (readerEvent) {
-					var image = new Image();
-					image.onload = function (imageEvent) {
-						var canvas = document.createElement('canvas'),
-							max_size = 1280,// TODO : pull max size from a site config
-							width = image.width,
-							height = image.height;
-						if (width > height) {
-							if (width > max_size) {
-								height *= max_size / width;
-								width = max_size;
-							}
-						} else {
-							if (height > max_size) {
-								width *= max_size / height;
-								height = max_size;
-							}
-						}
-						canvas.width = width;
-						canvas.height = height;
-						canvas.getContext('2d').drawImage(image, 0, 0, width, height);
-						var dataUrl = canvas.toDataURL('image/jpeg');
-						imageResize.url = dataUrl;
-						imageResize.blob = dataURLToBlob(dataUrl);
-						console.log(imageResize);
-					}
-					image.src = readerEvent.target.result;
-				}
-				reader.readAsDataURL(file);
-			}
-			else {
-				imageResize.url = 'not-an-image';
-				imageResize.blob = 'not-an-image';
-				alert('File bukan gambar! Mohon diganti');
-			}
-		};
-
-		function resizeAndReadEdit(input){
-			// Read
-			if (input.files && input.files[0]) {
-				const element = input.id;
-				const reader = new FileReader();
-
-				reader.onload = (e) => {
-					$(`#${element}_card`).html(
-						`<img class="file-card__image w-100" id="${element}_preview" src="${e.target.result}" />`
-					);
-				};
-				reader.readAsDataURL(input.files[0]);
-			}
-
-			// Resize
-			var file = event.target.files[0];
-
-			if(file.type.match(/image.*/)) {
-				var reader = new FileReader();
-				reader.onload = function (readerEvent) {
-					var image = new Image();
-					image.onload = function (imageEvent) {
-						var canvas = document.createElement('canvas'),
-							max_size = 1280,// TODO : pull max size from a site config
-							width = image.width,
-							height = image.height;
-						if (width > height) {
-							if (width > max_size) {
-								height *= max_size / width;
-								width = max_size;
-							}
-						} else {
-							if (height > max_size) {
-								width *= max_size / height;
-								height = max_size;
-							}
-						}
-						canvas.width = width;
-						canvas.height = height;
-						canvas.getContext('2d').drawImage(image, 0, 0, width, height);
-						var dataUrl = canvas.toDataURL('image/jpeg');
-						imageResizeEdit.url = dataUrl;
-						imageResizeEdit.blob = dataURLToBlob(dataUrl);
-						console.log(imageResizeEdit);
-					}
-					image.src = readerEvent.target.result;
-				}
-				reader.readAsDataURL(file);
-			}
-			else {
-				imageResizeEdit.url = 'not-an-image';
-				imageResizeEdit.blob = 'not-an-image';
-				alert('File bukan gambar! Mohon diganti');
-			}
-		};
-
 		function add() {
 			const formData = new FormData(document.getElementById("form_add"));
 			$("#btn_simpan").attr("disabled", true).html('<i class="fa fa-spin fa-spinner"></i> Processing ...');
-			
-			if ($("#txt_judul").val() == ''){
-				alert('Harap mengisi judul!');
+			const requirement = myEditor.getData();
+
+			if ($("#txt_title").val() == ''){
+				alert('Harap mengisi Title!');
 				$("#btn_simpan").attr("disabled", false).html('Simpan');
 			}
-			else if ($("#txt_keterangan").val() == ''){
-				alert('Harap mengisi keterangan!');
+			else if (requirement == ''){
+				alert('Harap mengisi requirement!');
 				$("#btn_simpan").attr("disabled", false).html('Simpan');
 			}
 			else if ($("#txt_urutan").val() == ''){
 				alert('Harap mengisi urutan!');
 				$("#btn_simpan").attr("disabled", false).html('Simpan');
 			}
-			else if (imageResize.blob == null || imageResize.url == null) {
-				alert('Anda belum pilih gambar!');
-				$("#btn_simpan").attr("disabled", false).html('Simpan');
-			}
-			else if (imageResize.url == 'not-an-image' || imageResize.blob == 'not-an-image') {
-				alert('Yang anda upload bukan gambar!');
-				$("#btn_simpan").attr("disabled", false).html('Simpan');
-			}
 			else {
-				formData.append('image_data', imageResize.blob);
+				formData.append('requirement', requirement);
 				$.ajax({
 					type: "post",
 					data: formData,
-					url: "addContent.php",
+					url: "addCareersClients.php",
 					processData: false,
 					contentType: false,
 					success: (data) => {
 						let res = $.parseJSON(data);
 						if (res.result == 1) {
 							alert(res.message);
-							$("#content-all").DataTable().ajax.reload();
+							$("#careers-clients-all").DataTable().ajax.reload();
 							$("#modal_tambah").modal("hide");
 							$("#modal_tambah").attr("data-dismiss", "modal");
 						}
 						else {
 							alert(res.message);
-							$("#content-all").DataTable().ajax.reload();
+							$("#careers-clients-all").DataTable().ajax.reload();
 						}
 						$("#btn_simpan").attr("disabled", false).html('Simpan');
 					},
@@ -700,42 +1016,39 @@
 		function edit() {
 			const formDataEdit = new FormData(document.getElementById("form_edit"));
 			$("#btn_simpan_edit").attr("disabled", true).html('<i class="fa fa-spin fa-spinner"></i> Processing ...');
+			const requirementEdit = myEditorEdit.getData();
 			
-			if ($("#txt_judul_edit").val() == ''){
-				alert('Harap mengisi judul!');
+			if ($("#txt_title_edit").val() == ''){
+				alert('Harap mengisi Title!');
 				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
 			}
-			else if ($("#txt_keterangan_edit").val() == ''){
-				alert('Harap mengisi keterangan!');
+			else if (requirementEdit == ''){
+				alert('Harap mengisi Requirement!');
 				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
 			}
 			else if ($("#txt_urutan_edit").val() == ''){
 				alert('Harap mengisi urutan!');
 				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
 			}
-			else if (imageResizeEdit.url == 'not-an-image' || imageResizeEdit.blob == 'not-an-image') {
-				alert('Yang anda upload bukan gambar!');
-				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
-			}
 			else {
-				formDataEdit.append('image_data_edit', imageResizeEdit.blob);
+				formDataEdit.append('requirement_edit', requirementEdit);
 				$.ajax({
 					type: "post",
 					data: formDataEdit,
-					url: "editContent.php",
+					url: "editCareersClients.php",
 					processData: false,
 					contentType: false,
 					success: (data) => {
 						let res = $.parseJSON(data);
 						if (res.result == 1) {
 							alert(res.message);
-							$("#content-all").DataTable().ajax.reload();
+							$("#careers-clients-all").DataTable().ajax.reload();
 							$("#modal_edit").modal("hide");
 							$("#modal_edit").attr("data-dismiss", "modal");
 						}
 						else {
 							alert(res.message);
-							$("#content-all").DataTable().ajax.reload();
+							$("#careers-clients-all").DataTable().ajax.reload();
 						}
 						$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
 					},
@@ -747,44 +1060,23 @@
 			}
 		}
 
-		$(".my-gallery").on("click", function () {
-			const image = new Image();
-			const source = $(this).find("img").attr("src");
-
-			if (source) {
-				image.src = source;
-				const viewer = new Viewer(image, {
-					hidden: function () {
-						viewer.destroy();
-					},
-				});
-
-				viewer.show();
-			}
-		});
-
-		lightbox.option({
-			showImageNumberLabel: false,
-			wrapAround: false,
-		});
-
 		function initHapus(id) {
-			const conf = confirm(`Yakin untuk menghapus gambar ini?`);
+			const conf = confirm(`Yakin untuk menghapus karir ini?`);
 			if (conf) {
 				$.ajax({
 					type: "post",
-					url: "delContent.php",
+					url: "delCareersClients.php",
 					data: { id },
 					success: (data) => {
 						const res = $.parseJSON(data);
 
 						if (res.success) {
-							alert('Gambar berhasil dihapus.');
-							$("#content-all").DataTable().ajax.reload();
+							alert('Career For Clients berhasil dihapus.');
+							$("#careers-clients-all").DataTable().ajax.reload();
 						}
 						else {
-							alert('Gambar gagal dihapus.');
-							$("#content-all").DataTable().ajax.reload();
+							alert('Career For Clients gagal dihapus.');
+							$("#careers-clients-all").DataTable().ajax.reload();
 						}
 					}
 				});
@@ -796,17 +1088,15 @@
 			$.ajax({
 				type: "post",
 				data: {id},
-				url: "showContent.php",
+				url: "showCareersClients.php",
 				success: (data) => {
 					let res = JSON.parse(data);
 					if (res.success == 1) {
-						$("#txt_judul_edit").val(res.data[0].judul);
-						$("#txt_keterangan_edit").val(res.data[0].keterangan);
+						$("#txt_title_edit").val(res.data[0].title);
 						$("#txt_urutan_edit").val(res.data[0].urutan);
+						$("#editorEdit").html(res.data[0].requirement);
+						myEditorEdit.setData(res.data[0].requirement);
 						$("#hid_id").val(res.data[0].hid_id);
-						$('#fil_upload_content_exist_card').html(
-						`<img class="file-card__image w-100" id="fil_upload_content_exist_preview" src="${mainURL}content/${res.data[0].path}" />`
-						);
 					}
 					else {
 						alert("Tampil data error! Please Contact Administrator!");
