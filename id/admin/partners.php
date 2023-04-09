@@ -212,7 +212,7 @@
 					<div class="card shadow mb-4">
 						<div class="card-header py-3 d-flex justify-content-between">
 							<h4 class="m-0 font-weight-bold text-primary">Partners</h4>
-							<button class="btn btn-success" onclick="checkAndClear()">Tambah</button>
+							<button class="btn btn-success" onclick="checkAndClearAndFetch()">Tambah</button>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
@@ -501,14 +501,15 @@
 			$("#fil_upload_partners_edit_card").html('No Image');
 		}
 
-		function checkAndClear() {
+		function checkAndClearAndFetch() {
 			$.ajax({
 				type: "post",
-				url: "checkSession.php",
+				url: "checkSessionFetchPartners.php",
 				success: (data) => {
 					let res = JSON.parse(data);
 					if (res.result == 1) {
 						clearForm();
+						$("#txt_urutan").val(res.maxurutan);
 						$("#modal_tambah").modal('show');
 					}
 					else {

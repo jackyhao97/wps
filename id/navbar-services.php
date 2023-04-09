@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
   <div class="form-check form-switch switch-lang">
     <input class="form-check-input" type="checkbox" role="switch" id="switchLangServices">
-    <label class="form-check-label" for="switchLang">EN | ID</label>
+    <label class="form-check-label" for="switchLang">ID | EN</label>
   </div>
   <div class="container-fluid">
     <a class="navbar-brand px-lg-4" href="<?= BASE_URL ?>">
@@ -22,49 +22,49 @@
           <a href="<?=BASE_URL?>" class="text-dark">
             <li class="nav-item d-flex flex-column align-items-center p-3">
               <i class="fa fa-home d-none d-lg-block"></i>
-              <a class="nav-link" aria-current="page" href="<?=BASE_URL?>">HOME</a>
+              <a class="nav-link" aria-current="page" href="<?=BASE_URL?>">BERANDA</a>
             </li>
           </a>
           <a href="<?=BASE_URL.DS.'about/'?>" class="text-dark">
             <li class="nav-item d-flex flex-column align-items-center p-3">
               <i class="fa-solid fa-building d-none d-lg-block"></i>
-              <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'about/'?>">ABOUT</a>
+              <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'about/'?>">TENTANG</a>
             </li>
           </a>
           <a href="<?=BASE_URL.DS.'services/'?>">
             <li class="nav-item d-flex flex-column align-items-center p-3 mx-3 bg-body-secondary border-bottom border-primary border-5">
               <i class="fa-solid fa-folder-open d-none d-lg-block"></i>
-              <a class="nav-link fw-bold" aria-current="page" href="<?=BASE_URL.DS.'services/'?>">SERVICES</a>
+              <a class="nav-link fw-bold" aria-current="page" href="<?=BASE_URL.DS.'services/'?>">LAYANAN</a>
             </li>
           </a>
           <a href="<?=BASE_URL.DS.'clients/'?>" class="text-dark">
             <li class="nav-item d-flex flex-column align-items-center p-3">
               <i class="fa-solid fa-users d-none d-lg-block"></i>
-              <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'clients/'?>">CLIENTS</a>
+              <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'clients/'?>">KLIEN</a>
             </li>
           </a>
           <a href="<?=BASE_URL.DS.'partners/'?>" class="text-dark">
             <li class="nav-item d-flex flex-column align-items-center p-3">
               <i class="fa-solid fa-handshake d-none d-lg-block"></i>
-              <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'partners/'?>">PARTNERS</a>
+              <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'partners/'?>">MITRA</a>
             </li>
           </a>
           <a href="<?=BASE_URL.DS.'news/'?>" class="text-dark">
             <li class="nav-item d-flex flex-column align-items-center p-3">
               <i class="fa-regular fa-newspaper d-none d-lg-block"></i>
-              <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'news/'?>">NEWS</a>
+              <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'news/'?>">BERITA</a>
           </li>
           </a>
           <a href="<?=BASE_URL.DS.'contact/'?>" class="text-dark">
             <li class="nav-item d-flex flex-column align-items-center p-3">
               <i class="fa-solid fa-envelope d-none d-lg-block"></i>
-              <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'contact/'?>">CONTACT</a>
+              <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'contact/'?>">KONTAK</a>
             </li>
           </a>
           <a href="<?=BASE_URL.DS.'career/'?>" class="text-dark">
             <li class="nav-item d-flex flex-column align-items-center p-3">
               <i class="fa-solid fa-suitcase d-none d-lg-block"></i>
-              <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'career/'?>">CAREER</a>
+              <a class="nav-link" aria-current="page" href="<?=BASE_URL.DS.'career/'?>">KARIR</a>
             </li>
           </a>
         </ul>

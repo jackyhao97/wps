@@ -21,16 +21,16 @@
   </section>
   <main>
     <div class="container mt-5 mb-5">
-      <p class="text-justify">We have helped a wide variety of local and multinational Industries. We understand that every Industry have unique characteristics and challenges in order to survive and achieve their business objective(s). We have helped industries in these sectors :</p>
+      <p class="text-justify">Kami telah membantu berbagai Industri lokal dan multinasional. Kami memahami bahwa setiap Industri memiliki karakteristik dan tantangan yang unik untuk bertahan dan mencapai tujuan bisnis mereka. Kami telah membantu industri di sektor ini:</p>
       <ul>
-        <li>Manufacturing</li>
-        <li>Distribution</li>
-        <li>Retail</li>
-        <li>Multi Finance</li>
-        <li>Securities</li>
-        <li>Assets Management</li>
-        <li>Property Development</li>
-        <li>Property Management</li>
+        <li>Manufaktur</li>
+        <li>Distribusi</li>
+        <li>Pengecer</li>
+        <li>Multi Keuangan</li>
+        <li>Keamanan</li>
+        <li>Managemen Aset</li>
+        <li>Pengembangan Properti</li>
+        <li>Manajemen Properti</li>
       </ul>
     </div>
   </main>
