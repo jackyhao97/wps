@@ -22,10 +22,10 @@
   <main>
     <div class="container mt-5 mb-5">
       <p class="text-justify">
-        We welcome fresh graduates with a D3 or S1 to join our consultant team. Send your CV to
+        Kami menyambut lulusan baru dengan gelar D3 atau S1 untuk bergabung dengan tim konsultan kami. Kirimkan CV Anda ke
         <a href="mailto:hr@widyapresisisolusi.com" target="_blank">hr@widyapresisisolusi.com</a>
       </p>
-      <p>Our latest job opportunities are :</p>
+      <p>Peluang kerja terbaru kami adalah :</p>
     </div>
   </main>
   <section class="career mt-5 mb-5" id="career">
@@ -34,7 +34,7 @@
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              For WPS
+              Untuk WPS
             </button>
           </h2>
         <?php 
@@ -58,7 +58,7 @@
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingTwo">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-              For Clients
+              Untuk Klien
             </button>
           </h2>
         <?php 

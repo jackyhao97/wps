@@ -40,10 +40,10 @@
     <div class="container">
       <div class="row">
         <div class="col-12 col-sm-7">
-          <p>Please fill the contact form below :</p>
+          <p>Silakan isi formulir kontak di bawah ini:</p>
           <form method="post" enctype="multipart/form-data">
             <div class="mb-3">
-              <label for="txt_name" class="form-label">Name</label>
+              <label for="txt_name" class="form-label">Nama</label>
               <input type="text" class="form-control" id="txt_name" name="txt_name" aria-describedby="name" placeholder="Enter your name...">
             </div>
             <div class="mb-3">
@@ -51,29 +51,29 @@
               <input type="email" class="form-control" id="txt_email" name="txt_email" aria-describedby="email" placeholder="Enter your email...">
             </div>
             <div class="mb-3">
-              <label for="txt_subject" class="form-label">Subject</label>
+              <label for="txt_subject" class="form-label">Subjek</label>
               <input type="text" class="form-control" id="txt_subject" name="txt_subject" aria-describedby="subject" placeholder="Your subject...">
             </div>
             <div class="mb-3">
-              <label for="txt_topic" class="form-label">Topic</label>
+              <label for="txt_topic" class="form-label">Topik</label>
               <select class="form-select" aria-label="Default select example" id="txt_topic" name="txt_topic">
-                <option value="Payroll Administration" selected>Payroll Administration</option>
-                <option value="Payroll Outsourcing">Payroll Outsourcing</option>
-                <option value="HR Information System">HR Information System</option>
-                <option value="IT Security">IT Security</option>
-                <option value="Learning Management System">Learning Management System</option>
-                <option value="Other Business Process Outsourcing">Other Business Process Outsourcing</option>
+                <option value="Payroll Administration" selected>Administrasi penggajian</option>
+                <option value="Payroll Outsourcing">Outsourcing Penggajian</option>
+                <option value="HR Information System">Sistem Informasi SDM</option>
+                <option value="IT Security">Keamanan TI</option>
+                <option value="Learning Management System">Sistem Manajemen Pembelajaran</option>
+                <option value="Other Business Process Outsourcing">Pengalihdayaan Proses Bisnis Lainnya</option>
               </select>
             </div>
             <div class="mb-3">
-              <label for="txt_message" class="form-label">Message</label>
+              <label for="txt_message" class="form-label">Pesan</label>
               <textarea class="form-control" id="txt_message" name="txt_message" rows="4" placeholder="Your message..."></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" name="btn_submit">Send</button>
+            <button type="submit" class="btn btn-primary" name="btn_submit">Kirim</button>
           </form>
         </div>
         <div class="col-12 col-sm-5 mt-5 mt-sm-0">
-          <h3 class="fw-bold mb-5">ADDRESS</h3>
+          <h3 class="fw-bold mb-5">ALAMAT</h3>
           <a href="https://www.google.com/maps/place/PT+Widya+Presisi+Solusi/@-6.183404,106.8144006,17z/data=!3m1!4b1!4m6!3m5!1s0x2e69f68268d40057:0xc6f45229584d9390!8m2!3d-6.1834093!4d106.8165893!16s%2Fg%2F11b5wkhprr" target="_blank" class="text-decoration-none"><i class="fa-solid fa-location-dot me-2 "></i> The Boulevard - Mezzanine floor - A Jl.Fachrudin No.5. Jakarta Pusat, 10250. Indonesia </a><br /><br />
           <a href="tel:+622131922727" target="_blank" class="text-decoration-none"><i class="fa-solid fa-phone me-2"></i> Phone: +6221 3192 2727/ 22794727 </a><br /><br />
           <a href="#" class="text-decoration-none"><i class="fa-solid fa-fax me-2"></i> Fax: +6221315 2227 </a><br /><br />
