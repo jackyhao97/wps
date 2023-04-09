@@ -27,6 +27,20 @@
   <?php 
     require_once '../header.php';
   ?>
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-978740247/z4uDCLKYzvcCEJfI2dID',
+          'event_callback': callback
+      });
+      return false;
+    }
+  </script>
 </head>
 
 <body>
