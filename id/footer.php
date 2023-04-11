@@ -26,8 +26,8 @@
           ?>
             <div class="swiper-slide">
               <img src="<?=SITE_TESTIMONIAL.$row['path']?>" alt="Testimoni" class="img-testimonial">
-              <h3 class="fw-bold"><?=$row["nama"]?></h3>
-              <p class="text-justify"><?=$row["testimoni"]?></p>
+              <p class="fw-bold"><?=$row["nama"]?></p>
+              <p class="deskripsi-testimoni text-justify"><?=$row["testimoni"]?></p>
             </div>
           <?php
             endwhile;
