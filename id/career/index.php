@@ -34,7 +34,7 @@
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Untuk WPS
+              <h4 class="fw-bold">Untuk WPS</h4>
             </button>
           </h2>
         <?php 
@@ -43,7 +43,7 @@
         ?>
           <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body accordion-custom">
-              <h2 class="fw-bold"><?=$row["title"]?></h2>
+              <h4 class="fw-bold"><?=$row["title"]?></h4>
               <?=$row["requirement"]?>
               <div class="text-end">
                 <a href="mailto:hr@widyapresisisolusi.com?subject=Apply for <?=$row['title']?> Position" class="btn btn-success" target="_blank">Apply Now</a>
@@ -58,7 +58,7 @@
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingTwo">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-              Untuk Klien
+              <h4 class="fw-bold">Untuk Klien</h4>
             </button>
           </h2>
         <?php 
@@ -67,7 +67,7 @@
         ?>
           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
             <div class="accordion-body accordion-custom">
-              <h2 class="fw-bold"><?=$row["title"]?></h2>
+              <h4 class="fw-bold"><?=$row["title"]?></h4>
               <?=$row["requirement"]?>
               <div class="text-end">
                 <a href="mailto:hr@widyapresisisolusi.com?subject=Apply for <?=$row['title']?> Position" class="btn btn-success" target="_blank">Apply Now</a>
