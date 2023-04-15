@@ -46,7 +46,7 @@
               <h2 class="fw-bold"><?=$row["title"]?></h2>
               <?=$row["requirement"]?>
               <div class="text-end">
-                <a href="mailto:hr@widyapresisisolusi.com" class="btn btn-success" target="_blank">Apply Now</a>
+                <a href="mailto:hr@widyapresisisolusi.com?subject=Apply for <?=$row['title']?> Position" class="btn btn-success" target="_blank">Apply Now</a>
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@
               <h2 class="fw-bold"><?=$row["title"]?></h2>
               <?=$row["requirement"]?>
               <div class="text-end">
-                <a href="mailto:hr@widyapresisisolusi.com" class="btn btn-success" target="_blank">Apply Now</a>
+                <a href="mailto:hr@widyapresisisolusi.com?subject=Apply for <?=$row['title']?> Position" class="btn btn-success" target="_blank">Apply Now</a>
               </div>
             </div>
           </div>
