@@ -107,6 +107,7 @@
 						<a class="collapse-item" href="partners.php">Partners</a>
 						<a class="collapse-item" href="contact.php">Contact</a>
 						<a class="collapse-item" href="testimonial.php">Testimonial</a>
+						<a class="collapse-item" href="email.php">Email</a>
 					</div>
 				</div>
 			</li>

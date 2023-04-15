@@ -1,5 +1,7 @@
 <?php 
+  header("Access-Control-Allow-Origin:*");
   require_once '../config.php';
+  require_once '../assets/class/attach_mailer_class.php';
   $rand = rand(1,1000);
 
   if (isset($_POST["btn_submit"])) {
@@ -7,15 +9,59 @@
     $email = isset($_POST['txt_email']) ? mysqli_real_escape_string($conn, $_POST['txt_email']) : '';
     $subject = isset($_POST['txt_subject']) ? mysqli_real_escape_string($conn, $_POST['txt_subject']) : '';
     $topic = isset($_POST['txt_topic']) ? mysqli_real_escape_string($conn, $_POST['txt_topic']) : '';
-    $message = isset($_POST['txt_message']) ? mysqli_real_escape_string($conn, $_POST['txt_message']) : '';
+    $pesan = isset($_POST['txt_message']) ? mysqli_real_escape_string($conn, $_POST['txt_message']) : '';
 
-    $insert = $conn->query("INSERT INTO tb_contact (name, email, subject, topic, message) VALUES ('$name', '$email', '$subject', '$topic', '$message')");
+    switch ($topic) {
+      case 2:
+        $topics = "Payroll Outsourcing";
+      case 3:
+        $topics = "HR Information System";
+      case 4:
+        $topics = "IT Security";
+      case 5:
+        $topics = "Learning Management System";
+      case 6:
+        $topics = "Other Business Process Outsourcing";
+      default :
+        $topics = "Payroll Administration";
+    }
+
+    $insert = $conn->query("INSERT INTO tb_contact (name, email, subject, topic, message) VALUES ('$name', '$email', '$subject', '$topics', '$pesan')");
 
     if ($insert) {
-      echo "<script>alert('Data berhasil dikirim');</script>";
+      // $sender_name = 'Web Master widyapresisisolusi.com';
+      // $sender_mail = 'webmaster@widyapresisisolusi.com';
+      // $mailto = 'jackyhau97@gmail.com';
+
+      // // if($jenisLayanan == 1){$mailto = 'jackyhau97@gmail.com';}
+      // // else if($jenisLayanan == 2){$mailto = 'phpexplode1997@gmail.com';}				
+      // // $cc = 'it.sibmotor@gmail.com';
+
+      // $subject = "[Notifikasi] Konsultasi pembelian dari pengunjung website www.sardanagroup.co.id";
+      // $message = "Berikut ini terlampir informasi konsultasi pembelian dari pengunjung website Anda.".PHP_EOL;
+      // $message .= "Nama : ".$name.PHP_EOL;
+      // $message .= "Email : ".$email.PHP_EOL;
+      // $message .= "Subject : ".$subject.PHP_EOL;
+      // $message .= "Topik : ".$topics.PHP_EOL;
+      // $message .= "Message : ".$pesan.PHP_EOL;
+
+      // $mail = new attach_mailer($sender_name, $sender_mail, $mailto, $cc = "", $bcc = "", $subject, $message);
+      // $mail->process_mail();
+
+      // the message
+      $msg = "First line of text\nSecond line of text";
+      
+      // use wordwrap() if lines are longer than 70 characters
+      $msg = wordwrap($msg,70);
+      
+      // send email
+      mail("jackyhau97@gmail.com","My subject",$msg);
+
+
+      echo "<script>alert('Terima kasih telah mengisi data anda. Pihak kami akan segera menghubungi Anda.');</script>";
     }
     else {
-      echo "<script>alert('Data gagal dikirim. Silahkan coba kembali.');</script>";
+      echo "<script>alert('Mohon maaf data gagal dikirim. Silahkan coba kembali.');</script>";
     }
   }
 ?>
@@ -56,7 +102,7 @@
       <div class="row">
         <div class="col-12 col-sm-7">
           <p>Please fill the contact form below :</p>
-          <form method="post" enctype="multipart/form-data">
+          <form method="post">
             <div class="mb-3">
               <label for="txt_name" class="form-label">Name</label>
               <input type="text" class="form-control" id="txt_name" name="txt_name" aria-describedby="name" placeholder="Enter your name...">
@@ -72,12 +118,12 @@
             <div class="mb-3">
               <label for="txt_topic" class="form-label">Topic</label>
               <select class="form-select" aria-label="Default select example" id="txt_topic" name="txt_topic">
-                <option value="Payroll Administration" selected>Payroll Administration</option>
-                <option value="Payroll Outsourcing">Payroll Outsourcing</option>
-                <option value="HR Information System">HR Information System</option>
-                <option value="IT Security">IT Security</option>
-                <option value="Learning Management System">Learning Management System</option>
-                <option value="Other Business Process Outsourcing">Other Business Process Outsourcing</option>
+                <option value="1" selected>Payroll Administration</option>
+                <option value="2">Payroll Outsourcing</option>
+                <option value="3">HR Information System</option>
+                <option value="4">IT Security</option>
+                <option value="5">Learning Management System</option>
+                <option value="6">Other Business Process Outsourcing</option>
               </select>
             </div>
             <div class="mb-3">

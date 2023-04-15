@@ -75,12 +75,12 @@
 			<li class="nav-item">
 				<a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 					<i class="fas fa-fw fa-home"></i>
-					<span>Home</span>
+					<span>Email For contact</span>
 				</a>
-				<div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Custom Contents:</h6>
-						<a class="collapse-item active" href="slider.php">Slider</a>
+						<a class="collapse-item" href="slider.php">Slider</a>
 						<a class="collapse-item" href="content.php">Content</a>
 					</div>
 				</div>
@@ -92,7 +92,7 @@
 					<i class="fas fa-fw fa-cog"></i>
 					<span>Contents</span>
 				</a>
-				<div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+				<div id="collapseThree" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Custom Contents:</h6>
 						<a class="collapse-item" href="about.php">About</a>
@@ -101,7 +101,7 @@
 						<a class="collapse-item" href="partners.php">Partners</a>
 						<a class="collapse-item" href="contact.php">Contact</a>
 						<a class="collapse-item" href="testimonial.php">Testimonial</a>
-						<a class="collapse-item" href="email.php">Email</a>
+						<a class="collapse-item active" href="email.php">Email</a>
 					</div>
 				</div>
 			</li>
@@ -124,7 +124,7 @@
 			</li>
 
 			<!-- Nav Item - Careers -->
-      <li class="nav-item">
+			<li class="nav-item">
 				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
 					<i class="fas fa-fw fa-newspaper"></i>
 					<span>Careers</span>
@@ -204,7 +204,7 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Home - Slider</h1>
+					<h1 class="h3 mb-2 text-gray-800">Email For Contact</h1>
 					<p class="mb-4">
 						<a target="_blank" href="https://widyapresisisolusi.com">widyapresisisolusi.com</a>.
 					</p>
@@ -212,18 +212,17 @@
 					<!-- DataTables Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3 d-flex justify-content-between">
-							<h4 class="m-0 font-weight-bold text-primary">Home</h4>
-							<button class="btn btn-success" onclick="checkAndClear()">Tambah</button>
+							<h4 class="m-0 font-weight-bold text-primary">Email For Contact</h4>
+							<!-- <button class="btn btn-success" onclick="checkAndClear()">Tambah</button> -->
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<table class="table table-bordered" id="slider-all" width="100%" cellspacing="0">
+								<table class="table table-bordered" id="email-all" width="100%" cellspacing="0">
 									<thead>
 										<tr>
 											<th>#</th>
-											<th>Nama</th>
-											<th>Urutan</th>
-											<th>Preview</th>
+											<th>Topic</th>
+											<th>Email</th>
 											<th></th>
 										</tr>
 									</thead>
@@ -233,7 +232,7 @@
 					</div>
 
 					<!-- Modal Tambah -->
-					<div id="modal_tambah" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+					<!-- <div id="modal_tambah" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -245,21 +244,12 @@
 										<div class="form-group">
 											<div class="row">
 												<div class="col-md-12">
-													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_nama">Nama</label>
-													<input class="form-control col-md-10 col-sm-8 col-xs-8 w-100" name="txt_nama" id="txt_nama" autofocus/>
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_username">Username</label>
+													<input class="form-control col-md-10 col-sm-8 col-xs-8 w-100" name="txt_username" id="txt_username" autofocus/>
 												</div>
-												<div class="col-md-12 mt-3">
-													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_urutan">Urutan</label>
-													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_urutan" id="txt_urutan" type="number" />
-												</div>
-												<div class="col-md-12 mt-3">
-													<label class="col-md-2 col-sm-2 col-xs-4 control-label">Image</label>
-													<input type="file" name="fil_upload_slider" id="fil_upload_slider" data-filename-placement="inside" onchange="resizeAndRead(this)">
-													<div class="col-md-8 col-sm-8 col-xs-8">
-														<div class="my-gallery">
-															<figure id="fil_upload_slider_card">No Image</figure>
-														</div>
-													</div>
+												<div class="col-md-12">
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_password">Password</label>
+													<input class="form-control col-md-10 col-sm-8 col-xs-8 w-100" name="txt_password" id="txt_password" type="password" />
 												</div>
 											</div>
 										</div>
@@ -271,7 +261,7 @@
 								</form>
 							</div>
 						</div>
-					</div>
+					</div> -->
         	<!-- Akhir Modal Tambah -->
 
 					<!-- Modal Edit -->
@@ -287,31 +277,13 @@
 										<div class="form-group">
 											<div class="row">
 												<div class="col-md-12">
-													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_nama_edit">Nama</label>
-													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_nama_edit" id="txt_nama_edit" autofocus/>
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_topic_edit">Topic</label>
+													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_topic_edit" id="txt_topic_edit" readonly/>
 													<input type="hidden" name="hid_id" id="hid_id">
 												</div>
-												<div class="col-md-12 mt-3">
-													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_urutan_edit">Urutan</label>
-													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_urutan_edit" id="txt_urutan_edit" type="number" />
-												</div>
-												<div class="col-md-12 mt-3 d-flex align-items-center">
-													<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-														<label class="control-label">Image</label>
-													</div>
-													<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-														<div class="my-gallery">
-															<figure id="fil_upload_slider_exist_card">No Image</figure>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-12 mt-3">
-													<input type="file" name="fil_upload_slider_edit" id="fil_upload_slider_edit" data-filename-placement="inside" onchange="resizeAndReadEdit(this)">
-													<div class="col-md-8 col-sm-8 col-xs-8">
-														<div class="my-gallery">
-															<figure id="fil_upload_slider_edit_card" class="figures">No Preview Available</figure>
-														</div>
-													</div>
+												<div class="col-md-12">
+													<label class="col-md-2 col-sm-2 col-xs-4 control-label" for="txt_email_edit">Email</label>
+													<input class="form-control col-md-12 col-sm-8 col-xs-8 w-100" name="txt_email_edit" id="txt_email_edit" type="text" autofocus />
 												</div>
 											</div>
 										</div>
@@ -401,13 +373,13 @@
 
 	<script>
 		$("#modal_tambah").on("shown.bs.modal", function () {
-			$("#txt_nama").focus();
+			$("#txt_username").focus();
 		});
 
 		$(document).ready(function() {
 			$.fn.dataTable.ext.errMode = 'none';
 	
-			const table = $('#slider-all').on('error.dt', function(e, settings, techNote, message) {
+			const table = $('#email-all').on('error.dt', function(e, settings, techNote, message) {
 	
 				if (techNote == 1)
 	
@@ -439,7 +411,7 @@
 	
 				"ajax": {
 	
-					"url": "json/data-slider.php",
+					"url": "json/data-email.php",
 	
 				}
 			});
@@ -472,19 +444,14 @@
 			return new Blob([uInt8Array], {type: contentType});
 		}
 
-		function clearForm() {
-			$("#txt_nama").val('');
-			$("#fil_upload_slider").val("");
-			$("#fil_upload_slider_preview").attr("src", "");
-			$("#fil_upload_slider_card").html('No Image');
-		}
+		// function clearForm() {
+		// 	$("#txt_username").val('');
+		// 	$("#txt_password").val('');
+		// }
 
 		function clearFormEdit() {
-			$("#txt_nama_edit").val('');
-			$("#fil_upload_slider_edit").val("");
-			$("#fil_upload_slider_exist_preview").attr("src", "");
-			$("#fil_upload_slider_edit_preview").attr("src", "");
-			$("#fil_upload_slider_edit_card").html('No Image');
+			$("#txt_topic_edit").val('');
+			$("#txt_email_edit").val('');
 		}
 
 		function checkAndClear() {
@@ -508,206 +475,77 @@
 			});
 		}
 
-		window.imageResize = { blob: null, url: null }
-		window.imageResizeEdit = { blob: null, url: null }
-
-		function resizeAndRead(input){
-			// Read
-			if (input.files && input.files[0]) {
-				const element = input.id;
-				const reader = new FileReader();
-
-				reader.onload = (e) => {
-					$(`#${element}_card`).html(
-						`<img class="file-card__image w-100" id="${element}_preview" src="${e.target.result}" />`
-					);
-				};
-				reader.readAsDataURL(input.files[0]);
-			}
-
-			// Resize
-			var file = event.target.files[0];
-
-			if(file.type.match(/image.*/)) {
-				var reader = new FileReader();
-				reader.onload = function (readerEvent) {
-					var image = new Image();
-					image.onload = function (imageEvent) {
-						var canvas = document.createElement('canvas'),
-							max_size = 1280,// TODO : pull max size from a site config
-							width = image.width,
-							height = image.height;
-						if (width > height) {
-							if (width > max_size) {
-								height *= max_size / width;
-								width = max_size;
-							}
-						} else {
-							if (height > max_size) {
-								width *= max_size / height;
-								height = max_size;
-							}
-						}
-						canvas.width = width;
-						canvas.height = height;
-						canvas.getContext('2d').drawImage(image, 0, 0, width, height);
-						var dataUrl = canvas.toDataURL('image/jpeg');
-						imageResize.url = dataUrl;
-						imageResize.blob = dataURLToBlob(dataUrl);
-						console.log(imageResize);
-					}
-					image.src = readerEvent.target.result;
-				}
-				reader.readAsDataURL(file);
-			}
-			else {
-				imageResize.url = 'not-an-image';
-				imageResize.blob = 'not-an-image';
-				alert('File bukan gambar! Mohon diganti');
-			}
-		};
-
-		function resizeAndReadEdit(input){
-			// Read
-			if (input.files && input.files[0]) {
-				const element = input.id;
-				const reader = new FileReader();
-
-				reader.onload = (e) => {
-					$(`#${element}_card`).html(
-						`<img class="file-card__image w-100" id="${element}_preview" src="${e.target.result}" />`
-					);
-				};
-				reader.readAsDataURL(input.files[0]);
-			}
-
-			// Resize
-			var file = event.target.files[0];
-
-			if(file.type.match(/image.*/)) {
-				var reader = new FileReader();
-				reader.onload = function (readerEvent) {
-					var image = new Image();
-					image.onload = function (imageEvent) {
-						var canvas = document.createElement('canvas'),
-							max_size = 1280,// TODO : pull max size from a site config
-							width = image.width,
-							height = image.height;
-						if (width > height) {
-							if (width > max_size) {
-								height *= max_size / width;
-								width = max_size;
-							}
-						} else {
-							if (height > max_size) {
-								width *= max_size / height;
-								height = max_size;
-							}
-						}
-						canvas.width = width;
-						canvas.height = height;
-						canvas.getContext('2d').drawImage(image, 0, 0, width, height);
-						var dataUrl = canvas.toDataURL('image/jpeg');
-						imageResizeEdit.url = dataUrl;
-						imageResizeEdit.blob = dataURLToBlob(dataUrl);
-						console.log(imageResizeEdit);
-					}
-					image.src = readerEvent.target.result;
-				}
-				reader.readAsDataURL(file);
-			}
-			else {
-				imageResizeEdit.url = 'not-an-image';
-				imageResizeEdit.blob = 'not-an-image';
-				alert('File bukan gambar! Mohon diganti');
-			}
-		};
-
-		function add() {
-			const formData = new FormData(document.getElementById("form_add"));
-			$("#btn_simpan").attr("disabled", true).html('<i class="fa fa-spin fa-spinner"></i> Processing ...');
+		// function add() {
+		// 	const formData = new FormData(document.getElementById("form_add"));
+		// 	$("#btn_simpan").attr("disabled", true).html('<i class="fa fa-spin fa-spinner"></i> Processing ...');
 			
-			if ($("#txt_nama").val() == ''){
-				alert('Harap mengisi nama!');
-				$("#btn_simpan").attr("disabled", false).html('Simpan');
-			}
-			if ($("#txt_urutan").val() == ''){
-				alert('Harap mengisi urutan!');
-				$("#btn_simpan").attr("disabled", false).html('Simpan');
-			}
-			else if (imageResize.blob == null || imageResize.url == null) {
-				alert('Anda belum pilih gambar!');
-				$("#btn_simpan").attr("disabled", false).html('Simpan');
-			}
-			else if (imageResize.url == 'not-an-image' || imageResize.blob == 'not-an-image') {
-				alert('Yang anda upload bukan gambar!');
-				$("#btn_simpan").attr("disabled", false).html('Simpan');
-			}
-			else {
-				formData.append('image_data', imageResize.blob);
-				$.ajax({
-					type: "post",
-					data: formData,
-					url: "addSlider.php",
-					processData: false,
-					contentType: false,
-					success: (data) => {
-						let res = $.parseJSON(data);
-						if (res.result == 1) {
-							alert(res.message);
-							$("#slider-all").DataTable().ajax.reload();
-							$("#modal_tambah").modal("hide");
-							$("#modal_tambah").attr("data-dismiss", "modal");
-						}
-						else {
-							alert(res.message);
-							$("#slider-all").DataTable().ajax.reload();
-						}
-						$("#btn_simpan").attr("disabled", false).html('Simpan');
-					},
-					error: (err) => {
-						alert("Terjadi kesalahan saat menyimpan data. Silahkan coba lagi.");
-						console.log(err);
-					},
-				});
-			}
-		}
+		// 	if ($("#txt_username").val() == ''){
+		// 		alert('Harap mengisi username!');
+		// 		$("#btn_simpan").attr("disabled", false).html('Simpan');
+		// 	}
+		// 	else if ($("#txt_password").val() == ''){
+		// 		alert('Harap mengisi password!');
+		// 		$("#btn_simpan").attr("disabled", false).html('Simpan');
+		// 	}
+		// 	else {
+		// 		$.ajax({
+		// 			type: "post",
+		// 			data: formData,
+		// 			url: "addEmail.php",
+		// 			processData: false,
+		// 			contentType: false,
+		// 			success: (data) => {
+		// 				let res = $.parseJSON(data);
+		// 				if (res.result == 1) {
+		// 					alert(res.message);
+		// 					$("#email-all").DataTable().ajax.reload();
+		// 					$("#modal_tambah").modal("hide");
+		// 					$("#modal_tambah").attr("data-dismiss", "modal");
+		// 				}
+		// 				else {
+		// 					alert(res.message);
+		// 					$("#email-all").DataTable().ajax.reload();
+		// 				}
+		// 				$("#btn_simpan").attr("disabled", false).html('Simpan');
+		// 			},
+		// 			error: (err) => {
+		// 				alert("Terjadi kesalahan saat menyimpan data. Silahkan coba lagi.");
+		// 				console.log(err);
+		// 			},
+		// 		});
+		// 	}
+		// }
 
 		function edit() {
 			const formDataEdit = new FormData(document.getElementById("form_edit"));
 			$("#btn_simpan_edit").attr("disabled", true).html('<i class="fa fa-spin fa-spinner"></i> Processing ...');
 			
-			if ($("#txt_nama_edit").val() == ''){
-				alert('Harap mengisi nama!');
-				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
-			}
-			else if ($("#txt_urutan_edit").val() == ''){
-				alert('Harap mengisi urutan!');
-				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
-			}
-			else if (imageResizeEdit.url == 'not-an-image' || imageResizeEdit.blob == 'not-an-image') {
-				alert('Yang anda upload bukan gambar!');
+			// if ($("#txt_topic_edit").val() == ''){
+			// 	alert('Harap mengisi topic!');
+			// 	$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
+			// }
+			if ($("#txt_email_edit").val() == ''){
+				alert('Harap mengisi email!');
 				$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
 			}
 			else {
-				formDataEdit.append('image_data_edit', imageResizeEdit.blob);
 				$.ajax({
 					type: "post",
 					data: formDataEdit,
-					url: "editSlider.php",
+					url: "editEmail.php",
 					processData: false,
 					contentType: false,
 					success: (data) => {
 						let res = $.parseJSON(data);
 						if (res.result == 1) {
 							alert(res.message);
-							$("#slider-all").DataTable().ajax.reload();
+							$("#email-all").DataTable().ajax.reload();
 							$("#modal_edit").modal("hide");
 							$("#modal_edit").attr("data-dismiss", "modal");
 						}
 						else {
 							alert(res.message);
-							$("#slider-all").DataTable().ajax.reload();
+							$("#email-all").DataTable().ajax.reload();
 						}
 						$("#btn_simpan_edit").attr("disabled", false).html('Simpan');
 					},
@@ -719,65 +557,57 @@
 			}
 		}
 
-		$(".my-gallery").on("click", function () {
-			const image = new Image();
-			const source = $(this).find("img").attr("src");
+		// $(".my-gallery").on("click", function () {
+		// 	const image = new Image();
+		// 	const source = $(this).find("img").attr("src");
 
-			if (source) {
-				image.src = source;
-				const viewer = new Viewer(image, {
-					hidden: function () {
-						viewer.destroy();
-					},
-				});
+		// 	if (source) {
+		// 		image.src = source;
+		// 		const viewer = new Viewer(image, {
+		// 			hidden: function () {
+		// 				viewer.destroy();
+		// 			},
+		// 		});
 
-				viewer.show();
-			}
-		});
+		// 		viewer.show();
+		// 	}
+		// });
 
-		lightbox.option({
-			showImageNumberLabel: false,
-			wrapAround: false,
-		});
+		// function initHapus(id) {
+		// 	const conf = confirm(`Yakin untuk menghapus user ini?`);
+		// 	if (conf) {
+		// 		$.ajax({
+		// 			type: "post",
+		// 			url: "delUsers.php",
+		// 			data: { id },
+		// 			success: (data) => {
+		// 				const res = $.parseJSON(data);
 
-		function initHapus(id) {
-			const conf = confirm(`Yakin untuk menghapus gambar ini?`);
-			if (conf) {
-				$.ajax({
-					type: "post",
-					url: "delSlider.php",
-					data: { id },
-					success: (data) => {
-						const res = $.parseJSON(data);
-
-						if (res.success) {
-							alert('Gambar berhasil dihapus.');
-							$("#slider-all").DataTable().ajax.reload();
-						}
-						else {
-							alert('Gambar gagal dihapus.');
-							$("#slider-all").DataTable().ajax.reload();
-						}
-					}
-				});
-			}
-		}
+		// 				if (res.success) {
+		// 					alert('User berhasil dihapus.');
+		// 					$("#email-all").DataTable().ajax.reload();
+		// 				}
+		// 				else {
+		// 					alert('User gagal dihapus.');
+		// 					$("#email-all").DataTable().ajax.reload();
+		// 				}
+		// 			}
+		// 		});
+		// 	}
+		// }
 
 		function show(id) {
 			clearFormEdit();
 			$.ajax({
 				type: "post",
 				data: {id},
-				url: "showSlider.php",
+				url: "showEmail.php",
 				success: (data) => {
 					let res = JSON.parse(data);
 					if (res.success == 1) {
-						$("#txt_nama_edit").val(res.data[0].nama);
-						$("#txt_urutan_edit").val(res.data[0].urutan);
+						$("#txt_topic_edit").val(res.data[0].deskripsi);
+						$("#txt_email_edit").val(res.data[0].email);
 						$("#hid_id").val(res.data[0].hid_id);
-						$('#fil_upload_slider_exist_card').html(
-						`<img class="file-card__image w-100" id="fil_upload_content_exist_preview" src="${mainURL}slider/${res.data[0].path}" />`
-						);
 					}
 					else {
 						alert("Tampil data error! Please Contact Administrator!");

@@ -1,5 +1,7 @@
-<?php 
+<?php
+  header("Access-Control-Allow-Origin:*");
   require_once '../config.php';
+  require_once '../assets/class/attach_mailer_class.php';
   $rand = rand(1,1000);
 
   if (isset($_POST["btn_submit"])) {
@@ -7,15 +9,59 @@
     $email = isset($_POST['txt_email']) ? mysqli_real_escape_string($conn, $_POST['txt_email']) : '';
     $subject = isset($_POST['txt_subject']) ? mysqli_real_escape_string($conn, $_POST['txt_subject']) : '';
     $topic = isset($_POST['txt_topic']) ? mysqli_real_escape_string($conn, $_POST['txt_topic']) : '';
-    $message = isset($_POST['txt_message']) ? mysqli_real_escape_string($conn, $_POST['txt_message']) : '';
+    $pesan = isset($_POST['txt_message']) ? mysqli_real_escape_string($conn, $_POST['txt_message']) : '';
 
-    $insert = $conn->query("INSERT INTO tb_contact (name, email, subject, topic, message) VALUES ('$name', '$email', '$subject', '$topic', '$message')");
+    switch ($topic) {
+      case 2:
+        $topics = "Outsourcing Penggajian";
+      case 3:
+        $topics = "Sistem Informasi SDM";
+      case 4:
+        $topics = "Keamanan IT";
+      case 5:
+        $topics = "Sistem Manajemen Pembelajaran";
+      case 6:
+        $topics = "Pengalihdayaan Proses Bisnis Lainnya";
+      default :
+        $topics = "Administrasi Penggajian";
+    }
+
+    $insert = $conn->query("INSERT INTO tb_contact (name, email, subject, topic, message) VALUES ('$name', '$email', '$subject', '$topics', '$pesan')");
 
     if ($insert) {
-      echo "<script>alert('Data berhasil dikirim');</script>";
+      // $sender_name = 'Web Master widyapresisisolusi.com';
+      // $sender_mail = 'webmaster@widyapresisisolusi.com';
+      // $mailto = 'jackyhau97@gmail.com';
+
+      // // if($jenisLayanan == 1){$mailto = 'jackyhau97@gmail.com';}
+      // // else if($jenisLayanan == 2){$mailto = 'phpexplode1997@gmail.com';}				
+      // // $cc = 'it.sibmotor@gmail.com';
+
+      // $subject = "[Notifikasi] Konsultasi pembelian dari pengunjung website www.sardanagroup.co.id";
+      // $message = "Berikut ini terlampir informasi konsultasi pembelian dari pengunjung website Anda.".PHP_EOL;
+      // $message .= "Nama : ".$name.PHP_EOL;
+      // $message .= "Email : ".$email.PHP_EOL;
+      // $message .= "Subject : ".$subject.PHP_EOL;
+      // $message .= "Topik : ".$topics.PHP_EOL;
+      // $message .= "Message : ".$pesan.PHP_EOL;
+
+      // $mail = new attach_mailer($sender_name, $sender_mail, $mailto, $cc = "", $bcc = "", $subject, $message);
+      // $mail->process_mail();
+
+      // the message
+      $msg = "First line of text\nSecond line of text";
+      
+      // use wordwrap() if lines are longer than 70 characters
+      $msg = wordwrap($msg,70);
+      
+      // send email
+      mail("jackyhau97@gmail.com","My subject",$msg);
+
+
+      echo "<script>alert('Terima kasih telah mengisi data anda. Pihak kami akan segera menghubungi Anda.');</script>";
     }
     else {
-      echo "<script>alert('Data gagal dikirim. Silahkan coba kembali.');</script>";
+      echo "<script>alert('Mohon maaf data gagal dikirim. Silahkan coba kembali.');</script>";
     }
   }
 ?>
@@ -71,12 +117,12 @@
             <div class="mb-3">
               <label for="txt_topic" class="form-label">Topik</label>
               <select class="form-select" aria-label="Default select example" id="txt_topic" name="txt_topic">
-                <option value="Payroll Administration" selected>Administrasi penggajian</option>
-                <option value="Payroll Outsourcing">Outsourcing Penggajian</option>
-                <option value="HR Information System">Sistem Informasi SDM</option>
-                <option value="IT Security">Keamanan TI</option>
-                <option value="Learning Management System">Sistem Manajemen Pembelajaran</option>
-                <option value="Other Business Process Outsourcing">Pengalihdayaan Proses Bisnis Lainnya</option>
+                <option value="1" selected>Administrasi penggajian</option>
+                <option value="2">Outsourcing Penggajian</option>
+                <option value="3">Sistem Informasi SDM</option>
+                <option value="4">Keamanan TI</option>
+                <option value="5">Sistem Manajemen Pembelajaran</option>
+                <option value="6">Pengalihdayaan Proses Bisnis Lainnya</option>
               </select>
             </div>
             <div class="mb-3">
