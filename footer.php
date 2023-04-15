@@ -27,7 +27,8 @@
             <div class="swiper-slide">
               <img src="<?=SITE_TESTIMONIAL.$row['path']?>" alt="Testimoni" class="img-testimonial">
               <p class="fw-bold"><?=$row["nama"]?></p>
-              <p class="text-justify deskripsi-testimoni"><?=$row["testimoni"]?></p>
+              <p class="text-justify deskripsi-testimoni"><?=substr($row["testimoni"],0,250)?></p>
+              <a href="<?=BASE_URL.DS.'clients/'?>" class="btn btn-primary mt-3">Read more</a>
             </div>
           <?php
             endwhile;
