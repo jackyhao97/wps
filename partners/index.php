@@ -17,7 +17,7 @@
     require_once '../navbar-partners.php';
   ?>
   <section class="wps-banner" id="banner">
-    <img src="<?=BASE_URL.DS.'assets/img/partners/partners.PNG'?>" alt="Partners" class="w-100">
+    <img src="<?=BASE_URL.DS.'assets/img/partners/partners.png'?>" alt="Partners" class="w-100">
   </section>
   <section class="partners mt-5 mb-5" id="partners">
     <div class="container">

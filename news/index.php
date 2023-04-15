@@ -25,7 +25,7 @@
       <img src="<?=BASE_URL.DS.'admin/img/banner/'.$rowBanner['path']?>" alt="Banner" class="w-100">
     </div>
     <div class="container berita mt-5">
-      <span class="news nc-1"><i class="fas fa-caret-right caret-custom"></i> <h5 class="text-uppercase d-inline-block fw-bold"> Berita Terpopuler</h5></span>
+      <span class="news nc-1"><i class="fas fa-caret-right caret-custom"></i> <h5 class="text-uppercase d-inline-block fw-bold"> Popular News</h5></span>
       <div class="row mt-3">
       <?php
         $tampil = $conn->query("SELECT * FROM tb_news ORDER BY viewed DESC LIMIT 0, 4");
@@ -52,7 +52,7 @@
         <div class="row fw-bold text-right overflow-auto">
           <div class="col-12">
             <a href="javascript:void(0)" id="semua" class="category">
-              <h5 class="fw-bold">BERITA LAINNYA</h5>
+              <h5 class="fw-bold">OTHER NEWS</h5>
             </a>
           </div>
           <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>

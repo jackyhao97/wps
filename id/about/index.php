@@ -17,7 +17,7 @@
     require_once '../navbar-about.php';
   ?>
   <section class="wps-banner" id="banner">
-    <img src="<?=BASE_URL.DS.'assets/img/about/about-us.jpg'?>" alt="About Us" class="w-100">
+    <img src="<?=BASE_URL.DS.'assets/img/about/about-us.png'?>" alt="About Us" class="w-100">
   </section>
   <?php 
     $select = $conn->query("SELECT * FROM tb_about ORDER BY id DESC LIMIT 0, 1");

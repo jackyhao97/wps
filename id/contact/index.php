@@ -48,7 +48,7 @@
     require_once '../navbar-contact.php';
   ?>
   <section class="wps-banner" id="banner">
-    <img src="<?=BASE_URL.DS.'assets/img/contact/contact.jpg'?>" alt="Contact Us" class="w-100">
+    <img src="<?=BASE_URL.DS.'assets/img/contact/contact-us.png'?>" alt="Contact Us" class="w-100">
   </section>
   <section class="contact mt-5 mb-5" id="contact">
     <div class="container">
@@ -90,7 +90,7 @@
           <h3 class="fw-bold mb-5">ALAMAT</h3>
           <a href="https://www.google.com/maps/place/PT+Widya+Presisi+Solusi/@-6.183404,106.8144006,17z/data=!3m1!4b1!4m6!3m5!1s0x2e69f68268d40057:0xc6f45229584d9390!8m2!3d-6.1834093!4d106.8165893!16s%2Fg%2F11b5wkhprr" target="_blank" class="text-decoration-none"><i class="fa-solid fa-location-dot me-2 "></i> The Boulevard - Mezzanine floor - A Jl.Fachrudin No.5. Jakarta Pusat, 10250. Indonesia </a><br /><br />
           <a href="tel:+622131922727" target="_blank" class="text-decoration-none"><i class="fa-solid fa-phone me-2"></i> Phone: +6221 3192 2727/ 22794727 </a><br /><br />
-          <a href="#" class="text-decoration-none"><i class="fa-solid fa-fax me-2"></i> Fax: +6221315 2227 </a><br /><br />
+          <!-- <a href="#" class="text-decoration-none"><i class="fa-solid fa-fax me-2"></i> Fax: +6221315 2227 </a><br /><br /> -->
           <a href="mailto:info@widyapresisisolusi.com" target="_blank" class="text-decoration-none"><i class="fa-solid fa-envelope me-2"></i> Email: info@widyapresisisolusi.com</a><br /><br />
         </div>
       </div>

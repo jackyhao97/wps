@@ -34,7 +34,7 @@
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              <h4 class="fw-bold">Untuk WPS</h4>
+              <h4 class="fw-bold">Pekerjaan tersedia di Widya Presisi Solusi</h4>
             </button>
           </h2>
         <?php 
@@ -58,7 +58,7 @@
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingTwo">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-              <h4 class="fw-bold">Untuk Klien</h4>
+              <h4 class="fw-bold">Pekerjaan tersedia di Klien</h4>
             </button>
           </h2>
         <?php 
