@@ -1,64 +1,81 @@
-<?php 
-  header("Access-Control-Allow-Origin:*");
+<?php
   require_once '../config.php';
-  require_once '../assets/class/attach_mailer_class.php';
+  require_once '../assets/class/class.phpmailer.php';
   $rand = rand(1,1000);
 
   if (isset($_POST["btn_submit"])) {
     $name = isset($_POST['txt_name']) ? mysqli_real_escape_string($conn, $_POST['txt_name']) : '';
     $email = isset($_POST['txt_email']) ? mysqli_real_escape_string($conn, $_POST['txt_email']) : '';
     $subject = isset($_POST['txt_subject']) ? mysqli_real_escape_string($conn, $_POST['txt_subject']) : '';
-    $topic = isset($_POST['txt_topic']) ? mysqli_real_escape_string($conn, $_POST['txt_topic']) : '';
+    $topic = isset($_POST['txt_topic']) ? $_POST['txt_topic'] : '';
     $pesan = isset($_POST['txt_message']) ? mysqli_real_escape_string($conn, $_POST['txt_message']) : '';
 
     switch ($topic) {
+      case 1 :
+        $topics = "Payroll Administration";
+        break;
       case 2:
         $topics = "Payroll Outsourcing";
+        break;
       case 3:
         $topics = "HR Information System";
+        break;
       case 4:
         $topics = "IT Security";
+        break;
       case 5:
         $topics = "Learning Management System";
+        break;
       case 6:
         $topics = "Other Business Process Outsourcing";
-      default :
-        $topics = "Payroll Administration";
+        break;
     }
 
     $insert = $conn->query("INSERT INTO tb_contact (name, email, subject, topic, message) VALUES ('$name', '$email', '$subject', '$topics', '$pesan')");
+    $select = $conn->query("SELECT email FROM tb_email_contact WHERE topic = $topic");
+    $rowSelect = $select->fetch_array(MYSQLI_ASSOC);
 
     if ($insert) {
-      // $sender_name = 'Web Master widyapresisisolusi.com';
-      // $sender_mail = 'webmaster@widyapresisisolusi.com';
-      // $mailto = 'jackyhau97@gmail.com';
+      $mail = new PHPMailer;
 
-      // // if($jenisLayanan == 1){$mailto = 'jackyhau97@gmail.com';}
-      // // else if($jenisLayanan == 2){$mailto = 'phpexplode1997@gmail.com';}				
-      // // $cc = 'it.sibmotor@gmail.com';
+      $mail->IsSMTP();
 
-      // $subject = "[Notifikasi] Konsultasi pembelian dari pengunjung website www.sardanagroup.co.id";
-      // $message = "Berikut ini terlampir informasi konsultasi pembelian dari pengunjung website Anda.".PHP_EOL;
-      // $message .= "Nama : ".$name.PHP_EOL;
-      // $message .= "Email : ".$email.PHP_EOL;
-      // $message .= "Subject : ".$subject.PHP_EOL;
-      // $message .= "Topik : ".$topics.PHP_EOL;
-      // $message .= "Message : ".$pesan.PHP_EOL;
+      $mail->SMTPSecure = 'ssl';
 
-      // $mail = new attach_mailer($sender_name, $sender_mail, $mailto, $cc = "", $bcc = "", $subject, $message);
-      // $mail->process_mail();
-
-      // the message
-      $msg = "First line of text\nSecond line of text";
+      $mail->Host = "smtp.gmail.com"; //hostname masing-masing provider email untuk email pengirimnya (bukan email tujuan)
       
-      // use wordwrap() if lines are longer than 70 characters
-      $msg = wordwrap($msg,70);
-      
-      // send email
-      mail("jackyhau97@gmail.com","My subject",$msg);
+      $mail->SMTPDebug  = 0; // 0 artinya log dihilangkan dari screen
+      $mail->Port = 465;
+      $mail->SMTPAuth = true;
 
+      $mail->Timeout = 60; // timeout pengiriman (dalam detik)
+      $mail->SMTPKeepAlive = true; 
 
-      echo "<script>alert('Terima kasih telah mengisi data anda. Pihak kami akan segera menghubungi Anda.');</script>";
+      $mail->Username = "phpexplode1997@gmail.com"; //user email
+      $mail->Password = "lisqkeikwkqfhbyj"; //password email
+      $mail->SetFrom("phpexplode1997@gmail.com","Widya Presisi Solusi"); //set email pengirim
+      $mail->Subject = "Message from contact us"; //subyek email
+      $mail->AddAddress($rowSelect['email'], "Nama penerima yang muncul"); //tujuan email
+
+      $body = "The following are website visitors who ask via the Contact Us page :";
+      $body .= "<br>";
+      $body .= "<br>";
+      $body .= "Name : " . $name;
+      $body .= "<br>";
+      $body .= "Email : " . $email;
+      $body .= "<br>";
+      $body .= "Subject : " . $subject;
+      $body .= "<br>";
+      $body .= "Topic : " . $topics;
+      $body .= "<br>";
+      $body .= "Message : " . $pesan;
+      $body .= "<br>";
+      $body .= "Entry Date : " . date("d-m-Y H:i:s");
+
+      $mail->MsgHTML($body); // konten email
+
+      if($mail->Send()) echo "<script>alert('Terima kasih telah mengisi data anda. Pihak kami akan segera menghubungi Anda.');</script>";
+      else echo "<script>alert('Email gagal dikirim.');</script>";
     }
     else {
       echo "<script>alert('Mohon maaf data gagal dikirim. Silahkan coba kembali.');</script>";
