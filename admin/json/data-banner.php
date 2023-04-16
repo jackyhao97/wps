@@ -29,8 +29,8 @@ function ShowImages($data, $id) {
 
 function BuildAction($data) {
   $component = '<a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_edit" onclick="show('.$data.')" title="Edit"><i class="fa fa-edit"></i></a>';
-  $component .= "<br />";
-  $component .= '<a class="btn btn-sm btn-danger mt-1" onclick="initHapus('.$data.')" title="hapus"><i class="fa fa-trash"></i></a>';
+  // $component .= "<br />";
+  // $component .= '<a class="btn btn-sm btn-danger mt-1" onclick="initHapus('.$data.')" title="hapus"><i class="fa fa-trash"></i></a>';
 
   return $component;
 }
@@ -38,7 +38,7 @@ function BuildAction($data) {
 
 $table = <<<EOT
   (
-    SELECT `id`, `path` FROM `tb_banner`
+    SELECT `id`, `category`, `path` FROM `tb_banner`
   ) temp 
   EOT;
 
@@ -66,16 +66,17 @@ $columns = array(
     }
 
   ),
+  array('db' => 'category', 'dt' => 1),
   array(
     'db' => 'path', 
-    'dt' => 1,
+    'dt' => 2,
     'formatter' => function($d, $row) use ($func_apply_2) {
       return $func_apply_2($d, $row[0]);
     }
   ),
   array(
     'db' => 'id', 
-    'dt' => 2,
+    'dt' => 3,
     'formatter' => function($d, $row) use ($func_apply_3) {
       return $func_apply_3($d);
     }

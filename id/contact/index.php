@@ -111,7 +111,11 @@
     require_once '../navbar-contact.php';
   ?>
   <section class="wps-banner" id="banner">
-    <img src="<?=BASE_URL.DS.'assets/img/contact/contact-us.png'?>" alt="Contact Us" class="w-100">
+    <?php
+      $banner = $conn->query("SELECT path FROM tb_banner WHERE category = 'contact'");
+      $rowBanner = $banner->fetch_array();
+    ?>
+    <img src="<?=BASE_URL.DS.'admin/img/banner/'.$rowBanner['path']?>" alt="Banner" class="w-100">
   </section>
   <section class="contact mt-5 mb-5" id="contact">
     <div class="container">

@@ -17,7 +17,11 @@
     require_once '../navbar-career.php';
   ?>
   <section class="wps-banner" id="banner">
-    <img src="<?=BASE_URL.DS.'assets/img/career/career.jpg'?>" alt="Career" class="w-100">
+    <?php
+      $banner = $conn->query("SELECT path FROM tb_banner WHERE category = 'career'");
+      $rowBanner = $banner->fetch_array();
+    ?>
+    <img src="<?=BASE_URL.DS.'admin/img/banner/'.$rowBanner['path']?>" alt="Banner" class="w-100">
   </section>
   <main>
     <div class="container mt-5 mb-5">

@@ -92,6 +92,13 @@
 				</div>
 			</li>
 
+			<!-- Nav Item - Banner -->
+			<li class="nav-item">
+        <a class="nav-link" href="banner.php">
+          <i class="fas fa-fw fa-newspaper"></i>
+          <span>Banner</span></a>
+      </li>
+
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item">
 				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
@@ -121,7 +128,7 @@
 				<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">DETAIL NEWS</h6>
-						<a class="collapse-item" href="banner.php">Banner</a>
+						<!-- <a class="collapse-item" href="banner.php">Banner</a> -->
 						<!-- <a class="collapse-item" href="category.php">Category</a> -->
 						<a class="collapse-item" href="news.php">News</a>
 						<a class="collapse-item" href="imagemanager.php">Image Manager</a>

@@ -17,7 +17,11 @@
     require_once '../navbar-about.php';
   ?>
   <section class="wps-banner" id="banner">
-    <img src="<?=BASE_URL.DS.'assets/img/about/about-us.png'?>" alt="About Us" class="w-100">
+    <?php
+      $banner = $conn->query("SELECT path FROM tb_banner WHERE category = 'about'");
+      $rowBanner = $banner->fetch_array();
+    ?>
+    <img src="<?=BASE_URL.DS.'admin/img/banner/'.$rowBanner['path']?>" alt="Banner" class="w-100">
   </section>
   <?php 
     $select = $conn->query("SELECT * FROM tb_about ORDER BY id DESC LIMIT 0, 1");

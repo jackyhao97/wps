@@ -90,18 +90,25 @@ if (isset($_POST['simpan'])) {
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item">
-				<a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-					<i class="fas fa-fw fa-cog"></i>
+				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+					<i class="fas fa-fw fa-home"></i>
 					<span>Home</span>
 				</a>
-				<div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Custom Contents:</h6>
-						<a class="collapse-item active" href="slider.php">Slider</a>
+						<a class="collapse-item" href="slider.php">Slider</a>
 						<a class="collapse-item" href="content.php">Content</a>
 					</div>
 				</div>
 			</li>
+
+			<!-- Nav Item - Banner -->
+			<li class="nav-item">
+        <a class="nav-link" href="banner.php">
+          <i class="fas fa-fw fa-newspaper"></i>
+          <span>Banner</span></a>
+      </li>
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item">
@@ -117,8 +124,8 @@ if (isset($_POST['simpan'])) {
 						<a class="collapse-item" href="clients.php">Clients</a>
 						<a class="collapse-item" href="partners.php">Partners</a>
 						<a class="collapse-item" href="contact.php">Contact</a>
-						<a class="collapse-item" href="career.php">Career</a>
 						<a class="collapse-item" href="testimonial.php">Testimonial</a>
+						<a class="collapse-item" href="email.php">Email</a>
 					</div>
 				</div>
 			</li>
@@ -126,18 +133,41 @@ if (isset($_POST['simpan'])) {
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item">
 				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-					<i class="fas fa-fw fa-cog"></i>
+					<i class="fas fa-fw fa-newspaper"></i>
 					<span>News</span>
 				</a>
 				<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">DETAIL NEWS</h6>
-						<a class="collapse-item" href="category.php">Category</a>
+						<!-- <a class="collapse-item" href="banner.php">Banner</a> -->
+						<!-- <a class="collapse-item" href="category.php">Category</a> -->
 						<a class="collapse-item" href="news.php">News</a>
 						<a class="collapse-item" href="imagemanager.php">Image Manager</a>
 					</div>
 				</div>
 			</li>
+
+			<!-- Nav Item - Careers -->
+      <li class="nav-item">
+				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+					<i class="fas fa-fw fa-newspaper"></i>
+					<span>Careers</span>
+				</a>
+				<div id="collapseFive" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Detail Careers</h6>
+						<a class="collapse-item" href="career.php">For WPS</a>
+						<a class="collapse-item" href="careerClients.php">For Clients</a>
+					</div>
+				</div>
+      </li>
+
+			<!-- Nav Item - Users -->
+      <li class="nav-item">
+        <a class="nav-link" href="users.php">
+          <i class="fas fa-fw fa-user"></i>
+          <span>Users</span></a>
+      </li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">

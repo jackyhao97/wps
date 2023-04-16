@@ -19,7 +19,7 @@
   <section class="wps-banner" id="banner">
     <div class="container">
       <?php
-        $banner = $conn->query("SELECT path FROM tb_banner ORDER BY id DESC");
+        $banner = $conn->query("SELECT path FROM tb_banner WHERE category = 'news'");
         $rowBanner = $banner->fetch_array();
       ?>
       <img src="<?=BASE_URL.DS.'admin/img/banner/'.$rowBanner['path']?>" alt="Banner" class="w-100">

@@ -73,7 +73,7 @@
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item">
-				<a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 					<i class="fas fa-fw fa-home"></i>
 					<span>Home</span>
 				</a>
@@ -85,6 +85,13 @@
 					</div>
 				</div>
 			</li>
+
+			<!-- Nav Item - Banner -->
+			<li class="nav-item">
+        <a class="nav-link active" href="banner.php">
+          <i class="fas fa-fw fa-newspaper"></i>
+          <span>Banner</span></a>
+      </li>
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item">
@@ -112,10 +119,10 @@
 					<i class="fas fa-fw fa-newspaper"></i>
 					<span>News</span>
 				</a>
-				<div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+				<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">DETAIL NEWS</h6>
-						<a class="collapse-item active" href="banner.php">Banner</a>
+						<!-- <a class="collapse-item" href="banner.php">Banner</a> -->
 						<!-- <a class="collapse-item" href="category.php">Category</a> -->
 						<a class="collapse-item" href="news.php">News</a>
 						<a class="collapse-item" href="imagemanager.php">Image Manager</a>
@@ -204,7 +211,7 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">News - Banner</h1>
+					<h1 class="h3 mb-2 text-gray-800">Banner</h1>
 					<p class="mb-4">
 						<a target="_blank" href="https://widyapresisisolusi.com">widyapresisisolusi.com</a>.
 					</p>
@@ -212,8 +219,8 @@
 					<!-- DataTables Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3 d-flex justify-content-between">
-							<h4 class="m-0 font-weight-bold text-primary">Home</h4>
-							<button class="btn btn-success" onclick="checkAndClear()">Tambah</button>
+							<h4 class="m-0 font-weight-bold text-primary">Banner</h4>
+							<!-- <button class="btn btn-success" onclick="checkAndClear()">Tambah</button> -->
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
@@ -221,6 +228,7 @@
 									<thead>
 										<tr>
 											<th>#</th>
+											<th>Category</th>
 											<th>Preview</th>
 											<th></th>
 										</tr>
@@ -231,7 +239,7 @@
 					</div>
 
 					<!-- Modal Tambah -->
-					<div id="modal_tambah" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+					<!-- <div id="modal_tambah" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -261,7 +269,7 @@
 								</form>
 							</div>
 						</div>
-					</div>
+					</div> -->
         	<!-- Akhir Modal Tambah -->
 
 					<!-- Modal Edit -->
@@ -454,11 +462,11 @@
 			return new Blob([uInt8Array], {type: contentType});
 		}
 
-		function clearForm() {
-			$("#fil_upload_banner").val("");
-			$("#fil_upload_banner_preview").attr("src", "");
-			$("#fil_upload_banner_card").html('No Image');
-		}
+		// function clearForm() {
+		// 	$("#fil_upload_banner").val("");
+		// 	$("#fil_upload_banner_preview").attr("src", "");
+		// 	$("#fil_upload_banner_card").html('No Image');
+		// }
 
 		function clearFormEdit() {
 			$("#fil_upload_banner_edit").val("");
@@ -467,84 +475,84 @@
 			$("#fil_upload_banner_edit_card").html('No Image');
 		}
 
-		function checkAndClear() {
-			$.ajax({
-				type: "post",
-				url: "checkSession.php",
-				success: (data) => {
-					let res = JSON.parse(data);
-					if (res.result == 1) {
-						clearForm();
-						$("#modal_tambah").modal('show');
-					}
-					else {
-						window.location = './login.php';
-					}
-				},
-				error: (err) => {
-					alert("Terjadi kesalahan saat menampilkan modal. Silahkan coba lagi.");
-					console.log(err);
-				},
-			});
-		}
+		// function checkAndClear() {
+		// 	$.ajax({
+		// 		type: "post",
+		// 		url: "checkSession.php",
+		// 		success: (data) => {
+		// 			let res = JSON.parse(data);
+		// 			if (res.result == 1) {
+		// 				clearForm();
+		// 				$("#modal_tambah").modal('show');
+		// 			}
+		// 			else {
+		// 				window.location = './login.php';
+		// 			}
+		// 		},
+		// 		error: (err) => {
+		// 			alert("Terjadi kesalahan saat menampilkan modal. Silahkan coba lagi.");
+		// 			console.log(err);
+		// 		},
+		// 	});
+		// }
 
-		window.imageResize = { blob: null, url: null }
+		// window.imageResize = { blob: null, url: null }
 		window.imageResizeEdit = { blob: null, url: null }
 
-		function resizeAndRead(input){
-			// Read
-			if (input.files && input.files[0]) {
-				const element = input.id;
-				const reader = new FileReader();
+		// function resizeAndRead(input){
+		// 	// Read
+		// 	if (input.files && input.files[0]) {
+		// 		const element = input.id;
+		// 		const reader = new FileReader();
 
-				reader.onload = (e) => {
-					$(`#${element}_card`).html(
-						`<img class="file-card__image w-100" id="${element}_preview" src="${e.target.result}" />`
-					);
-				};
-				reader.readAsDataURL(input.files[0]);
-			}
+		// 		reader.onload = (e) => {
+		// 			$(`#${element}_card`).html(
+		// 				`<img class="file-card__image w-100" id="${element}_preview" src="${e.target.result}" />`
+		// 			);
+		// 		};
+		// 		reader.readAsDataURL(input.files[0]);
+		// 	}
 
-			// Resize
-			var file = event.target.files[0];
+		// 	// Resize
+		// 	var file = event.target.files[0];
 
-			if(file.type.match(/image.*/)) {
-				var reader = new FileReader();
-				reader.onload = function (readerEvent) {
-					var image = new Image();
-					image.onload = function (imageEvent) {
-						var canvas = document.createElement('canvas'),
-							max_size = 1280,// TODO : pull max size from a site config
-							width = image.width,
-							height = image.height;
-						if (width > height) {
-							if (width > max_size) {
-								height *= max_size / width;
-								width = max_size;
-							}
-						} else {
-							if (height > max_size) {
-								width *= max_size / height;
-								height = max_size;
-							}
-						}
-						canvas.width = width;
-						canvas.height = height;
-						canvas.getContext('2d').drawImage(image, 0, 0, width, height);
-						var dataUrl = canvas.toDataURL('image/jpeg');
-						imageResize.url = dataUrl;
-						imageResize.blob = dataURLToBlob(dataUrl);
-					}
-					image.src = readerEvent.target.result;
-				}
-				reader.readAsDataURL(file);
-			}
-			else {
-				imageResize.url = 'not-an-image';
-				imageResize.blob = 'not-an-image';
-				alert('File bukan gambar! Mohon diganti');
-			}
-		};
+		// 	if(file.type.match(/image.*/)) {
+		// 		var reader = new FileReader();
+		// 		reader.onload = function (readerEvent) {
+		// 			var image = new Image();
+		// 			image.onload = function (imageEvent) {
+		// 				var canvas = document.createElement('canvas'),
+		// 					max_size = 1280,// TODO : pull max size from a site config
+		// 					width = image.width,
+		// 					height = image.height;
+		// 				if (width > height) {
+		// 					if (width > max_size) {
+		// 						height *= max_size / width;
+		// 						width = max_size;
+		// 					}
+		// 				} else {
+		// 					if (height > max_size) {
+		// 						width *= max_size / height;
+		// 						height = max_size;
+		// 					}
+		// 				}
+		// 				canvas.width = width;
+		// 				canvas.height = height;
+		// 				canvas.getContext('2d').drawImage(image, 0, 0, width, height);
+		// 				var dataUrl = canvas.toDataURL('image/jpeg');
+		// 				imageResize.url = dataUrl;
+		// 				imageResize.blob = dataURLToBlob(dataUrl);
+		// 			}
+		// 			image.src = readerEvent.target.result;
+		// 		}
+		// 		reader.readAsDataURL(file);
+		// 	}
+		// 	else {
+		// 		imageResize.url = 'not-an-image';
+		// 		imageResize.blob = 'not-an-image';
+		// 		alert('File bukan gambar! Mohon diganti');
+		// 	}
+		// };
 
 		function resizeAndReadEdit(input){
 			// Read
@@ -601,47 +609,47 @@
 			}
 		};
 
-		function add() {
-			const formData = new FormData(document.getElementById("form_add"));
-			$("#btn_simpan").attr("disabled", true).html('<i class="fa fa-spin fa-spinner"></i> Processing ...');
+		// function add() {
+		// 	const formData = new FormData(document.getElementById("form_add"));
+		// 	$("#btn_simpan").attr("disabled", true).html('<i class="fa fa-spin fa-spinner"></i> Processing ...');
 			
-			if (imageResize.blob == null || imageResize.url == null) {
-				alert('Anda belum pilih gambar!');
-				$("#btn_simpan").attr("disabled", false).html('Simpan');
-			}
-			else if (imageResize.url == 'not-an-image' || imageResize.blob == 'not-an-image') {
-				alert('Yang anda upload bukan gambar!');
-				$("#btn_simpan").attr("disabled", false).html('Simpan');
-			}
-			else {
-				formData.append('image_data', imageResize.blob);
-				$.ajax({
-					type: "post",
-					data: formData,
-					url: "addBanner.php",
-					processData: false,
-					contentType: false,
-					success: (data) => {
-						let res = $.parseJSON(data);
-						if (res.result == 1) {
-							alert(res.message);
-							$("#banner-all").DataTable().ajax.reload();
-							$("#modal_tambah").modal("hide");
-							$("#modal_tambah").attr("data-dismiss", "modal");
-						}
-						else {
-							alert(res.message);
-							$("#banner-all").DataTable().ajax.reload();
-						}
-						$("#btn_simpan").attr("disabled", false).html('Simpan');
-					},
-					error: (err) => {
-						alert("Terjadi kesalahan saat menyimpan data. Silahkan coba lagi.");
-						console.log(err);
-					},
-				});
-			}
-		}
+		// 	if (imageResize.blob == null || imageResize.url == null) {
+		// 		alert('Anda belum pilih gambar!');
+		// 		$("#btn_simpan").attr("disabled", false).html('Simpan');
+		// 	}
+		// 	else if (imageResize.url == 'not-an-image' || imageResize.blob == 'not-an-image') {
+		// 		alert('Yang anda upload bukan gambar!');
+		// 		$("#btn_simpan").attr("disabled", false).html('Simpan');
+		// 	}
+		// 	else {
+		// 		formData.append('image_data', imageResize.blob);
+		// 		$.ajax({
+		// 			type: "post",
+		// 			data: formData,
+		// 			url: "addBanner.php",
+		// 			processData: false,
+		// 			contentType: false,
+		// 			success: (data) => {
+		// 				let res = $.parseJSON(data);
+		// 				if (res.result == 1) {
+		// 					alert(res.message);
+		// 					$("#banner-all").DataTable().ajax.reload();
+		// 					$("#modal_tambah").modal("hide");
+		// 					$("#modal_tambah").attr("data-dismiss", "modal");
+		// 				}
+		// 				else {
+		// 					alert(res.message);
+		// 					$("#banner-all").DataTable().ajax.reload();
+		// 				}
+		// 				$("#btn_simpan").attr("disabled", false).html('Simpan');
+		// 			},
+		// 			error: (err) => {
+		// 				alert("Terjadi kesalahan saat menyimpan data. Silahkan coba lagi.");
+		// 				console.log(err);
+		// 			},
+		// 		});
+		// 	}
+		// }
 
 		function edit() {
 			const formDataEdit = new FormData(document.getElementById("form_edit"));
@@ -702,28 +710,28 @@
 			wrapAround: false,
 		});
 
-		function initHapus(id) {
-			const conf = confirm(`Yakin untuk menghapus gambar ini?`);
-			if (conf) {
-				$.ajax({
-					type: "post",
-					url: "delBanner.php",
-					data: { id },
-					success: (data) => {
-						const res = $.parseJSON(data);
+		// function initHapus(id) {
+		// 	const conf = confirm(`Yakin untuk menghapus gambar ini?`);
+		// 	if (conf) {
+		// 		$.ajax({
+		// 			type: "post",
+		// 			url: "delBanner.php",
+		// 			data: { id },
+		// 			success: (data) => {
+		// 				const res = $.parseJSON(data);
 
-						if (res.success) {
-							alert('Banner berhasil dihapus.');
-							$("#banner-all").DataTable().ajax.reload();
-						}
-						else {
-							alert('Banner gagal dihapus.');
-							$("#banner-all").DataTable().ajax.reload();
-						}
-					}
-				});
-			}
-		}
+		// 				if (res.success) {
+		// 					alert('Banner berhasil dihapus.');
+		// 					$("#banner-all").DataTable().ajax.reload();
+		// 				}
+		// 				else {
+		// 					alert('Banner gagal dihapus.');
+		// 					$("#banner-all").DataTable().ajax.reload();
+		// 				}
+		// 			}
+		// 		});
+		// 	}
+		// }
 
 		function show(id) {
 			clearFormEdit();
