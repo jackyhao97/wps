@@ -41,7 +41,8 @@
           ?>    
         <div class="row mt-2">
           <div class="col-12">
-            <h3 class="fw-bold text-center color-blue"><?=$row["judul"]?></h3>
+            <!-- <h3 class="fw-bold text-center color-blue"><?=$row["judul"]?></h3> -->
+            <p class="fw-bold text-center color-blue"><?=$row["judul"]?></p>
             <div class="text-end">
               <small class="text-muted">Post Date : <?=$date?></small>
             </div>

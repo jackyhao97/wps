@@ -17,13 +17,11 @@
     require_once '../navbar-news.php';
   ?>
   <section class="wps-banner" id="banner">
-    <div class="container">
-      <?php
-        $banner = $conn->query("SELECT path FROM tb_banner WHERE category = 'news'");
-        $rowBanner = $banner->fetch_array();
-      ?>
-      <img src="<?=BASE_URL.DS.'admin/img/banner/'.$rowBanner['path']?>" alt="Banner" class="w-100">
-    </div>
+    <?php
+      $banner = $conn->query("SELECT path FROM tb_banner WHERE category = 'news'");
+      $rowBanner = $banner->fetch_array();
+    ?>
+    <img src="<?=BASE_URL.DS.'admin/img/banner/'.$rowBanner['path']?>" alt="Banner" class="w-100">
     <div class="container berita mt-5">
       <span class="news nc-1"><i class="fas fa-caret-right caret-custom"></i> <h5 class="text-uppercase d-inline-block fw-bold"> Popular News</h5></span>
       <div class="row mt-3">
@@ -35,7 +33,7 @@
           <div class="card">
             <img src="<?=BASE_URL.DS.'admin/img/news/'.$rowTampil["path"]?>" class="card-img-top" alt="<?=$rowTampil["name"]?>">
             <div class="card-body">
-              <h5 class="card-title fw-bold"><?=$rowTampil["judul"]?></h5>
+              <p class="card-title fw-bold"><?=$rowTampil["judul"]?></p>
               <p class="mb-3 mt-3"><?=$rowTampil["deskripsi"]?></p>
               <a href="./<?=$rowTampil["seo_link"]?>">[Read More]</a>
             </div>

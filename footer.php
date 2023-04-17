@@ -10,7 +10,7 @@
         ?>
           <img src="<?=BASE_URL.DS.'admin/img/news/'.$rowNews['path']?>" alt="<?=$rowNews['judul']?>" class="w-100">
           <h5 class="fw-bold mt-4"><?=$rowNews['judul']?></h5>
-          <a href="./news/<?=$rowNews["seo_link"]?>">Read More...</a>
+          <a href="<?=BASE_URL.DS.'news'.DS.$rowNews["seo_link"]?>">Read More...</a>
         <?php
           endwhile;
         ?>
